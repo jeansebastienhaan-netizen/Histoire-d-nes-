@@ -7,30 +7,30 @@
   "nodes": {
     "start": {
       "speaker": "carnet",
-      "text": "Dans la salle de musique, les instruments dorment sous leurs housses comme des animaux en hiver. Cyril est le seul à venir encore chaque jour. Il pose les mains sur sa guitare et joue quand même — des chansons que personne n'entend, mais qu'il sent au bout des doigts.",
-      "next": "cyril_idee"
+      "text": "La salle de musique de Cyril est en deuil : sa guitare ne fait plus de son du tout — même pas le petit « doïng » quand on la cogne contre la porte, c'est dire. Mais Cyril n'a pas rendu les armes. Rappelle-toi l'ardoise du premier jour : SA corde sonnait faux depuis mardi. Cyril a été le premier témoin du voleur. Et il a un plan.",
+      "next": "cyril_temoignage"
     },
-    "cyril_idee": {
+    "cyril_temoignage": {
       "speaker": "cyril",
-      "text": "Cyril retourne son ardoise, couverte de portées : « J'ai compris un truc énorme. Le silence a volé le SON, mais pas le RYTHME. Le rythme, on le sent — dans le plancher, dans la poitrine. Alors j'écris une chanson que tout le village pourra sentir. Il me manque juste un batteur. »",
-      "next": "cyril_choix"
+      "text": "« Je l'ai VU. Enfin, presque. » Cyril tapote son ardoise, très rockstar du mystère. « La nuit de mardi, une silhouette immense, penchée sur ma guitare. Elle ne volait pas encore : elle ÉCOUTAIT. Elle a joué trois notes — mal — et elle a soupiré si fort que mes partitions se sont envolées. Un soupir de quelqu'un de très vieux et de très fatigué. Puis tout est devenu muet. »",
+      "next": "cyril_plan"
     },
-    "cyril_choix": {
+    "cyril_plan": {
       "speaker": "cyril",
-      "text": "« Ce sera la chanson du village. Celle qu'on jouera quand tout ça sera fini. Tu marques le tempo avec moi ? »",
+      "text": "« Mon plan : la Chanson du Village. Celle que tout le monde fredonne sans savoir d'où elle vient. Si on la rejoue NOTE POUR NOTE, les bruits volés la reconnaîtront et voudront revenir — c'est de la physique, enfin, de la musique, c'est pareil en mieux. Problème : sans son, je ne peux plus te l'apprendre à l'oreille. Je vais te la MONTRER. À toi de la mémoriser. Elle est longue. Accroche-toi. »",
       "choices": [
         {
-          "label": "« Une chanson pour tout le monde… Compte sur moi, Cyril. »",
+          "label": "« Montre-la-moi autant de fois qu'il faudra. On la jouera pour tout le village. »",
           "effects": { "coeur": 1 },
           "next": "avant_jeu"
         },
         {
-          "label": "« Et si on faisait vibrer le plancher pour que les voisins la sentent aussi ? »",
+          "label": "« Je vais la découper en petits bouts dans ma tête. C'est comme ça qu'on avale une chanson. »",
           "effects": { "ruse": 1 },
           "next": "avant_jeu"
         },
         {
-          "label": "« On répétera jusqu'à ce qu'elle soit parfaite. »",
+          "label": "« Même si je dois y passer la nuit, cette chanson sera jouée. Vas-y. »",
           "effects": { "determination": 1 },
           "next": "avant_jeu"
         }
@@ -38,48 +38,48 @@
     },
     "avant_jeu": {
       "speaker": "carnet",
-      "text": "Cyril compte silencieusement — un, deux, trois, quatre — en hochant la tête. Ses doigts se posent sur les cordes. À nous la batterie : le plat de la main sur la grande caisse en bois.",
-      "next": "jeu_tempo"
+      "text": "Cyril accorde sa guitare muette par pur professionnalisme, pose quatre pastilles de couleur sur la table — les quatre notes de la chanson — et lève sa médiator comme une baguette de chef. La Chanson du Village va défiler. Œil de lynx exigé : elle s'allonge à chaque manche.",
+      "next": "jeu_chanson"
     },
-    "jeu_tempo": {
+    "jeu_chanson": {
       "type": "minigame",
-      "game": "RhythmTap",
+      "game": "SimonSays",
       "config": {
-        "prompt": "La chanson du village : tape la mesure, bien régulière, avec Cyril !",
-        "bpm": 96,
-        "taps": 10,
-        "tolerance": 0.4
+        "intro": "La Chanson du Village, note à note. Regarde la séquence s'allumer, puis rejoue-la dans le bon ordre. Elle s'allonge à chaque manche !",
+        "length": 6,
+        "lives": 2,
+        "speed": 520
       },
-      "onSuccess": "reussite",
-      "onPartial": "presque",
-      "onFail": "pause"
+      "onSuccess": "jeu_reussi",
+      "onPartial": "jeu_presque",
+      "onFail": "jeu_rate"
     },
-    "pause": {
+    "jeu_rate": {
       "speaker": "cyril",
-      "text": "Cyril lève le pouce quand même : « Hé, même les grands groupes accordent leurs instruments pendant des heures. C'est ça, la musique : on recommence, et chaque fois c'est un peu plus beau. »",
+      "text": "« Et là, mon public, c'est le moment où je dis un truc de musicien : se tromper, c'est juste improviser trop tôt. » Cyril fait mine d'accorder à nouveau sa guitare. « La Chanson du Village attend depuis soixante ans, elle peut attendre dix minutes. On la reprend du début quand tes doigts sont chauds. »",
       "choices": [
-        { "label": "Reprendre au début du morceau", "next": "jeu_tempo" },
-        { "label": "Revenir répéter plus tard", "next": "sortie_douce" }
+        { "label": "Reprendre la chanson", "next": "jeu_chanson" },
+        { "label": "Revenir plus tard", "next": "sortie_douce" }
       ]
     },
     "sortie_douce": {
       "speaker": "carnet",
-      "text": "Cyril griffonne trois notes sur un coin d'ardoise et le tend : « Ton morceau t'attend. » Dans la salle de musique, même les au revoir ont une mélodie.",
+      "text": "Cyril raccompagne l'enquêteur avec une poignée de main compliquée qu'il faudra réapprendre à chaque visite. Sur son ardoise : « Le concert est reporté, pas annulé. Nuance de pro. »",
       "next": "END"
     },
-    "reussite": {
+    "jeu_reussi": {
       "speaker": "cyril",
-      "text": "La dernière mesure s'éteint dans le bois du plancher. Cyril reste immobile, les yeux fermés, puis écrit très vite : « Tu l'as sentie ? Elle est FINIE. La chanson du village existe. Grâce à ton tempo. »",
-      "next": "fragment_trouve"
+      "text": "« NOTE POUR NOTE ! Sans une erreur ! » Cyril saute sur son ampli, qui ne fait pas de bruit mais fait de l'effet. « Tu viens de rejouer la Chanson du Village comme personne depuis… depuis la personne qui l'a écrite, j'imagine. D'ailleurs, ÇA, c'est la vraie question : QUI l'a écrite ? Personne ne sait. Elle a toujours été là. Comme si quelqu'un l'avait laissée au village en cadeau… »",
+      "next": "indice"
     },
-    "presque": {
+    "jeu_presque": {
       "speaker": "cyril",
-      "text": "« Deux temps de retard au milieu — mais tu sais quoi ? Ça lui donne du style. Un peu de swing. » Cyril note la variation, très sérieux. « Version définitive. La chanson du village a du groove maintenant. »",
-      "next": "fragment_trouve"
+      "text": "« Deux hésitations, mais la chanson y est — et entre nous, les hésitations, en musique, on appelle ça du FEELING. » Cyril range son médiator, très ému sous sa nonchalance. « Tu viens de rejouer un morceau que plus personne n'avait joué en entier depuis des lustres. Reste à savoir qui l'a écrit. Personne ne sait. Elle a toujours été là… »",
+      "next": "indice"
     },
-    "fragment_trouve": {
+    "indice": {
       "speaker": "carnet",
-      "text": "En rangeant sa guitare, Cyril trouve, glissé dans la rosace, un papier doré roulé comme une partition minuscule. « Il a toujours été là ? Ma guitare gardait un secret… » Le septième fragment du vœu.",
+      "text": "À la dernière note, Mistiflouk — ou l'air lui-même — a frémi. Et derrière l'ampli, on a trouvé une partition ancienne, jaunie, titrée d'une écriture à déliés : « Berceuse pour un village qui ne veut pas dormir — musique de V. » Cyril en lâche son ardoise. La Chanson du Village… c'est une berceuse. Écrite par V. LE VOLEUR A ÉCRIT LA CHANSON DU VILLAGE. Un fragment doré est épinglé à la partition, comme un remords.",
       "next": "fin_fragment"
     },
     "fin_fragment": {
@@ -90,7 +90,7 @@
     },
     "epilogue": {
       "speaker": "carnet",
-      "text": "Et cette nuit-là, une corde de guitare résonna toute seule dans la salle vide — un long la, chaud et rond. Le septième bruit était revenu. Cyril dormit avec le sourire de ceux qui ont fini leur chef-d'œuvre.",
+      "text": "Et quand Cyril gratta sa guitare ce soir-là, elle sonna — un accord entier, chaud, un peu faux sur la deuxième corde, exactement comme il faut. Septième bruit récupéré. Sur le tableau de l'enquête, Cyril écrivit : « 7 bruits récupérés. RÉVÉLATION : V. a composé notre chanson il y a très longtemps. On ne vole pas un village qu'on déteste. On vole un village qu'on n'arrive plus à écouter. Fin de citation. Oui, je mets mes propres citations. »",
       "next": "END"
     }
   }

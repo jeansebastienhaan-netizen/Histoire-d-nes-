@@ -6,9 +6,10 @@ import endingsData from '../data/endings.json'
 import fragmentsData from '../data/fragments.json'
 import charactersData from '../data/characters.json'
 
-const NAMES = Object.fromEntries(
-  charactersData.characters.map((c) => [c.id, c.name])
-)
+const NAMES = {
+  ...Object.fromEntries(charactersData.characters.map((c) => [c.id, c.name])),
+  veilleur: 'Le Veilleur',
+}
 
 // Choisit une des 7 fins selon le profil de réputation :
 // écarts faibles → harmonie ; un axe qui domine nettement → fin pure ;
@@ -21,7 +22,7 @@ export function endingId(reputation) {
   return [top[0], mid[0]].sort().join('_')
 }
 
-const PHASES = ['tilleul', 'voeu', 'chant', 'fin', 'epilogues', 'merci']
+const PHASES = ['tilleul', 'veilleur', 'voeu', 'chant', 'fin', 'epilogues', 'merci']
 
 export default function EndingScreen() {
   const { reputation, goToMap, newGame } = useGameStore()
@@ -40,12 +41,42 @@ export default function EndingScreen() {
         <div className="ending-block">
           <h2 className="notebook-title">Sous le grand tilleul</h2>
           <p className="dialogue-text ending-text">
-            Tout le village est là, rassemblé sous le grand tilleul de la place.
-            Mamy ouvre son carnet. Les douze fragments dorés y ont repris leur place,
-            bord contre bord, comme s'ils ne s'étaient jamais quittés.
-            Elle fait signe : c'est à toi de lire.
+            Il est là.
+            <br /><br />
+            Assis contre le tronc du grand tilleul, immense et voûté, en chaussons gris
+            dont l'un est à moitié mâchouillé : le Veilleur. Autour de lui, des centaines
+            de boîtes en fer soigneusement empilées — toute la musique du village, rangée,
+            étiquetée, réparée. Il tient sa tasse de camomille sans la boire.
+            Quand le village s'approche, il baisse la tête, comme un géant qui voudrait
+            être plus petit.
+            <br /><br />
+            Mamy s'avance la première. Elle ouvre son carnet : les treize fragments dorés
+            y ont repris leur place, bord contre bord. Elle fait signe : c'est à toi de lire.
           </p>
           <button className="btn btn-primary" onClick={next}>Lire le vœu</button>
+        </div>
+      )}
+
+      {phase === 'veilleur' && (
+        <div className="ending-block">
+          <h2 className="notebook-title">Le Veilleur</h2>
+          <p className="dialogue-text ending-text">
+            Alors le Veilleur parle — et sa voix est le premier son qu'il ne s'est jamais
+            volé à lui-même, rouillée comme une porte de grenier :
+            <br /><br />
+            « Neuf cents ans que je range vos bruits chaque nuit, que je les répare,
+            que je les accorde, que je les ressors à l'aube. L'horloge. La rivière.
+            Vos rires. Personne ne le savait, et c'était très bien ainsi. Mais mardi… »
+            <br /><br />
+            Il tourne sa tasse entre ses doigts géants. « Mardi, j'ai traversé le village,
+            et tout le monde parlait. Personne n'écoutait. Alors j'ai tout rangé une bonne
+            fois, et je suis allé me coucher. Ce n'était pas un vol. C'était… une bouderie.
+            Une bouderie de neuf cents ans d'ancienneté, ça prend de la place, je vous
+            l'accorde. » Il regarde le carnet de Mamy. « Ce vœu-là, je l'ai lu il y a
+            soixante ans. C'est le plus beau bruit que ce village ait jamais fait.
+            Relisez-le-moi. Et je rouvre tout. »
+          </p>
+          <button className="btn btn-primary" onClick={next}>Lui lire le vœu</button>
         </div>
       )}
 
@@ -66,12 +97,15 @@ export default function EndingScreen() {
       {phase === 'chant' && (
         <div className="ending-block">
           <p className="dialogue-text ending-text ending-chant">
-            Un frisson parcourt les feuilles du tilleul.
+            À la dernière syllabe, le Veilleur se lève de toute sa hauteur —
+            et il ouvre les boîtes. Toutes. À pleines brassées, comme on sème.
             <br /><br />
-            Puis l'horloge de Mamy sonne. Le marteau de Xavier répond. La cloche,
-            la guitare, la rivière, le ballon de Jules, les rires de la cabane —
-            tous les bruits du village se lèvent en même temps, comme un orchestre
-            qui n'attendait que son chef.
+            L'horloge de Mamy sonne. Le marteau de Xavier répond. La cloche,
+            la guitare, la rivière, le ballon de Jules, le ron-ron de la mobylette,
+            les rires de la cabane — tous les bruits du village se lèvent en même temps,
+            comme un orchestre qui n'attendait que son chef. Et dans le ciel,
+            l'Étoile du Berger se rallume, au premier sourire du Veilleur — Lana
+            avait raison, et elle le fera remarquer pendant des années.
             <br /><br />
             Le Grand Silence est terminé.
           </p>

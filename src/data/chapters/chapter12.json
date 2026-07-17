@@ -7,25 +7,25 @@
   "nodes": {
     "start": {
       "speaker": "carnet",
-      "text": "Derrière la dernière barrière du village vit Marjo, la dresseuse d'animaux. Chèvres funambules, oies qui défilent au pas, un vieux perroquet nommé Coco qui répétait autrefois tous les potins du village… Chez Marjo, même les poules ont du talent.",
-      "next": "marjo_probleme"
+      "text": "Derrière la dernière barrière du village vit Marjo, la dresseuse : chèvres funambules, oies au garde-à-vous, et Coco, le perroquet doyen, qui répétait autrefois les potins du village avec un talent d'imitateur qui a brouillé deux familles. Aujourd'hui, la ménagerie est sens dessus dessous : la barrière est ouverte, l'enclos est vide, et Marjo court dans le pré avec un filet à papillons — pour la dignité, c'est déjà trop tard.",
+      "next": "marjo_situation"
     },
-    "marjo_probleme": {
+    "marjo_situation": {
       "speaker": "marjo",
-      "text": "Marjo siffle — enfin, essaie. Rien ne sort, évidemment. Elle écrit à toute vitesse : « Catastrophe ! Mes bêtes obéissaient à la voix et au sifflet. Sans le son, elles n'entendent plus rien — et ce matin, la barrière était ouverte ! La chèvre, l'oie et le lapin se baladent dans tout le village ! »",
-      "next": "marjo_espoir"
+      "text": "« CATASTROPHE À TROIS PATTES ! Enfin, à dix pattes ! Enfin — Berlingot la chèvre, Gertrude l'oie et le lapin, dont le nom est secret parce qu'il n'écoute de toute façon pas ! » Marjo écrit si fort que la craie crisse (enfin, crisserait). « Mes bêtes obéissaient à la voix et au sifflet. Sans son, elles n'entendent plus rien — alors elles ont voté l'indépendance ! Et j'ai TROUVÉ QUELQUE CHOSE près de la barrière. Regarde. »",
+      "next": "marjo_indice"
     },
-    "marjo_espoir": {
-      "speaker": "marjo",
-      "text": "« Mais j'ai un plan. Depuis le Grand Silence, je leur apprends le langage des gestes. La chèvre suit la main à plat, l'oie suit le doigt tendu, le lapin… bon, le lapin fait ce qu'il veut, c'est un lapin. Aide-moi à les ramener à l'enclos ! »",
+    "marjo_indice": {
+      "speaker": "carnet",
+      "text": "Près de la barrière : une pantoufle géante, grise, à moitié mâchouillée, et une boîte en fer cabossée, étiquette : « MEUH — non — BÊÊÊ — enfin bref, RAYON FERME ». Marjo raconte : « Il est venu prendre les cris de mes bêtes. Mais Coco a défendu la volière comme un chevalier : il lui a mordu la pantoufle ! Le Veilleur — appelons-le comme tout le monde maintenant — est reparti en boitillant… et il a laissé la barrière ouverte. Voilà pourquoi mes fugueurs se baladent ! »",
       "choices": [
         {
-          "label": "« On les ramène tous les trois, promis. Ils doivent être morts de peur. »",
+          "label": "« On les ramène tous les trois. Ils doivent jouer aux durs, mais ils ont peur, au fond. »",
           "effects": { "coeur": 1 },
           "next": "avant_jeu"
         },
         {
-          "label": "« Une poignée de trèfle pour le lapin, et il se ramènera tout seul. »",
+          "label": "« Une poignée de trèfle dans l'enclos, et on cueille les gourmands au retour. »",
           "effects": { "ruse": 1 },
           "next": "avant_jeu_ruse"
         },
@@ -44,51 +44,52 @@
     },
     "avant_jeu": {
       "speaker": "carnet",
-      "text": "Marjo montre les gestes : main à plat pour la chèvre, doigt tendu pour l'oie, et pour le lapin… de la douceur et de la patience. Les trois fugueurs broutent, barbotent et gambadent dans le pré. À nous de les raccompagner, un par un, jusqu'à l'enclos.",
+      "text": "Marjo briefe son équipe (toi) en langage des gestes : main à plat pour Berlingot, doigt tendu pour Gertrude, et pour le lapin… elle mime un haussement d'épaules fataliste. « Un conseil : ils BOUGENT. Berlingot est rapide, Gertrude a son rythme, et le lapin se téléporte, je n'ai pas d'autre mot et j'ai cherché. Et fais vite : le soleil se couche, et une chèvre de nuit, c'est une légende urbaine qu'on n'a pas envie de créer. »",
       "next": "jeu_animaux"
     },
     "avant_jeu_ruse": {
       "speaker": "carnet",
-      "text": "Marjo éclate d'un rire muet et remplit une poche de trèfle frais. « Toi, tu as l'esprit d'une dresseuse. » Les trois fugueurs sont en vue : la chèvre sur le muret, l'oie dans la mare, le lapin dans les choux de Papy — forcément.",
+      "text": "Marjo éclate d'un rire muet et remplit tes poches de trèfle frais. « L'esprit d'une dresseuse ! Le trèfle les attirera vers l'enclos — mais il faudra quand même les Y METTRE, et c'est là que ça se corse : Berlingot est rapide, Gertrude a son rythme, et le lapin se téléporte. J'ai cherché un autre mot. Il n'y en a pas. Et dépêche-toi : le soleil descend. »",
       "next": "jeu_animaux"
     },
     "avant_jeu_mistiflouk": {
       "speaker": "carnet",
-      "text": "Mistiflouk file dans l'herbe haute et revient en trois ondulations : il a repéré tout le monde. La chèvre sur le muret, l'oie dans la mare, le lapin dans les choux. Marjo salue le serpent, très professionnelle : « Bienvenue dans l'équipe, collègue. »",
+      "text": "Mistiflouk file dans l'herbe haute et revient en trois ondulations : localisation complète. Berlingot broute le règlement du silence-ball (affiché trop bas), Gertrude patauge, le lapin est PARTOUT, dixit le sonar, ce qui n'est pas une donnée exploitable mais donne le ton. Marjo salue le serpent, très professionnelle : « Bienvenue dans l'équipe, collègue. Attention : le soleil descend, on fait vite. »",
       "next": "jeu_animaux"
     },
     "jeu_animaux": {
       "type": "minigame",
       "game": "AnimalRoundup",
       "config": {
-        "prompt": "Ramène les trois évadés dans l'enclos — attrape-les et dépose-les derrière la barrière !",
+        "prompt": "Attrape les trois fugueurs et dépose-les dans l'enclos avant la nuit ! Ils bougent tout seuls — et le lapin se téléporte quand on l'attrape mal.",
         "animals": ["🐐", "🪿", "🐇"],
-        "target": "L'enclos"
+        "target": "L'enclos",
+        "seconds": 45
       },
       "onSuccess": "reussite",
       "onFail": "pause"
     },
     "pause": {
       "speaker": "marjo",
-      "text": "« Pause ! Règle d'or du dressage : jamais s'énerver, jamais courir. » Marjo distribue des carottes — une pour le visiteur aussi. « Ils reviennent toujours, tu sais. Ils sont fugueurs, pas fous : c'est ici qu'on est le mieux. On réessaie ? »",
+      "text": "« Pause réglementaire ! » Marjo distribue des carottes — une pour toi aussi, tu l'as méritée. « Règle d'or du dressage : jamais s'énerver, jamais courir plus bête que l'animal. Ils reviennent toujours rôder près de l'enclos, ce sont des fugueurs de confort. On respire, on observe leurs habitudes, et on remet ça. Le lapin ne peut pas se téléporter ET réfléchir, c'est sa faiblesse. »",
       "choices": [
-        { "label": "Réessayer maintenant", "next": "jeu_animaux" },
+        { "label": "Reprendre la chasse", "next": "jeu_animaux" },
         { "label": "Revenir plus tard", "next": "sortie_douce" }
       ]
     },
     "sortie_douce": {
       "speaker": "carnet",
-      "text": "Marjo raccompagne son visiteur avec l'oie sous le bras — celle-là au moins est attrapée. Sur son ardoise : « Reviens vite. Coco veut te rencontrer, il n'arrête pas de te montrer du bec. »",
+      "text": "Marjo raccompagne l'enquêteur avec Gertrude sous le bras — elle au moins s'est laissé faire, contre un morceau de pain. Sur l'ardoise : « Reviens vite. Coco veut te montrer quelque chose. Il n'arrête pas de taper du bec sur sa mangeoire, et chez Coco, ça veut dire DOSSIER IMPORTANT. »",
       "next": "END"
     },
     "reussite": {
       "speaker": "marjo",
-      "text": "Clac ! La barrière se referme sur les trois fugueurs, penauds et ravis. Marjo applaudit sans bruit : « Du grand art ! La chèvre t'a suivi comme si tu avais fait ça toute ta vie. Tu as le don, je le dis rarement. Viens, je te présente Coco — c'est lui le doyen. »",
+      "text": "CLAC ! La barrière se referme sur les trois fugueurs, penauds et ravis, juste quand le soleil touche l'horizon. Marjo applaudit sans bruit : « Berlingot attrapée EN MOUVEMENT, Gertrude sans froisser une plume, et le lapin — tu as eu LE LAPIN. Je dis rarement ça : tu as le don. Viens, la récompense est dans la volière. Coco garde quelque chose depuis mardi, et il ne l'aurait montré à personne d'indigne. »",
       "next": "coco"
     },
     "coco": {
       "speaker": "carnet",
-      "text": "Dans la volière, un vieux perroquet gris ouvre un œil malicieux. Coco, muet comme tout le monde, garde farouchement quelque chose au fond de sa cage : un papier doré, plié et replié par des années de bec soigneux. Il le tend de lui-même — comme s'il attendait ce moment depuis toujours.",
+      "text": "Dans la volière, Coco ouvre un œil de doyen, jauge l'enquêteur, et daigne enfin soulever sa patte : dessous, un papier doré plié par des années de bec soigneux — et un bouton de manteau gris, arraché. Marjo traduit le mime de Coco, qui rejoue toute la scène avec des effets dramatiques : « La nuit du vol… le Veilleur s'est penché sur la volière… il a regardé Coco longtemps… et il a PLEURÉ. Une larme, là, sur le rebord. Puis il a dit — Coco lit sur les lèvres — : “Toi au moins, tu répétais tout ce que vous disiez. Toi au moins, tu écoutais.” »",
       "next": "fin_fragment"
     },
     "fin_fragment": {
@@ -99,7 +100,7 @@
     },
     "epilogue": {
       "speaker": "carnet",
-      "text": "Et au moment où le papier changea de mains, un son perça le silence : le sifflet de Marjo, pendu à son cou, siffla tout seul — un trille clair, joyeux, impossible. Toutes les bêtes dressèrent l'oreille en même temps. Le douzième bruit était revenu, et la ménagerie entière fit la fête sans un bruit… pour la dernière fois.",
+      "text": "Et au moment où le fragment changea de mains, le sifflet de Marjo, pendu à son cou, siffla tout seul — un trille clair, impossible, magnifique. Douzième bruit récupéré. Toutes les bêtes dressèrent l'oreille en même temps, et Berlingot exécuta son numéro de funambule sans qu'on lui demande rien, en pure joie. Sur le tableau de l'enquête, Marjo écrivit : « 12 bruits récupérés. Le Veilleur a pleuré devant ma volière. Il ne nous en veut pas. Il est SEUL. Quelqu'un sait sûrement toute l'histoire — et dans ce village, “quelqu'un sait tout” a une adresse : la cabane perchée. »",
       "next": "END"
     }
   }

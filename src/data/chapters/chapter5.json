@@ -7,82 +7,101 @@
   "nodes": {
     "start": {
       "speaker": "carnet",
-      "text": "Sur le terrain de jeux, Jules a inventé un nouveau sport — comme tous les mardis. Celui-ci s'appelle « l'Éclair d'Ardoise » : on pose une question, et il faut brandir la bonne réponse avant que le sablier ne se vide. Jules est imbattable.",
-      "next": "jules_defi"
+      "text": "Au terrain de jeux, Jules a réagi au Grand Silence comme à tout dans la vie : en inventant un sport. Puisqu'on ne peut plus crier « PASSE ! », ni siffler les fautes, ni hurler « TRICHEUR ! » (surtout ça), il a créé… le silence-ball. Le règlement fait déjà trois ardoises recto verso. Personne n'y comprend rien. Tout le monde adore.",
+      "next": "jules_recrutement"
     },
-    "jules_defi": {
+    "jules_recrutement": {
       "speaker": "jules",
-      "text": "Jules fait tournoyer son ardoise comme une raquette : « Enfin un adversaire ! Tout le monde dit que je gagne parce que je triche. FAUX. Je gagne parce que je suis rapide. Allez, trois manches. Si tu tiens la cadence, j'ai un truc à te montrer. »",
-      "next": "jules_choix"
+      "text": "« Tu tombes PILE ! » écrit Jules, qui écrit comme il court : vite et sans freiner. « Grand match d'inauguration ce soir, et il me manque un arbitre-adjoint. C'est un poste ÉNORME. Mais avant, tu dois passer l'examen du règlement. Tout le monde le rate. Même moi je l'ai raté, et c'est MOI qui l'ai écrit. »",
+      "next": "jules_regles"
     },
-    "jules_choix": {
+    "jules_regles": {
       "speaker": "jules",
-      "text": "« Prêt ? Prête ? Le sablier n'attend personne ! »",
+      "text": "« Concentre-toi, je le dis UNE fois. Règle 1 : l'arbitre ne siffle pas, il agite son bonnet — le ORANGE FLUO, pas le vert, le vert c'est pour la mi-temps. Règle 2 : marquer en criant, ça vaut ZÉRO point, crier c'est tricher. Règle 3 : si le ballon touche la chèvre de Marjo, c'est corner. Elle broute TOUJOURS au même endroit, c'est pratique. Compris ? L'examen commence… MAINTENANT ! »",
       "choices": [
         {
-          "label": "« Joue à fond, Jules. Gagner contre toi, ça se mérite. »",
+          "label": "« Vas-y, pose tes questions. Je t'ai écouté comme un vrai coéquipier. »",
           "effects": { "coeur": 1 },
-          "next": "avant_jeu"
+          "next": "jeu_examen"
         },
         {
-          "label": "« D'accord… mais c'est moi qui retourne le sablier. »",
+          "label": "« Bonnet orange, zéro point, corner-chèvre. Je viens de tout répéter dans ma tête. »",
           "effects": { "ruse": 1 },
-          "next": "avant_jeu"
+          "next": "jeu_examen"
         },
         {
-          "label": "« Trois manches ? Chiche. Et on remet ça jusqu'à ce que je gagne. »",
+          "label": "« Je raterai peut-être, mais je repasserai l'examen jusqu'à l'avoir. Envoie. »",
           "effects": { "determination": 1 },
-          "next": "avant_jeu"
+          "next": "jeu_examen"
         }
       ]
     },
-    "avant_jeu": {
-      "speaker": "carnet",
-      "text": "Jules retourne le sablier d'un geste de champion. Première question, écrite à toute vitesse : elle parle du village, évidemment. Avec Jules, tout finit toujours par parler du village.",
-      "next": "jeu_eclair"
-    },
-    "jeu_eclair": {
+    "jeu_examen": {
       "type": "minigame",
       "game": "TimedDialogue",
       "config": {
-        "prompt": "« Question éclair : le Grand Silence a tout éteint… sauf UNE chose qui fait encore du bruit dans le village. Laquelle ? »",
-        "seconds": 8,
-        "options": [
-          { "label": "L'horloge de Mamy — elle refait tic-tac depuis peu !", "result": "success" },
-          { "label": "Le vent dans les arbres", "result": "partial" },
-          { "label": "Euh… les poules ?", "result": "fail" }
+        "intro": "L'examen officiel du silence-ball. Jules retourne son sablier de poche : les vrais arbitres répondent VITE.",
+        "maxWrong": 1,
+        "rounds": [
+          {
+            "prompt": "« Question 1 : je veux signaler une faute. Qu'est-ce que je fais ? »",
+            "seconds": 7,
+            "options": [
+              { "label": "J'agite le bonnet orange fluo", "correct": true },
+              { "label": "J'agite le bonnet vert", "correct": false },
+              { "label": "Je siffle très fort dans ma tête", "correct": false }
+            ]
+          },
+          {
+            "prompt": "« Question 2 : Marco marque un but MAGNIFIQUE en criant de joie. Ça vaut… »",
+            "seconds": 6,
+            "options": [
+              { "label": "Zéro point : crier, c'est tricher", "correct": true },
+              { "label": "Un point, le but est valable", "correct": false },
+              { "label": "Deux points pour le style", "correct": false }
+            ]
+          },
+          {
+            "prompt": "« Question 3, la piège : le ballon touche la chèvre de Marjo. Décision ? »",
+            "seconds": 6,
+            "options": [
+              { "label": "Corner ! Elle broute toujours au même endroit", "correct": true },
+              { "label": "Penalty pour la chèvre", "correct": false },
+              { "label": "Le match est reporté", "correct": false }
+            ]
+          }
         ]
       },
-      "onSuccess": "reussite",
-      "onPartial": "presque",
-      "onFail": "pause"
+      "onSuccess": "examen_reussi",
+      "onPartial": "examen_presque",
+      "onFail": "examen_rate"
     },
-    "pause": {
+    "examen_rate": {
       "speaker": "jules",
-      "text": "Jules éclate d'un rire silencieux et s'écroule théâtralement dans l'herbe : « Les POULES ! Elles sont muettes comme tout le monde, les poules ! » Il se relève d'un bond. « Allez, revanche. Les champions accordent toujours une revanche. »",
+      "text": "« ÉLIMINÉ ! Ha ! Le règlement du silence-ball ne pardonne pas ! » Jules te tape quand même dans la main, parce que chez lui la défaite est un détail technique. « Tout le monde le rate, je t'avais prévenu. Allez : je te redis les règles, tu re-tentes. Les grands arbitres, c'est comme les grands buteurs : ça insiste. »",
       "choices": [
-        { "label": "Revanche, tout de suite !", "next": "jeu_eclair" },
-        { "label": "Revenir s'entraîner plus tard", "next": "sortie_douce" }
+        { "label": "Réécouter les règles et repasser l'examen", "next": "jules_regles" },
+        { "label": "Revenir plus tard", "next": "sortie_douce" }
       ]
     },
     "sortie_douce": {
       "speaker": "carnet",
-      "text": "Jules raccompagne son adversaire au bord du terrain en mimant un salut de judoka. Sur son ardoise : « Reviens vite. Les meilleurs adversaires sont ceux qui reviennent. »",
+      "text": "Jules raccompagne l'enquêteur en dribblant avec un caillou. Sur son ardoise : « Le poste d'arbitre-adjoint reste ouvert. Je fais passer l'examen à la chèvre en attendant, elle a ses chances. »",
       "next": "END"
     },
-    "reussite": {
+    "examen_reussi": {
       "speaker": "jules",
-      "text": "Jules en lâche son ardoise : « L'horloge ! Tu SAIS des choses, toi. » Il regarde autour de lui, l'air soudain sérieux — enfin, sérieux pour Jules. « Bon. Un deal est un deal. Viens voir mon coffre à trophées. »",
-      "next": "fragment_trouve"
+      "text": "« TROIS SUR TROIS ?! » Jules fait le tour du terrain les bras en avion, en silence — c'est très impressionnant, un tour d'honneur muet. « Personne n'avait JAMAIS eu tout bon ! Te voilà arbitre-adjoint À VIE. Le bonnet orange est à toi. Enfin, le deuxième bonnet orange. Le premier, c'est le mien. »",
+      "next": "indice"
     },
-    "presque": {
+    "examen_presque": {
       "speaker": "jules",
-      "text": "« Le vent ! Pas mal, pas mal… mais la vraie réponse, c'était l'horloge de Mamy. Match nul, alors. » Jules tend la main, beau joueur. « Et un match nul contre moi, crois-moi, ça vaut un trophée. Viens voir mon coffre. »",
-      "next": "fragment_trouve"
+      "text": "« Une seule erreur… c'est le meilleur score depuis MOI. » Jules réfléchit à toute vitesse, ce qui chez lui fait de la fumée. « Bon : arbitre-adjoint STAGIAIRE. C'est pareil, mais je peux te crier dessus. Enfin, t'écrire dessus. Enfin, tu m'as compris. Bienvenue dans l'équipe ! »",
+      "next": "indice"
     },
-    "fragment_trouve": {
+    "indice": {
       "speaker": "carnet",
-      "text": "Sous le toboggan, Jules déterre une boîte à biscuits cabossée : ses trésors de champion. Médailles en carton, sifflet d'arbitre… et un papier doré qu'il n'a jamais su lire. « Tiens. Je crois qu'il t'attendait, celui-là. »",
+      "text": "Pendant la démonstration de tir au but, le ballon atterrit dans le fossé — et en le repêchant, Jules trouve une boîte en fer cabossée : « BRUIT DE BALON — POC — rayon jeux — remis en état aprè réparation ». Réparation ?! Le voleur RÉPARE les bruits abîmés avant de les ranger ?! Dans la boîte, au fond : un fragment doré. Jules le brandit comme une coupe du monde.",
       "next": "fin_fragment"
     },
     "fin_fragment": {
@@ -93,7 +112,7 @@
     },
     "epilogue": {
       "speaker": "carnet",
-      "text": "Et quand Jules shoota dans son ballon pour fêter ça, le rebond claqua dans l'air du soir — poum, poum, poum. Le cinquième bruit était revenu. Jules jura qu'il ne s'arrêterait plus jamais de jouer.",
+      "text": "Ce soir-là, au coup d'envoi du grand match, le ballon rebondit : POC. Un vrai POC, net et joyeux — le cinquième bruit récupéré. Tout le stade (onze personnes et une chèvre) fit une ola muette. Sur le tableau de l'enquête, Jules écrivit : « 5 bruits récupérés. NOUVEL INDICE ÉNORME : le voleur répare les bruits cassés. C'est le voleur le plus gentil que je connaisse. Ça reste un voleur. Carton orange. »",
       "next": "END"
     }
   }

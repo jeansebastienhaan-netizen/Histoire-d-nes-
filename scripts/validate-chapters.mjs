@@ -12,7 +12,10 @@ import { fileURLToPath } from 'node:url'
 const root = join(dirname(fileURLToPath(import.meta.url)), '..')
 const chaptersDir = join(root, 'src', 'data', 'chapters')
 const fragments = JSON.parse(readFileSync(join(root, 'src', 'data', 'fragments.json'), 'utf8'))
-const MINIGAMES = ['LogicPuzzle', 'RhythmTap', 'DragPhysics', 'TimedDialogue', 'AnimalRoundup']
+const MINIGAMES = [
+  'LogicPuzzle', 'RhythmTap', 'DragPhysics', 'TimedDialogue', 'AnimalRoundup',
+  'CodeLock', 'MatchPuzzle', 'SimonSays', 'SteadyHand',
+]
 
 let errors = 0
 const fail = (msg) => {

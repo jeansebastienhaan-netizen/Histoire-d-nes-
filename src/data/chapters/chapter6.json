@@ -7,30 +7,30 @@
   "nodes": {
     "start": {
       "speaker": "carnet",
-      "text": "La bibliothèque du village tient dans une seule pièce, mais Oxane dit qu'elle contient mille pays. Elle connaît chaque livre par son odeur, chaque étagère par cœur. Depuis le Grand Silence, c'est ici que le village vient chercher du réconfort.",
-      "next": "oxane_probleme"
+      "text": "La bibliothèque d'Oxane est le seul endroit du village où le Grand Silence n'a presque rien changé — on y chuchotait déjà. Presque. Car il manque le plus précieux des bruits : le froissement des pages qu'on tourne. Les livres s'ouvrent désormais sans un son, et Oxane trouve ça « aussi triste qu'un feu d'artifice invisible ».",
+      "next": "oxane_accueil"
     },
-    "oxane_probleme": {
+    "oxane_accueil": {
       "speaker": "oxane",
-      "text": "Oxane lève le nez de son registre, une bougie à la main : « Tu arrives au bon moment. Ce soir, je fais la lecture aux petits — enfin, je leur montre les images et ils lisent sur mes lèvres. Mais le dernier feuillet de l'histoire s'est égaré. Et sans la fin… une histoire, ça ne borde personne. »",
-      "next": "oxane_choix"
+      "text": "Oxane surgit de derrière une pile de romans, un crayon dans le chignon, deux autres en réserve. « J'ai du NOUVEAU pour l'enquête », écrit-elle si vite que le crayon fume. « La nuit du vol, quelqu'un est entré ici. Il n'a rien cassé, rien déplacé… sauf qu'il a EMPRUNTÉ un livre. Réglementairement. Il a rempli une fiche. Le voleur a une carte de bibliothèque, tu te rends compte ?! »",
+      "next": "oxane_fiche"
     },
-    "oxane_choix": {
+    "oxane_fiche": {
       "speaker": "oxane",
-      "text": "« Je me souviens de presque tout. Il me manque juste la dernière phrase. Tu veux bien m'aider à la retrouver avant que la bougie ne s'éteigne ? »",
+      "text": "Elle brandit la fiche d'emprunt : « Berceuses et autres armes douces, recueil. Emprunteur : V. » Signé d'un V à l'ancienne, plein de déliés. « Un V ! Et une écriture de vieux monsieur soigneux ! Mais avant d'aller plus loin, CATASTROPHE de mon côté : le vent de mardi a éparpillé mes fiches de retour. Quatre livres attendent d'être rendus à leurs lecteurs, et je refuse de me tromper de lecteur. Une bibliothécaire qui se trompe, c'est la fin de la civilisation. »",
       "choices": [
         {
-          "label": "« Une histoire sans fin, c'est comme un câlin interrompu. On la retrouve. »",
+          "label": "« On va les rendre à qui de droit. Chaque livre a son lecteur, c'est sacré. »",
           "effects": { "coeur": 1 },
           "next": "avant_jeu"
         },
         {
-          "label": "« Récite-moi le début — la fin se cache toujours dans le début. »",
+          "label": "« Les titres parlent d'eux-mêmes. Laisse-moi croiser les indices. »",
           "effects": { "ruse": 1 },
           "next": "avant_jeu"
         },
         {
-          "label": "« On relira tous les livres de la pièce s'il le faut. »",
+          "label": "« Personne ne quittera cette bibliothèque tant que les quatre ne seront pas rendus. »",
           "effects": { "determination": 1 },
           "next": "avant_jeu"
         }
@@ -38,51 +38,59 @@
     },
     "avant_jeu": {
       "speaker": "carnet",
-      "text": "Oxane raconte l'histoire à mi-voix silencieuse, mains dansantes : un phare, une tempête, un gardien qui refuse de dormir. La bougie faiblit. Trois fins possibles se bousculent — mais une seule est la vraie.",
-      "next": "jeu_fin"
+      "text": "Oxane aligne les quatre livres sur le comptoir et croise les bras, exactement comme Mamy — on voit bien qu'elles sont du même village. À toi de rendre chaque livre à son lecteur. Réfléchis : qui, dans ce village, lirait QUOI ?",
+      "next": "jeu_livres"
     },
-    "jeu_fin": {
+    "jeu_livres": {
       "type": "minigame",
-      "game": "TimedDialogue",
+      "game": "MatchPuzzle",
       "config": {
-        "prompt": "La bougie vacille ! Quelle est la vraie fin de l'histoire du gardien de phare ?",
-        "seconds": 10,
-        "options": [
-          { "label": "« Et la lumière du phare veilla sur eux, chaque nuit, pour toujours. »", "result": "success" },
-          { "label": "« Et le gardien partit vivre en ville, loin de la mer. »", "result": "fail" },
-          { "label": "« Et la tempête revint le lendemain. »", "result": "partial" }
-        ]
+        "intro": "Quatre livres, quatre lecteurs. Le titre trahit toujours son lecteur — enfin, presque toujours, c'est ça le piège.",
+        "items": [
+          { "id": "l1", "text": "« Réparer sans clous ni vis : l'art des assemblages invisibles »" },
+          { "id": "l2", "text": "« Recettes pour tables de quarante personnes (et plus si affinités) »" },
+          { "id": "l3", "text": "« L'Atlas des constellations boudeuses : ces étoiles qui refusent de briller »" },
+          { "id": "l4", "text": "« Apprendre à siffler à son perroquet en dix leçons — tome 2 : les échecs du tome 1 »" }
+        ],
+        "owners": [
+          { "id": "xavier", "name": "Xavier" },
+          { "id": "noelia", "name": "Noélia" },
+          { "id": "lana", "name": "Lana" },
+          { "id": "marjo", "name": "Marjo" }
+        ],
+        "solution": { "l1": "xavier", "l2": "noelia", "l3": "lana", "l4": "marjo" },
+        "maxMistakes": 2
       },
-      "onSuccess": "reussite",
-      "onPartial": "presque",
-      "onFail": "pause"
+      "onSuccess": "jeu_reussi",
+      "onPartial": "jeu_presque",
+      "onFail": "jeu_rate"
     },
-    "pause": {
+    "jeu_rate": {
       "speaker": "oxane",
-      "text": "Oxane souffle sur la bougie avant qu'elle ne meure toute seule — question de principe. « Non, le gardien n'abandonnerait jamais son phare. Rallumons, et cherchons encore. Les bonnes fins se méritent. »",
+      "text": "« Stop, stop, stop ! » Oxane reprend les livres et les serre contre elle comme des poussins. « Un livre mal rendu, c'est un malentendu qui dure des années. On respire. On relit les TITRES — tout est dans les titres. Et on recommence quand tu es prêt. La civilisation peut attendre dix minutes. »",
       "choices": [
-        { "label": "Rallumer la bougie et réessayer", "next": "jeu_fin" },
+        { "label": "Reprendre les fiches", "next": "jeu_livres" },
         { "label": "Revenir plus tard", "next": "sortie_douce" }
       ]
     },
     "sortie_douce": {
       "speaker": "carnet",
-      "text": "Oxane glisse un marque-page brodé dans la main de son visiteur. « Reviens. Je garde ta page. » C'est la plus belle promesse qu'on puisse faire dans une bibliothèque.",
+      "text": "Oxane raccompagne l'enquêteur en lui glissant un marque-page « pour quand tu reviendras ». Sur le marque-page, elle a écrit : « Le suspense est à son comble. J'ADORE. »",
       "next": "END"
     },
-    "reussite": {
+    "jeu_reussi": {
       "speaker": "oxane",
-      "text": "« Oui ! C'est ça, mot pour mot ! » Oxane serre le livre contre elle. « “Pour toujours.” Les petits vont adorer. Les histoires qui finissent par une lumière allumée sont celles qu'on n'oublie jamais. »",
-      "next": "fragment_trouve"
+      "text": "« Quatre sur quatre ! » Oxane tamponne les fiches avec une frénésie de percussionniste. « Les assemblages pour Xavier, les grandes tablées pour Noélia, les étoiles boudeuses pour Lana et le tome 2 pour Marjo — parce que Coco a mangé le tome 1, évidemment. Tu lis les gens comme des quatrièmes de couverture. Reste à lire notre voleur… »",
+      "next": "revelation"
     },
-    "presque": {
+    "jeu_presque": {
       "speaker": "oxane",
-      "text": "« La tempête revint… presque ! C'est la fin du chapitre d'avant. » Oxane sourit et retrouve le fil toute seule : « …et la lumière du phare veilla sur eux, pour toujours. Voilà. À nous deux, on a recousu l'histoire. »",
-      "next": "fragment_trouve"
+      "text": "« Rendu, tout est rendu ! » Oxane classe les fiches en soufflant. « Tu as hésité, mais qui n'hésite pas ? Moi-même j'ai failli ranger un jour la POÉSIE avec les MANUELS DE PLOMBERIE. Il y avait une fuite dans les deux, je me comprends. Bref : passons au voleur. »",
+      "next": "revelation"
     },
-    "fragment_trouve": {
-      "speaker": "carnet",
-      "text": "En remettant le livre à sa place, Oxane fronce les sourcils : une page dépasse, dorée, qui n'appartient à aucun livre. Elle la tend, solennelle : « Ça, c'est l'écriture du vieux carnet de ta Mamy. J'en suis sûre — je connais toutes les écritures du village. »",
+    "revelation": {
+      "speaker": "oxane",
+      "text": "Oxane étale ses trouvailles : « Écoute bien. “Berceuses et autres armes douces” n'avait pas été emprunté depuis SOIXANTE ANS. Et le dernier emprunteur d'alors… V., déjà ! La même écriture, les mêmes déliés ! Notre voleur est un lecteur fidèle qui revient tous les soixante ans. Retiens ça pour la suite : fiche signée V., berceuses, jamais rendu. Je veux ce livre. Et sa caution de retard, qui doit être astronomique. »",
       "next": "fin_fragment"
     },
     "fin_fragment": {
@@ -93,7 +101,7 @@
     },
     "epilogue": {
       "speaker": "carnet",
-      "text": "Ce soir-là, pendant la lecture, un frisson parcourut la bibliothèque : on entendait les pages tourner. Ce petit froissement de papier, doux comme une aile. Le sixième bruit était revenu, et les petits s'endormirent dedans.",
+      "text": "Dans le casier des retours, entre deux fiches, dormait un fragment doré — le sixième. Et quand Oxane ouvrit son roman du soir, les pages firent frrrt entre ses doigts. Elle en tourna cinquante d'affilée, juste pour le plaisir. Sur le tableau de l'enquête, elle écrivit : « 6 bruits récupérés. Le voleur s'appelle V., lit des berceuses et rend ses livres avec 60 ans de retard. Ce n'est plus une enquête, c'est un roman — et je crois que j'ai deviné la fin. »",
       "next": "END"
     }
   }

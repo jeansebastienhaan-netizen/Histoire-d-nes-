@@ -1,5 +1,4 @@
 {
-  "_note": "CONTENU PROVISOIRE — dialogues d'attente écrits sans GAME_DESIGN.md, à remplacer par le contenu validé. La structure (nœuds, mini-jeu, fragment) est définitive.",
   "id": "chapter1",
   "character": "mamy",
   "chapter": 1,
@@ -8,58 +7,77 @@
   "nodes": {
     "start": {
       "speaker": "carnet",
-      "text": "Un matin, le village s'est réveillé sans un bruit. Pas un chant d'oiseau, pas un tintement de cuillère, pas un rire. Le Grand Silence était arrivé. Depuis, chacun écrit sur une petite ardoise ce qu'il voudrait dire.",
+      "text": "Le mardi 3, à l'aube, le coq du village a ouvert le bec, pris sa grande inspiration… et rien. Il a refait le geste trois fois, vexé, puis il est retourné se coucher. Ce matin-là, TOUS les bruits avaient disparu. Pas un tintement, pas un grincement, pas un ronflement — et pourtant, chez Papy, c'était garanti d'ordinaire.",
       "next": "intro_2"
     },
     "intro_2": {
       "speaker": "carnet",
-      "text": "C'est chez Mamy que tout commence toujours. Sa porte est ouverte, comme d'habitude, et il flotte une odeur de gâteau tiède. Sur la table, des ardoises soigneusement alignées.",
+      "text": "On a d'abord cru à une panne. On a secoué les cloches : muettes. Tapé sur les casseroles : rien. Le facteur a klaxonné pendant dix minutes : le klaxon faisait la tête. Alors le village s'est mis aux ardoises, et quelqu'un a écrit en grand sur la place : LES BRUITS N'ONT PAS DISPARU. ON NOUS LES A PRIS. Ce quelqu'un, c'était Mamy. Et Mamy ne se trompe jamais deux fois par siècle.",
+      "next": "intro_3"
+    },
+    "intro_3": {
+      "speaker": "carnet",
+      "text": "C'est donc chez elle que l'enquête commence. Sa porte est ouverte — elle l'est toujours — et il flotte une odeur de gâteau tiède et… d'autre chose. Une odeur d'infusion. De la camomille ? Bizarre : Mamy ne boit que du café, assez fort pour réveiller une pierre.",
       "next": "mamy_accueil"
     },
     "mamy_accueil": {
       "speaker": "mamy",
-      "text": "« Te voilà, toi. Je t'attendais. » Mamy sourit et tapote la chaise à côté d'elle. Sur son ardoise, l'écriture est ronde et sûre. « Le silence a emporté les voix, mais pas les souvenirs. Et moi, les souvenirs, c'est mon rayon. »",
-      "next": "mamy_demande"
+      "text": "« Te voilà, toi. » Mamy pousse une part de gâteau et son ardoise : « Regarde l'horloge avant toute chose. Elle s'est arrêtée à 5h07, la nuit du vol. Et regarde la poussière, là, dessous : des traces de pas. Des pas de CHAUSSONS. Taille immense. Or je connais toutes les pantoufles de ce village, c'est mon métier de grand-mère : celles-là ne sont pas d'ici. »",
+      "next": "mamy_theorie"
     },
-    "mamy_demande": {
+    "mamy_theorie": {
       "speaker": "mamy",
-      "text": "« Ce matin, le vent a mélangé les ardoises que les voisins m'avaient confiées. Chacune porte un indice, mais plus aucun nom. Veux-tu m'aider à les remettre en ordre ? »",
+      "text": "« Quelqu'un est entré ici à 5h07, a pris le tic-tac de mon horloge et a filé sans rien casser. Un voleur qui ne vole QUE les bruits… Il nous faut des preuves, des indices, une liste de suspects. Bref : il nous faut une enquête. Tu es engagé. Le salaire, c'est du gâteau. »",
       "choices": [
         {
-          "label": "« Bien sûr, Mamy. On va y arriver ensemble. »",
+          "label": "« Engagé ! On retrouvera le tic-tac, promis. Il vous manque, hein ? »",
           "effects": { "coeur": 1 },
           "setFlags": ["a_aide_mamy"],
-          "next": "avant_puzzle"
+          "next": "mamy_probleme"
         },
         {
-          "label": "« J'ai une idée : et si on les triait par écriture ? »",
+          "label": "« 5h07… Donc le voleur travaille de nuit et finit avant le coq. Intéressant. »",
           "effects": { "ruse": 1 },
-          "next": "avant_puzzle"
+          "next": "mamy_probleme"
         },
         {
-          "label": "« On ne partira pas d'ici avant d'avoir fini ! »",
+          "label": "« Je ne dormirai pas tant que ce village ne fera pas de bruit. Enfin, si, mais vous me comprenez. »",
           "effects": { "determination": 1 },
-          "next": "avant_puzzle"
+          "next": "mamy_probleme"
         }
       ]
     },
+    "mamy_probleme": {
+      "speaker": "mamy",
+      "text": "« Premier problème à régler : hier, le vent a ouvert la fenêtre et mélangé les ardoises que les voisins m'avaient confiées pour affichage. Cinq ardoises, zéro signature — les gens signent de moins en moins, c'est un scandale. Si on veut interroger tout le monde, il faut d'abord savoir qui a écrit quoi. Toi qui as l'œil, prouve-le. »",
+      "next": "avant_puzzle"
+    },
     "avant_puzzle": {
       "speaker": "carnet",
-      "text": "Mamy étale trois ardoises sur la table. Elle n'a besoin de personne pour réfléchir — mais elle sait que réfléchir à deux, c'est déjà briser un peu le silence.",
+      "text": "Mamy étale les cinq ardoises sur la table. Elle, elle sait déjà, évidemment — elle connaît chaque écriture, chaque manie et chaque histoire de ce village depuis soixante ans. Mais un bon enquêteur doit faire ses preuves. Elle croise les bras. Elle attend. Le gâteau refroidit, la pression monte.",
       "next": "puzzle_ardoises"
     },
     "puzzle_ardoises": {
       "type": "minigame",
-      "game": "LogicPuzzle",
+      "game": "MatchPuzzle",
       "config": {
-        "intro": "Trois ardoises, trois indices. À qui appartient l'ardoise qui dit : « J'arrose mes tomates tous les soirs » ?",
-        "question": "Qui a écrit cette ardoise ?",
-        "options": [
-          { "label": "Papy, qui vit dans son potager", "correct": true },
-          { "label": "Jules, toujours au terrain de jeux", "correct": false },
-          { "label": "Oxane, plongée dans ses livres", "correct": false }
+        "intro": "Cinq ardoises, cinq voisins. Lis bien : chaque ardoise trahit son auteur — une passion, une manie, une bêtise.",
+        "items": [
+          { "id": "a1", "text": "« RDV o but a la tonbé de la nui. VI1 pa an retar !! (signé : le Capitin) »" },
+          { "id": "a2", "text": "« Chapitre 12 : le majordome était le COUPABLE ?! Rends-le-moi vite, il me reste 40 pages !! »" },
+          { "id": "a3", "text": "« Ne touche pas à l'arrosoir ce soir. Elles ont eu leur compte d'eau. Signé : quelqu'un que les limaces respectent. »" },
+          { "id": "a4", "text": "« La deuxième corde sonne faux depuis mardi. Mardi… le jour où TOUT a commencé. Coïncidence ?? »" },
+          { "id": "a5", "text": "« Défense de grignoter les ardoises du tableau d'affichage. Berlingot, je te VOIS. »" }
         ],
-        "attempts": 2
+        "owners": [
+          { "id": "jules", "name": "Jules" },
+          { "id": "oxane", "name": "Oxane" },
+          { "id": "papy", "name": "Papy" },
+          { "id": "cyril", "name": "Cyril" },
+          { "id": "marjo", "name": "Marjo" }
+        ],
+        "solution": { "a1": "jules", "a2": "oxane", "a3": "papy", "a4": "cyril", "a5": "marjo" },
+        "maxMistakes": 2
       },
       "onSuccess": "puzzle_reussi",
       "onPartial": "puzzle_presque",
@@ -67,30 +85,30 @@
     },
     "puzzle_reussi": {
       "speaker": "mamy",
-      "text": "« Du premier coup ! » Les yeux de Mamy pétillent. « Tu vois, le silence n'est pas si malin : il suffit de bien regarder les gens pour les entendre quand même. »",
+      "text": "« Cinq sur cinq, du premier coup. » Mamy hoche lentement la tête, ce qui est chez elle l'équivalent d'un feu d'artifice. « L'orthographe de Jules, le suspense d'Oxane, les limaces de Papy, la corde de Cyril et la chèvre de Marjo. Tu lis les gens comme je lis les gâteaux : à la cuisson. L'enquête est entre de bonnes mains. »",
       "next": "recompense"
     },
     "puzzle_presque": {
       "speaker": "mamy",
-      "text": "« Presque du premier coup — et c'est le “presque” qui compte, c'est là qu'on apprend. » Mamy range les ardoises, satisfaite. « À nous deux, rien ne nous résiste. »",
+      "text": "« Quelques hésitations… mais tu t'es corrigé, et c'est exactement ça, enquêter : se tromper proprement, puis viser juste. » Mamy range les ardoises en les tapotant. « Retiens ce que tu as lu, surtout l'ardoise de Cyril. Sa corde qui sonne faux “depuis mardi”… Mardi. Comme mon horloge. Notre voleur a commencé par la musique. »",
       "next": "recompense"
     },
     "puzzle_rate": {
       "speaker": "mamy",
-      "text": "« Bah, les ardoises ne s'envoleront pas. » Mamy sert une part de gâteau. « On souffle un peu, et on réessaie quand tu veux. »",
+      "text": "« Stop. » Mamy retourne toutes les ardoises d'un geste. « Règle numéro un de l'enquête : quand on embrouille tout, on pose le crayon et on mange du gâteau. » Elle en ressert une part d'office. « Les indices ne s'enfuient pas, eux. On reprend quand tu veux — et cette fois, lis chaque ardoise deux fois. »",
       "choices": [
-        { "label": "Réessayer maintenant", "next": "puzzle_ardoises" },
+        { "label": "Réessayer maintenant, gâteau en main", "next": "puzzle_ardoises" },
         { "label": "Revenir plus tard", "next": "sortie_douce" }
       ]
     },
     "sortie_douce": {
       "speaker": "carnet",
-      "text": "Mamy raccompagne son visiteur jusqu'au seuil. Sa porte restera ouverte — elle l'est toujours.",
+      "text": "Mamy raccompagne son enquêteur jusqu'au seuil et glisse un morceau de gâteau « pour la route et pour la réflexion ». Sa porte restera ouverte. Elle l'est toujours.",
       "next": "END"
     },
     "recompense": {
       "speaker": "carnet",
-      "text": "En rangeant la dernière ardoise, quelque chose glisse d'entre deux pages du carnet : un petit morceau de papier doré, couvert d'une écriture ancienne. Le premier fragment du vœu.",
+      "text": "En rangeant la dernière ardoise, Mamy s'immobilise. Entre deux pages de son vieux carnet dépasse un papier doré, plié en quatre, couvert d'une écriture qu'elle reconnaît : la sienne, en beaucoup plus jeune. « Ça alors. Mon vœu… J'avais écrit un vœu, il y a très longtemps. Et quelqu'un l'a découpé en morceaux. » Elle relève la tête : « Le voleur ne prend pas que les bruits. Retrouve les autres morceaux. Tous. »",
       "next": "fin_fragment"
     },
     "fin_fragment": {
@@ -101,7 +119,7 @@
     },
     "epilogue": {
       "speaker": "carnet",
-      "text": "Et à cet instant précis, dans la cuisine de Mamy, la vieille horloge se remit à faire tic-tac. Un tout petit bruit. Le premier depuis le Grand Silence.",
+      "text": "Et à l'instant précis où le fragment doré toucha la main de l'enquêteur, la vieille horloge frissonna, toussota… et se remit à faire tic-tac. Un tout petit bruit — le premier depuis mardi. Mamy le nota aussitôt : « 1 bruit récupéré. Le voleur n'aime pas qu'on enquête. Continuons de lui déplaire. » Quelque part, très loin, quelqu'un éternua dans une boîte en fer.",
       "next": "END"
     }
   }
