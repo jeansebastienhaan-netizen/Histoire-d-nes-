@@ -46,7 +46,8 @@ body {
   min-height: 48px;
   padding: 12px 20px;
   border: none;
-  border-radius: 12px;
+  border-radius: 6px;
+  box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.25);
   font-family: inherit;
   font-size: 1rem;
   cursor: pointer;
@@ -165,10 +166,31 @@ body {
   margin-top: 20px;
 }
 
-/* --- carte du village --- */
+/* --- carte du village (pixel-art) --- */
 .map-screen {
   padding: 0;
-  background: linear-gradient(#10102a 0%, #191934 45%, #2c3442 100%);
+  background: #22283a;
+}
+.map-canvas-wrap {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 0 8px;
+}
+.map-canvas {
+  height: 100%;
+  max-width: 100%;
+  aspect-ratio: 240 / 352;
+  object-fit: contain;
+  image-rendering: pixelated;
+  border: 3px solid #12141f;
+  border-radius: 4px;
+  box-shadow: 0 0 0 2px #3a4258, 0 8px 24px rgba(0, 0, 0, 0.5);
+  touch-action: manipulation;
+  cursor: pointer;
 }
 .map-header {
   width: 100%;
@@ -280,14 +302,14 @@ body {
 .dialogue-box {
   width: 100%;
   max-width: 560px;
-  background: rgba(32, 32, 58, 0.94);
-  border: 1px solid var(--nuit-3);
-  border-radius: 16px;
+  background: rgba(26, 28, 46, 0.96);
+  border: 3px solid var(--or);
+  border-radius: 6px;
+  box-shadow: inset 0 0 0 2px #12141f, 0 4px 16px rgba(0, 0, 0, 0.45);
   padding: 16px 18px;
   display: flex;
   flex-direction: column;
   animation: slide-up 0.25s ease;
-  backdrop-filter: blur(2px);
 }
 .dialogue-header {
   display: flex;
@@ -344,11 +366,11 @@ body {
   width: 100%;
   max-width: 560px;
   margin: auto 0;
-  background: rgba(26, 26, 46, 0.9);
-  border: 1px solid var(--nuit-3);
-  border-radius: 18px;
+  background: rgba(26, 28, 46, 0.94);
+  border: 3px solid var(--or);
+  border-radius: 6px;
+  box-shadow: inset 0 0 0 2px #12141f, 0 4px 16px rgba(0, 0, 0, 0.45);
   padding: 16px;
-  backdrop-filter: blur(2px);
 }
 .minigame {
   width: 100%;
