@@ -11,6 +11,7 @@ import chapter9 from './chapter9.json'
 import chapter10 from './chapter10.json'
 import chapter11 from './chapter11.json'
 import chapter12 from './chapter12.json'
+import chapter13 from './chapter13.json'
 
 const byCharacter = {
   mamy: chapter1,
@@ -24,7 +25,8 @@ const byCharacter = {
   noelia: chapter9,
   lo: chapter10,
   lana: chapter11,
-  mousquetaires: chapter12,
+  marjo: chapter12,
+  mousquetaires: chapter13,
 }
 
 export function getChapterForCharacter(characterId) {

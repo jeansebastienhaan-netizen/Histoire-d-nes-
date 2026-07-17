@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useGameStore } from '../store/gameStore.js'
 import { playVillageSong } from '../engine/soundManager.js'
+import Avatar from '../components/Avatar.jsx'
 import endingsData from '../data/endings.json'
 import fragmentsData from '../data/fragments.json'
 import charactersData from '../data/characters.json'
@@ -92,8 +93,11 @@ export default function EndingScreen() {
           <div className="epilogues">
             {endingsData.epilogues.map((e) => (
               <div key={e.from} className="epilogue-item">
-                <span className="epilogue-name">{NAMES[e.from] ?? e.from}</span>
-                <p>{e.text}</p>
+                <Avatar id={e.from} size={44} />
+                <div>
+                  <span className="epilogue-name">{NAMES[e.from] ?? e.from}</span>
+                  <p>{e.text}</p>
+                </div>
               </div>
             ))}
           </div>

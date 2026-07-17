@@ -40,8 +40,10 @@ Chaque push sur `main` déclenche `.github/workflows/deploy.yml` (build + GitHub
 - [x] Sprint 1 — squelette PWA, écran titre, carte du village, moteur de dialogue, sauvegarde, déploiement
 - [x] Sprint 2 — chapitre 1 (Mamy)
 - [x] Sprint 3 — chapitre d'Aloïs + Mistiflouk (piste sonore, 3 branches, compagnon d'interface)
-- [x] Chapitres 3 à 12 — les 12 rencontres jouables, 12 fragments, 12 bruits restaurés
-- [x] Les 7 fins (3 pures, 3 duos, 1 harmonie) + 12 épilogues individuels
+- [x] Les 13 rencontres jouables (dont Marjo la dresseuse d'animaux), 13 fragments, 13 bruits restaurés
+- [x] Les 7 fins (3 pures, 3 duos, 1 harmonie) + 13 épilogues individuels
+- [x] Graphismes : portraits SVG typés des 13 personnages, décor différent par lieu, carte vivante
+- [x] Déplacement : le héros marche sur la carte jusqu'aux maisons ; 5 mini-jeux tactiles
 - [ ] Passage PWABuilder (manuel : voir `GUIDE_CLAUDE_CODE.md` §8)
 
 Valider les graphes de dialogue : `node scripts/validate-chapters.mjs`

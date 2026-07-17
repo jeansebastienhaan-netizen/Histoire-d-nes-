@@ -14,12 +14,15 @@ import { availableChoices } from '../engine/conditions.js'
 import DialogueBox from '../components/DialogueBox.jsx'
 import ChoiceButtons from '../components/ChoiceButtons.jsx'
 import Mistiflouk from '../components/Mistiflouk.jsx'
+import SceneBackdrop from '../components/SceneBackdrop.jsx'
+import Avatar from '../components/Avatar.jsx'
 import LogicPuzzle from '../minigames/LogicPuzzle.jsx'
 import RhythmTap from '../minigames/RhythmTap.jsx'
 import DragPhysics from '../minigames/DragPhysics.jsx'
 import TimedDialogue from '../minigames/TimedDialogue.jsx'
+import AnimalRoundup from '../minigames/AnimalRoundup.jsx'
 
-const MINIGAMES = { LogicPuzzle, RhythmTap, DragPhysics, TimedDialogue }
+const MINIGAMES = { LogicPuzzle, RhythmTap, DragPhysics, TimedDialogue, AnimalRoundup }
 
 export default function EncounterScreen() {
   const store = useGameStore()
@@ -34,6 +37,7 @@ export default function EncounterScreen() {
   if (!chapter) {
     return (
       <div className="screen encounter-screen">
+        <SceneBackdrop characterId={null} />
         <DialogueBox
           speaker="carnet"
           text="Cette page du carnet est encore blanche… L'histoire arrive bientôt."
@@ -79,11 +83,14 @@ export default function EncounterScreen() {
     }
     return (
       <div className="screen encounter-screen">
-        <Game
-          key={nodeId}
-          config={node.config ?? {}}
-          onEnd={(result) => advance(resolveMinigame(node, result))}
-        />
+        <SceneBackdrop characterId={chapter.character} />
+        <div className="minigame-panel">
+          <Game
+            key={nodeId}
+            config={node.config ?? {}}
+            onEnd={(result) => advance(resolveMinigame(node, result))}
+          />
+        </div>
         <Mistiflouk />
       </div>
     )
@@ -91,10 +98,17 @@ export default function EncounterScreen() {
 
   const choices =
     kind === 'choice' ? availableChoices(node.choices, store) : []
+  const isCarnet = node.speaker === 'carnet'
 
   return (
     <div className="screen encounter-screen">
+      <SceneBackdrop characterId={chapter.character} />
+      {/* le personnage du chapitre, en pied dans son décor */}
+      <div className={`standing-figure ${isCarnet ? 'standing-dim' : 'standing-talking'}`}>
+        <Avatar id={chapter.character} size={150} />
+      </div>
       <DialogueBox
+        key={nodeId}
         speaker={node.speaker}
         text={node.text}
         showNext={kind === 'text'}

@@ -90,18 +90,62 @@ body {
   opacity: 0.4;
 }
 
-/* --- écran titre --- */
-.title-screen {
-  justify-content: center;
-  gap: 18px;
-  text-align: center;
-}
-.title-moon {
-  animation: float 5s ease-in-out infinite;
-}
+/* --- animations d'ambiance --- */
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-8px); }
+}
+.floaty {
+  animation: float 4.5s ease-in-out infinite;
+}
+@keyframes twinkle-kf {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.25; }
+}
+.twinkle {
+  animation: twinkle-kf 2.6s ease-in-out infinite;
+}
+@keyframes sway-kf {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+.sway {
+  animation: sway-kf 3.2s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center bottom;
+}
+@keyframes smoke-kf {
+  0% { opacity: 0.8; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-6px); }
+}
+.smoke {
+  animation: smoke-kf 2.8s ease-out infinite;
+  transform-box: fill-box;
+}
+
+/* --- écran titre --- */
+.title-screen {
+  justify-content: flex-start;
+  gap: 16px;
+  text-align: center;
+  padding-top: 0;
+}
+.title-scene {
+  width: 100vw;
+  max-width: 640px;
+  display: block;
+  margin: 0 -16px 4px;
+}
+.title-cast {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+.title-cast-item {
+  border-radius: 50%;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
 }
 .title-main {
   font-size: 2.1rem;
@@ -124,6 +168,7 @@ body {
 /* --- carte du village --- */
 .map-screen {
   padding: 0;
+  background: linear-gradient(#10102a 0%, #191934 45%, #2c3442 100%);
 }
 .map-header {
   width: 100%;
@@ -140,7 +185,6 @@ body {
   width: 100%;
   flex: 1;
   min-height: 0;
-  background: #16162a;
 }
 .zone {
   cursor: pointer;
@@ -182,25 +226,89 @@ body {
   filter: drop-shadow(0 0 1.5px var(--or));
 }
 .zone-locked {
-  opacity: 0.55;
+  opacity: 0.45;
+  filter: saturate(0.4);
+}
+
+/* --- le héros sur la carte --- */
+.hero {
+  pointer-events: none;
+}
+@keyframes bob-kf {
+  0%, 100% { transform: translateY(0) scale(1, 1); }
+  50% { transform: translateY(-1.2px) scale(1, 0.96); }
+}
+.hero-bob {
+  animation: bob-kf 0.35s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center bottom;
 }
 
 /* --- dialogues --- */
 .encounter-screen {
+  position: relative;
   justify-content: flex-end;
   gap: 14px;
   padding-bottom: max(24px, env(safe-area-inset-bottom));
+  overflow: hidden;
+}
+.scene-backdrop {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+.encounter-screen > *:not(.scene-backdrop) {
+  position: relative;
+  z-index: 1;
+}
+.standing-figure {
+  margin: auto auto 8px;
+  border-radius: 50%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.standing-talking {
+  transform: scale(1);
+  animation: float 4.5s ease-in-out infinite;
+}
+.standing-dim {
+  opacity: 0.55;
+  transform: scale(0.82);
 }
 .dialogue-box {
   width: 100%;
   max-width: 560px;
-  background: var(--nuit-2);
+  background: rgba(32, 32, 58, 0.94);
   border: 1px solid var(--nuit-3);
   border-radius: 16px;
-  padding: 18px;
+  padding: 16px 18px;
   display: flex;
   flex-direction: column;
   animation: slide-up 0.25s ease;
+  backdrop-filter: blur(2px);
+}
+.dialogue-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.dialogue-header .avatar {
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+.type-cursor {
+  color: var(--or);
+  animation: twinkle-kf 0.8s steps(2) infinite;
+}
+@keyframes pulse-kf {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(232, 197, 106, 0.5); }
+  50% { box-shadow: 0 0 0 6px rgba(232, 197, 106, 0); }
+}
+.btn-pulse {
+  animation: pulse-kf 1.6s ease-out infinite;
 }
 @keyframes slide-up {
   from { transform: translateY(12px); opacity: 0; }
@@ -218,7 +326,6 @@ body {
   font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  margin-bottom: 8px;
 }
 .dialogue-text {
   line-height: 1.55;
@@ -233,6 +340,16 @@ body {
 }
 
 /* --- mini-jeux --- */
+.minigame-panel {
+  width: 100%;
+  max-width: 560px;
+  margin: auto 0;
+  background: rgba(26, 26, 46, 0.9);
+  border: 1px solid var(--nuit-3);
+  border-radius: 18px;
+  padding: 16px;
+  backdrop-filter: blur(2px);
+}
 .minigame {
   width: 100%;
   max-width: 560px;
@@ -240,6 +357,59 @@ body {
   display: flex;
   flex-direction: column;
   gap: 14px;
+}
+
+/* rassemblement d'animaux (Marjo) */
+.roundup-area {
+  position: relative;
+  height: 300px;
+  background: linear-gradient(#31422e, #42502e);
+  border-radius: 16px;
+  overflow: hidden;
+  touch-action: none;
+}
+.roundup-animal {
+  position: absolute;
+  font-size: 2.2rem;
+  transform: translate(-50%, -50%);
+  cursor: grab;
+  z-index: 2;
+  user-select: none;
+}
+.roundup-animal.dragging {
+  cursor: grabbing;
+  font-size: 2.6rem;
+}
+.roundup-animal.wandering {
+  animation: wander-kf 3.4s ease-in-out infinite;
+}
+@keyframes wander-kf {
+  0%, 100% { margin-left: 0; }
+  25% { margin-left: 14px; margin-top: -6px; }
+  60% { margin-left: -10px; margin-top: 5px; }
+}
+.roundup-pen {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  width: 120px;
+  height: 90px;
+  border: 3px dashed var(--or);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  background: rgba(232, 197, 106, 0.08);
+}
+.roundup-pen-label {
+  color: var(--or);
+  font-size: 0.85rem;
+}
+.roundup-pen-animals {
+  font-size: 1.5rem;
+  letter-spacing: 2px;
 }
 .minigame-intro {
   font-style: italic;
@@ -440,6 +610,13 @@ body {
   background: var(--nuit-2);
   border-radius: 12px;
   padding: 12px 14px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.epilogue-item .avatar {
+  flex-shrink: 0;
+  margin-top: 2px;
 }
 .epilogue-name {
   color: var(--or);

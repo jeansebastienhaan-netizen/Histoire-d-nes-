@@ -1,18 +1,18 @@
 {
-  "_note": "Ordre des chapitres et détails narratifs PROVISOIRES : à valider avec GAME_DESIGN.md. Seule l'affectation des mini-jeux vient du guide technique.",
   "characters": [
     { "id": "mamy", "name": "Mamy", "chapter": 1, "minigame": "LogicPuzzle", "zone": { "x": 42, "y": 62 }, "place": "La maison au grand tilleul" },
     { "id": "alois", "name": "Aloïs", "chapter": 2, "minigame": "LogicPuzzle", "zone": { "x": 68, "y": 50 }, "place": "Le grenier aux trésors" },
     { "id": "xavier", "name": "Xavier", "chapter": 3, "minigame": "RhythmTap", "zone": { "x": 22, "y": 46 }, "place": "L'atelier" },
-    { "id": "papy", "name": "Papy", "chapter": 4, "minigame": "DragPhysics", "zone": { "x": 55, "y": 74 }, "place": "Le potager" },
+    { "id": "papy", "name": "Papy", "chapter": 4, "minigame": "DragPhysics", "zone": { "x": 55, "y": 76 }, "place": "Le potager" },
     { "id": "jules", "name": "Jules", "chapter": 5, "minigame": "TimedDialogue", "zone": { "x": 30, "y": 30 }, "place": "Le terrain de jeux" },
     { "id": "oxane", "name": "Oxane", "chapter": 6, "minigame": "TimedDialogue", "zone": { "x": 72, "y": 28 }, "place": "La bibliothèque" },
     { "id": "cyril", "name": "Cyril", "chapter": 7, "minigame": "RhythmTap", "zone": { "x": 14, "y": 66 }, "place": "La salle de musique" },
-    { "id": "manu", "name": "Manu", "chapter": 8, "minigame": "DragPhysics", "zone": { "x": 84, "y": 62 }, "place": "Le garage" },
+    { "id": "manu", "name": "Manu", "chapter": 8, "minigame": "DragPhysics", "zone": { "x": 86, "y": 60 }, "place": "Le garage" },
     { "id": "noelia", "name": "Noélia", "chapter": 9, "minigame": "TimedDialogue", "zone": { "x": 48, "y": 20 }, "place": "La place du marché" },
-    { "id": "lo", "name": "Lo", "chapter": 10, "minigame": "RhythmTap", "zone": { "x": 62, "y": 88 }, "place": "Le bord de la rivière" },
-    { "id": "lana", "name": "Lana", "chapter": 11, "minigame": "LogicPuzzle", "zone": { "x": 20, "y": 86 }, "place": "L'observatoire" },
-    { "id": "mousquetaires", "name": "Les Mousquetaires", "chapter": 12, "minigame": "TimedDialogue", "zone": { "x": 84, "y": 40 }, "place": "La cabane perchée" }
+    { "id": "lo", "name": "Lo", "chapter": 10, "minigame": "RhythmTap", "zone": { "x": 62, "y": 90 }, "place": "Le bord de la rivière" },
+    { "id": "lana", "name": "Lana", "chapter": 11, "minigame": "LogicPuzzle", "zone": { "x": 18, "y": 88 }, "place": "L'observatoire" },
+    { "id": "marjo", "name": "Marjo", "chapter": 12, "minigame": "AnimalRoundup", "zone": { "x": 82, "y": 80 }, "place": "La ménagerie" },
+    { "id": "mousquetaires", "name": "Les Mousquetaires", "chapter": 13, "minigame": "TimedDialogue", "zone": { "x": 86, "y": 38 }, "place": "La cabane perchée" }
   ],
   "companion": {
     "id": "mistiflouk",

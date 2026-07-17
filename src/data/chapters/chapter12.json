@@ -1,36 +1,42 @@
 {
   "id": "chapter12",
-  "character": "mousquetaires",
+  "character": "marjo",
   "chapter": 12,
   "completeOnFragment": "fragment_12",
   "start": "start",
   "nodes": {
     "start": {
       "speaker": "carnet",
-      "text": "Tout au bout du village, perchée dans le grand chêne, se trouve la cabane des Mousquetaires — trois inséparables qui ont fait le serment de tout faire ensemble, toujours. Sur la porte, une pancarte : « Entrée réservée aux porteurs de onze fragments. » Ils savent tout, ces trois-là.",
-      "next": "mousquetaires_accueil"
+      "text": "Derrière la dernière barrière du village vit Marjo, la dresseuse d'animaux. Chèvres funambules, oies qui défilent au pas, un vieux perroquet nommé Coco qui répétait autrefois tous les potins du village… Chez Marjo, même les poules ont du talent.",
+      "next": "marjo_probleme"
     },
-    "mousquetaires_accueil": {
-      "speaker": "mousquetaires",
-      "text": "Trois ardoises se lèvent en même temps, parfaitement synchronisées : « On t'observe depuis le début. » — « L'horloge, le phonographe, la cloche, la rivière… » — « C'est toi qui ramènes les bruits. Alors on a voté : tu mérites de connaître LE secret. Mais d'abord, l'épreuve. Tradition oblige. »",
-      "next": "mousquetaires_choix"
+    "marjo_probleme": {
+      "speaker": "marjo",
+      "text": "Marjo siffle — enfin, essaie. Rien ne sort, évidemment. Elle écrit à toute vitesse : « Catastrophe ! Mes bêtes obéissaient à la voix et au sifflet. Sans le son, elles n'entendent plus rien — et ce matin, la barrière était ouverte ! La chèvre, l'oie et le lapin se baladent dans tout le village ! »",
+      "next": "marjo_espoir"
     },
-    "mousquetaires_choix": {
-      "speaker": "mousquetaires",
-      "text": "« L'épreuve des Mousquetaires : une seule question, un temps limité, et tout ce que tu as appris dans le village. Prêt ? Prête ? »",
+    "marjo_espoir": {
+      "speaker": "marjo",
+      "text": "« Mais j'ai un plan. Depuis le Grand Silence, je leur apprends le langage des gestes. La chèvre suit la main à plat, l'oie suit le doigt tendu, le lapin… bon, le lapin fait ce qu'il veut, c'est un lapin. Aide-moi à les ramener à l'enclos ! »",
       "choices": [
         {
-          "label": "« Je suis venu jusqu'ici grâce à tout le village. Posez votre question. »",
+          "label": "« On les ramène tous les trois, promis. Ils doivent être morts de peur. »",
           "effects": { "coeur": 1 },
           "next": "avant_jeu"
         },
         {
-          "label": "« Une question de Mousquetaires… donc une question piège. Je me méfie. »",
+          "label": "« Une poignée de trèfle pour le lapin, et il se ramènera tout seul. »",
           "effects": { "ruse": 1 },
-          "next": "avant_jeu"
+          "next": "avant_jeu_ruse"
         },
         {
-          "label": "« Posez-la. Je ne redescendrai pas de cet arbre sans le secret. »",
+          "label": "Envoyer Mistiflouk en éclaireur : rien n'échappe à un serpent-sonar.",
+          "condition": { "flag": "a_mistiflouk" },
+          "effects": { "ruse": 1, "coeur": 1 },
+          "next": "avant_jeu_mistiflouk"
+        },
+        {
+          "label": "« On ne rentrera pas tant qu'il en manquera un. En chasse ! »",
           "effects": { "determination": 1 },
           "next": "avant_jeu"
         }
@@ -38,62 +44,62 @@
     },
     "avant_jeu": {
       "speaker": "carnet",
-      "text": "Les trois Mousquetaires se concertent en langage des signes inventé, hochent la tête, et retournent lentement une grande ardoise commune. Le sablier de la cabane est déjà retourné.",
-      "next": "jeu_epreuve"
+      "text": "Marjo montre les gestes : main à plat pour la chèvre, doigt tendu pour l'oie, et pour le lapin… de la douceur et de la patience. Les trois fugueurs broutent, barbotent et gambadent dans le pré. À nous de les raccompagner, un par un, jusqu'à l'enclos.",
+      "next": "jeu_animaux"
     },
-    "jeu_epreuve": {
+    "avant_jeu_ruse": {
+      "speaker": "carnet",
+      "text": "Marjo éclate d'un rire muet et remplit une poche de trèfle frais. « Toi, tu as l'esprit d'une dresseuse. » Les trois fugueurs sont en vue : la chèvre sur le muret, l'oie dans la mare, le lapin dans les choux de Papy — forcément.",
+      "next": "jeu_animaux"
+    },
+    "avant_jeu_mistiflouk": {
+      "speaker": "carnet",
+      "text": "Mistiflouk file dans l'herbe haute et revient en trois ondulations : il a repéré tout le monde. La chèvre sur le muret, l'oie dans la mare, le lapin dans les choux. Marjo salue le serpent, très professionnelle : « Bienvenue dans l'équipe, collègue. »",
+      "next": "jeu_animaux"
+    },
+    "jeu_animaux": {
       "type": "minigame",
-      "game": "TimedDialogue",
+      "game": "AnimalRoundup",
       "config": {
-        "prompt": "« Le Grand Silence a volé les sons du village. Mais il y a UNE chose qu'il n'a jamais réussi à faire taire. Laquelle ? »",
-        "seconds": 12,
-        "options": [
-          { "label": "Les liens entre les gens — on n'a jamais cessé de se parler, autrement.", "result": "success" },
-          { "label": "Les ardoises — tout le monde écrit sans arrêt.", "result": "partial" },
-          { "label": "Rien. Le silence a tout pris.", "result": "fail" }
-        ]
+        "prompt": "Ramène les trois évadés dans l'enclos — attrape-les et dépose-les derrière la barrière !",
+        "animals": ["🐐", "🪿", "🐇"],
+        "target": "L'enclos"
       },
       "onSuccess": "reussite",
-      "onPartial": "presque",
       "onFail": "pause"
     },
     "pause": {
-      "speaker": "mousquetaires",
-      "text": "Les trois secouent la tête en chœur, mais gentiment : « Faux ! Regarde-toi : tu as aidé Mamy, dansé avec Lo, réparé avec Manu… » — « Le silence n'a PAS tout pris, la preuve est devant nous. » — « Allez, on te la repose. Les Mousquetaires donnent toujours une seconde chance. »",
+      "speaker": "marjo",
+      "text": "« Pause ! Règle d'or du dressage : jamais s'énerver, jamais courir. » Marjo distribue des carottes — une pour le visiteur aussi. « Ils reviennent toujours, tu sais. Ils sont fugueurs, pas fous : c'est ici qu'on est le mieux. On réessaie ? »",
       "choices": [
-        { "label": "Répondre à nouveau", "next": "jeu_epreuve" },
-        { "label": "Redescendre réfléchir et revenir", "next": "sortie_douce" }
+        { "label": "Réessayer maintenant", "next": "jeu_animaux" },
+        { "label": "Revenir plus tard", "next": "sortie_douce" }
       ]
     },
     "sortie_douce": {
       "speaker": "carnet",
-      "text": "Les Mousquetaires font descendre leur visiteur avec le panier-ascenseur, l'honneur suprême de la cabane. Trois ardoises s'agitent en haut : « Reviens ! Le secret ne s'évaporera pas ! »",
+      "text": "Marjo raccompagne son visiteur avec l'oie sous le bras — celle-là au moins est attrapée. Sur son ardoise : « Reviens vite. Coco veut te rencontrer, il n'arrête pas de te montrer du bec. »",
       "next": "END"
     },
     "reussite": {
-      "speaker": "mousquetaires",
-      "text": "Les trois ardoises se lèvent d'un coup : « EXACT ! » — « Les liens ! Le silence n'a jamais pu couper les liens ! » — « Épreuve réussie à l'unanimité. Un pour tous… » Et tous les trois ensemble, solennels : « …et tous pour le village. Voici le secret. »",
-      "next": "secret"
+      "speaker": "marjo",
+      "text": "Clac ! La barrière se referme sur les trois fugueurs, penauds et ravis. Marjo applaudit sans bruit : « Du grand art ! La chèvre t'a suivi comme si tu avais fait ça toute ta vie. Tu as le don, je le dis rarement. Viens, je te présente Coco — c'est lui le doyen. »",
+      "next": "coco"
     },
-    "presque": {
-      "speaker": "mousquetaires",
-      "text": "« Les ardoises… presque ! » — « Les ardoises, c'est l'outil. Mais l'important, c'est ce qui passe PAR les ardoises : les liens entre les gens. » — « Réponse acceptée au deuxième degré. Épreuve validée, deux voix contre une — la démocratie des Mousquetaires. Voici le secret. »",
-      "next": "secret"
-    },
-    "secret": {
-      "speaker": "mousquetaires",
-      "text": "Le plus petit des trois soulève une latte du plancher de la cabane. Dessous, dans une boîte fermée par trois cadenas — un par Mousquetaire — repose le dernier papier doré. « On l'a trouvé il y a longtemps. On a juré de le garder jusqu'à ce que quelqu'un mérite les onze autres. C'est toi. »",
+    "coco": {
+      "speaker": "carnet",
+      "text": "Dans la volière, un vieux perroquet gris ouvre un œil malicieux. Coco, muet comme tout le monde, garde farouchement quelque chose au fond de sa cage : un papier doré, plié et replié par des années de bec soigneux. Il le tend de lui-même — comme s'il attendait ce moment depuis toujours.",
       "next": "fin_fragment"
     },
     "fin_fragment": {
       "type": "reward",
       "fragment": "fragment_12",
-      "sound": "rires",
+      "sound": "sifflet_marjo",
       "next": "epilogue"
     },
     "epilogue": {
       "speaker": "carnet",
-      "text": "Et là-haut, dans la cabane du grand chêne, il se passa quelque chose d'immense : un rire. Puis deux. Puis trois. Les rires des Mousquetaires dégringolèrent de l'arbre comme des noisettes, et roulèrent dans tout le village. Le douzième bruit était revenu. Le vœu était complet. Il ne restait plus qu'à le lire — sous le grand tilleul de la place.",
+      "text": "Et au moment où le papier changea de mains, un son perça le silence : le sifflet de Marjo, pendu à son cou, siffla tout seul — un trille clair, joyeux, impossible. Toutes les bêtes dressèrent l'oreille en même temps. Le douzième bruit était revenu, et la ménagerie entière fit la fête sans un bruit… pour la dernière fois.",
       "next": "END"
     }
   }
