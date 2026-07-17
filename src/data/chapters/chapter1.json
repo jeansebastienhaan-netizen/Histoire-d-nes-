@@ -1,0 +1,108 @@
+{
+  "_note": "CONTENU PROVISOIRE — dialogues d'attente écrits sans GAME_DESIGN.md, à remplacer par le contenu validé. La structure (nœuds, mini-jeu, fragment) est définitive.",
+  "id": "chapter1",
+  "character": "mamy",
+  "chapter": 1,
+  "completeOnFragment": "fragment_01",
+  "start": "start",
+  "nodes": {
+    "start": {
+      "speaker": "carnet",
+      "text": "Un matin, le village s'est réveillé sans un bruit. Pas un chant d'oiseau, pas un tintement de cuillère, pas un rire. Le Grand Silence était arrivé. Depuis, chacun écrit sur une petite ardoise ce qu'il voudrait dire.",
+      "next": "intro_2"
+    },
+    "intro_2": {
+      "speaker": "carnet",
+      "text": "C'est chez Mamy que tout commence toujours. Sa porte est ouverte, comme d'habitude, et il flotte une odeur de gâteau tiède. Sur la table, des ardoises soigneusement alignées.",
+      "next": "mamy_accueil"
+    },
+    "mamy_accueil": {
+      "speaker": "mamy",
+      "text": "« Te voilà, toi. Je t'attendais. » Mamy sourit et tapote la chaise à côté d'elle. Sur son ardoise, l'écriture est ronde et sûre. « Le silence a emporté les voix, mais pas les souvenirs. Et moi, les souvenirs, c'est mon rayon. »",
+      "next": "mamy_demande"
+    },
+    "mamy_demande": {
+      "speaker": "mamy",
+      "text": "« Ce matin, le vent a mélangé les ardoises que les voisins m'avaient confiées. Chacune porte un indice, mais plus aucun nom. Veux-tu m'aider à les remettre en ordre ? »",
+      "choices": [
+        {
+          "label": "« Bien sûr, Mamy. On va y arriver ensemble. »",
+          "effects": { "coeur": 1 },
+          "setFlags": ["a_aide_mamy"],
+          "next": "avant_puzzle"
+        },
+        {
+          "label": "« J'ai une idée : et si on les triait par écriture ? »",
+          "effects": { "ruse": 1 },
+          "next": "avant_puzzle"
+        },
+        {
+          "label": "« On ne partira pas d'ici avant d'avoir fini ! »",
+          "effects": { "determination": 1 },
+          "next": "avant_puzzle"
+        }
+      ]
+    },
+    "avant_puzzle": {
+      "speaker": "carnet",
+      "text": "Mamy étale trois ardoises sur la table. Elle n'a besoin de personne pour réfléchir — mais elle sait que réfléchir à deux, c'est déjà briser un peu le silence.",
+      "next": "puzzle_ardoises"
+    },
+    "puzzle_ardoises": {
+      "type": "minigame",
+      "game": "LogicPuzzle",
+      "config": {
+        "intro": "Trois ardoises, trois indices. À qui appartient l'ardoise qui dit : « J'arrose mes tomates tous les soirs » ?",
+        "question": "Qui a écrit cette ardoise ?",
+        "options": [
+          { "label": "Papy, qui vit dans son potager", "correct": true },
+          { "label": "Jules, toujours au terrain de jeux", "correct": false },
+          { "label": "Oxane, plongée dans ses livres", "correct": false }
+        ],
+        "attempts": 2
+      },
+      "onSuccess": "puzzle_reussi",
+      "onPartial": "puzzle_presque",
+      "onFail": "puzzle_rate"
+    },
+    "puzzle_reussi": {
+      "speaker": "mamy",
+      "text": "« Du premier coup ! » Les yeux de Mamy pétillent. « Tu vois, le silence n'est pas si malin : il suffit de bien regarder les gens pour les entendre quand même. »",
+      "next": "recompense"
+    },
+    "puzzle_presque": {
+      "speaker": "mamy",
+      "text": "« Presque du premier coup — et c'est le “presque” qui compte, c'est là qu'on apprend. » Mamy range les ardoises, satisfaite. « À nous deux, rien ne nous résiste. »",
+      "next": "recompense"
+    },
+    "puzzle_rate": {
+      "speaker": "mamy",
+      "text": "« Bah, les ardoises ne s'envoleront pas. » Mamy sert une part de gâteau. « On souffle un peu, et on réessaie quand tu veux. »",
+      "choices": [
+        { "label": "Réessayer maintenant", "next": "puzzle_ardoises" },
+        { "label": "Revenir plus tard", "next": "sortie_douce" }
+      ]
+    },
+    "sortie_douce": {
+      "speaker": "carnet",
+      "text": "Mamy raccompagne son visiteur jusqu'au seuil. Sa porte restera ouverte — elle l'est toujours.",
+      "next": "END"
+    },
+    "recompense": {
+      "speaker": "carnet",
+      "text": "En rangeant la dernière ardoise, quelque chose glisse d'entre deux pages du carnet : un petit morceau de papier doré, couvert d'une écriture ancienne. Le premier fragment du vœu.",
+      "next": "fin_fragment"
+    },
+    "fin_fragment": {
+      "type": "reward",
+      "fragment": "fragment_01",
+      "sound": "horloge_mamy",
+      "next": "epilogue"
+    },
+    "epilogue": {
+      "speaker": "carnet",
+      "text": "Et à cet instant précis, dans la cuisine de Mamy, la vieille horloge se remit à faire tic-tac. Un tout petit bruit. Le premier depuis le Grand Silence.",
+      "next": "END"
+    }
+  }
+}

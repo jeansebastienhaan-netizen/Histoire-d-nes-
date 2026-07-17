@@ -1,0 +1,22 @@
+{
+  "_note": "Texte du vœu PROVISOIRE : à remplacer par le contenu de GAME_DESIGN.md.",
+  "order": [
+    "fragment_01", "fragment_02", "fragment_03", "fragment_04",
+    "fragment_05", "fragment_06", "fragment_07", "fragment_08",
+    "fragment_09", "fragment_10", "fragment_11", "fragment_12"
+  ],
+  "fragments": {
+    "fragment_01": { "text": "« Je voudrais que… »", "from": "mamy" },
+    "fragment_02": { "text": "…", "from": "alois" },
+    "fragment_03": { "text": "…", "from": "xavier" },
+    "fragment_04": { "text": "…", "from": "papy" },
+    "fragment_05": { "text": "…", "from": "jules" },
+    "fragment_06": { "text": "…", "from": "oxane" },
+    "fragment_07": { "text": "…", "from": "cyril" },
+    "fragment_08": { "text": "…", "from": "manu" },
+    "fragment_09": { "text": "…", "from": "noelia" },
+    "fragment_10": { "text": "…", "from": "lo" },
+    "fragment_11": { "text": "…", "from": "lana" },
+    "fragment_12": { "text": "…", "from": "mousquetaires" }
+  }
+}
