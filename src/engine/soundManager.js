@@ -1,87 +1,65 @@
-// Le retour progressif du son est une mécanique du jeu : chaque bruit retrouvé
-// joue un petit motif synthétisé (WebAudio — aucun fichier, donc hors-ligne par nature).
-// Tout est enveloppé de try/catch : le son ne doit jamais casser le jeu.
-
+// Petits sons de synthèse (WebAudio) : aucun fichier, tout embarqué.
 let ctx = null
+let enabled = true
 
-function audioContext() {
-  try {
-    if (!ctx) {
-      const AC = window.AudioContext || window.webkitAudioContext
-      if (!AC) return null
-      ctx = new AC()
-    }
-    if (ctx.state === 'suspended') ctx.resume()
-    return ctx
-  } catch {
-    return null
+function ac() {
+  if (!ctx) {
+    const AC = window.AudioContext || window.webkitAudioContext
+    if (!AC) return null
+    ctx = new AC()
   }
+  if (ctx.state === 'suspended') ctx.resume()
+  return ctx
 }
 
-function note(c, freq, start, duration, volume = 0.12, type = 'sine') {
-  const osc = c.createOscillator()
-  const gain = c.createGain()
-  osc.type = type
-  osc.frequency.value = freq
-  gain.gain.setValueAtTime(0, c.currentTime + start)
-  gain.gain.linearRampToValueAtTime(volume, c.currentTime + start + 0.02)
-  gain.gain.exponentialRampToValueAtTime(0.001, c.currentTime + start + duration)
-  osc.connect(gain).connect(c.destination)
-  osc.start(c.currentTime + start)
-  osc.stop(c.currentTime + start + duration + 0.05)
+export function setSoundEnabled(v) {
+  enabled = v
 }
 
-// Gamme pentatonique douce : chaque bruit retrouvé a son propre motif.
-const PENTATONIC = [392, 440, 494, 587, 659] // sol la si ré mi
-
-export function playSoundRestored(index = 0) {
-  const c = audioContext()
-  if (!c) return
-  const root = PENTATONIC[index % PENTATONIC.length]
-  note(c, root, 0, 0.9)
-  note(c, root * 1.5, 0.18, 0.9)
-  note(c, root * 2, 0.36, 1.4, 0.1)
+function tone(freq, dur = 0.12, type = 'triangle', gain = 0.08, when = 0) {
+  const a = ac()
+  if (!a || !enabled) return
+  const o = a.createOscillator()
+  const g = a.createGain()
+  o.type = type
+  o.frequency.value = freq
+  g.gain.setValueAtTime(0.0001, a.currentTime + when)
+  g.gain.exponentialRampToValueAtTime(gain, a.currentTime + when + 0.015)
+  g.gain.exponentialRampToValueAtTime(0.0001, a.currentTime + when + dur)
+  o.connect(g).connect(a.destination)
+  o.start(a.currentTime + when)
+  o.stop(a.currentTime + when + dur + 0.05)
 }
 
-export function playFragmentFound() {
-  const c = audioContext()
-  if (!c) return
-  note(c, 587, 0, 0.5, 0.09, 'triangle')
-  note(c, 880, 0.12, 0.8, 0.09, 'triangle')
+export const sfx = {
+  tap: () => tone(660, 0.05, 'square', 0.03),
+  advance: () => tone(440, 0.06, 'triangle', 0.04),
+  choice: () => tone(520, 0.09, 'triangle', 0.05),
+  pickup: () => {
+    tone(523, 0.08, 'triangle', 0.05)
+    tone(784, 0.1, 'triangle', 0.05, 0.08)
+  },
+  success: () => {
+    tone(523, 0.1, 'triangle', 0.06)
+    tone(659, 0.1, 'triangle', 0.06, 0.1)
+    tone(784, 0.16, 'triangle', 0.06, 0.2)
+  },
+  soft: () => tone(330, 0.12, 'sine', 0.04),
+  click: () => tone(200, 0.04, 'square', 0.05),
+  // Les trois notes de Mistiflouk — le motif du jeu.
+  mistiflouk: () => {
+    tone(880, 0.16, 'sine', 0.06)
+    tone(988, 0.16, 'sine', 0.06, 0.2)
+    tone(740, 0.28, 'sine', 0.06, 0.4)
+  },
+  mistifloukFaible: () => {
+    tone(880, 0.14, 'sine', 0.02)
+    tone(988, 0.14, 'sine', 0.02, 0.24)
+    tone(740, 0.26, 'sine', 0.02, 0.48)
+  },
 }
 
-export function playMistiflouk() {
-  const c = audioContext()
-  if (!c) return
-  note(c, 196, 0, 0.15, 0.1, 'sine')
-  note(c, 165, 0.12, 0.15, 0.1, 'sine')
-  note(c, 220, 0.24, 0.25, 0.08, 'sine')
-}
-
-// Note simple pour les mini-jeux (Simon, pavé numérique…).
-export function playNote(freq, duration = 0.35, type = 'triangle') {
-  const c = audioContext()
-  if (!c) return
-  note(c, freq, 0, duration, 0.11, type)
-}
-
-export function playError() {
-  const c = audioContext()
-  if (!c) return
-  note(c, 175, 0, 0.25, 0.1, 'sawtooth')
-  note(c, 147, 0.14, 0.35, 0.08, 'sawtooth')
-}
-
-export function playWin() {
-  const c = audioContext()
-  if (!c) return
-  ;[523, 659, 784, 1047].forEach((f, i) => note(c, f, i * 0.11, 0.5, 0.09, 'triangle'))
-}
-
-// La grande fin : le village chante à nouveau.
-export function playVillageSong() {
-  const c = audioContext()
-  if (!c) return
-  const melody = [392, 440, 494, 587, 494, 659, 587, 784]
-  melody.forEach((f, i) => note(c, f, i * 0.28, 0.8, 0.1))
+export function vibrate(pattern, settings) {
+  if (settings && settings.vibrations === false) return
+  if (navigator.vibrate) navigator.vibrate(pattern)
 }

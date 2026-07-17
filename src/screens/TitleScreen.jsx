@@ -1,73 +1,76 @@
-import { useGameStore } from '../store/gameStore.js'
-import { hasSave } from '../store/save.js'
-import Avatar from '../components/Avatar.jsx'
+import React, { useState } from 'react'
+import { useGame } from '../store/gameStore.js'
+import SettingsPanel from './SettingsPanel.jsx'
+import { sfx } from '../engine/soundManager.js'
 
+// Écran titre : le tilleul, le trou, trois notes sifflées. Un bouton (Partie III §8).
 export default function TitleScreen() {
-  const newGame = useGameStore((s) => s.newGame)
-  const continueGame = useGameStore((s) => s.continueGame)
-  const saveExists = hasSave()
+  const g = useGame()
+  const [settingsOpen, setSettingsOpen] = useState(false)
+  const [confirmNew, setConfirmNew] = useState(false)
+  const hasSave = !!(g.sceneId || g.completed.length > 0 || g.endingId)
+
+  const start = () => {
+    if (g.settings.sound) sfx.mistiflouk()
+    if (hasSave) setConfirmNew(true)
+    else g.newGame()
+  }
 
   return (
-    <div className="screen title-screen">
-      {/* la nuit sur le village */}
-      <svg className="title-scene" viewBox="0 0 100 64" aria-hidden="true">
-        <defs>
-          <linearGradient id="titlesky" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stopColor="#0e0e26" />
-            <stop offset="1" stopColor="#2a2a4c" />
-          </linearGradient>
-        </defs>
-        <rect width="100" height="64" fill="url(#titlesky)" />
-        <circle cx="76" cy="14" r="8" fill="#e8c56a" className="floaty" />
-        {[[10, 8, 0.7], [24, 16, 0.5], [40, 6, 0.6], [56, 14, 0.45], [90, 26, 0.5], [6, 28, 0.45], [66, 24, 0.4]].map(([x, y, r], i) => (
-          <circle key={i} cx={x} cy={y} r={r} fill="#f5efd8" className="twinkle" style={{ animationDelay: `${i * 0.5}s` }} />
-        ))}
-        {/* la trace de la chute d'Étincelle — en zigzag, évidemment */}
-        <path d="M14 4 L34 14 L28 22 L46 30 L42 36" stroke="#f0c050" strokeWidth="1" fill="none" strokeLinecap="round" opacity="0.8" className="twinkle" />
-        <path d="M42 36 l2.2 4.4 4.8 .6 -3.5 3.2 .9 4.8 -4.4 -2.4 -4.4 2.4 .9 -4.8 -3.5 -3.2 4.8 -.6 Z" fill="#f0c050" className="floaty" />
-        {/* silhouette du village endormi */}
-        <path d="M0 52 L0 44 L8 44 L8 38 L12 34 L16 38 L16 46 L24 46 L24 36 L30 30 L36 36 L36 46 L44 46 L44 40 L48 40 L48 34 L52 30 L56 34 L56 46 L64 46 L64 38 L70 38 L70 42 L78 42 L78 36 L84 30 L90 36 L90 46 L100 46 L100 52 Z" fill="#1c1c34" />
-        {/* trois fenêtres encore allumées */}
-        <rect x="28" y="38" width="2.4" height="2.4" fill="#e8c56a" className="twinkle" />
-        <rect x="52" y="38" width="2.2" height="2.2" fill="#e8c56a" className="twinkle" style={{ animationDelay: '1s' }} />
-        <rect x="83" y="38" width="2.2" height="2.2" fill="#e8c56a" className="twinkle" style={{ animationDelay: '2s' }} />
-        <path d="M0 64 L0 54 Q30 48 60 53 T100 52 L100 64 Z" fill="#16162c" />
-      </svg>
-
-      <h1 className="title-main">L'Étoile Tombée</h1>
-      <p className="title-tagline">Une étoile s'est écrasée. Treize éclats. Une seule nuit pour la renvoyer chez elle.</p>
-
-      <div className="title-cast">
-        <div className="title-cast-item floaty">
-          <Avatar id="etoile" size={52} />
-        </div>
-        {['mamy', 'alois', 'marjo', 'mousquetaires'].map((id, i) => (
-          <div key={id} className="title-cast-item floaty" style={{ animationDelay: `${i * 0.5}s` }}>
-            <Avatar id={id} size={52} />
-          </div>
-        ))}
-        <div className="title-cast-item floaty" style={{ animationDelay: '2s' }}>
-          <Avatar id="mistiflouk" size={52} />
+    <div className={`screen title ${g.settings.fontComfort ? 'font-comfort' : ''}`}>
+      <div className="title__sky">
+        <div className="title__tree">
+          <div className="title__leaves" />
+          <div className="title__trunk" />
+          <div className="title__hole" />
+          <div className="title__snake">〜</div>
         </div>
       </div>
+      <h1 className="title__name">Mistiflouk</h1>
 
-      <div className="title-buttons">
-        {saveExists && (
-          <button className="btn btn-primary" onClick={continueGame}>
+      <div className="title__actions">
+        {hasSave && (
+          <button
+            type="button"
+            className="btn btn--primary btn--big"
+            onClick={() => {
+              if (g.settings.sound) sfx.mistiflouk()
+              g.continueGame()
+            }}
+          >
             Continuer
+            {g.lastHook && <small className="title__hook">« {g.lastHook.slice(0, 90)}{g.lastHook.length > 90 ? '…' : ''} »</small>}
           </button>
         )}
-        <button
-          className={`btn ${saveExists ? 'btn-secondary' : 'btn-primary'}`}
-          onClick={() => {
-            if (saveExists && !window.confirm('Recommencer depuis le début ? La partie en cours sera effacée.'))
-              return
-            newGame()
-          }}
-        >
-          Nouvelle partie
+        <button type="button" className={`btn ${hasSave ? '' : 'btn--primary btn--big'}`} onClick={start}>
+          {hasSave ? 'Nouvelle partie' : 'Commencer'}
+        </button>
+        <button type="button" className="btn" onClick={() => setSettingsOpen(true)}>
+          Réglages
         </button>
       </div>
+
+      {!g.soundBannerSeen && (
+        <button type="button" className="title__soundbanner" onClick={() => g.markSoundBanner()}>
+          Ce jeu est plus beau avec le son 🔊
+        </button>
+      )}
+
+      {settingsOpen && <SettingsPanel onClose={() => setSettingsOpen(false)} />}
+
+      {confirmNew && (
+        <div className="overlay" role="dialog">
+          <div className="overlay__card">
+            <p>Recommencer depuis le début ? La partie en cours sera effacée.</p>
+            <button type="button" className="btn btn--primary" onClick={() => g.newGame()}>
+              Oui, on recommence
+            </button>
+            <button type="button" className="btn" onClick={() => setConfirmNew(false)}>
+              Non, garder ma partie
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

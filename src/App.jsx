@@ -1,20 +1,22 @@
-import { useGameStore } from './store/gameStore.js'
+import React, { useEffect } from 'react'
+import { useGame } from './store/gameStore.js'
 import TitleScreen from './screens/TitleScreen.jsx'
-import VillageMap from './screens/VillageMap.jsx'
-import EncounterScreen from './screens/EncounterScreen.jsx'
-import NotebookScreen from './screens/NotebookScreen.jsx'
+import VillageCut from './screens/VillageCut.jsx'
+import SceneScreen from './screens/SceneScreen.jsx'
 import EndingScreen from './screens/EndingScreen.jsx'
-
-const SCREENS = {
-  title: TitleScreen,
-  map: VillageMap,
-  encounter: EncounterScreen,
-  notebook: NotebookScreen,
-  ending: EndingScreen,
-}
+import { setSoundEnabled } from './engine/soundManager.js'
 
 export default function App() {
-  const screen = useGameStore((s) => s.screen)
-  const Screen = SCREENS[screen] ?? TitleScreen
-  return <Screen />
+  const screen = useGame((s) => s.screen)
+  const sceneId = useGame((s) => s.sceneId)
+  const sound = useGame((s) => s.settings.sound)
+
+  useEffect(() => {
+    setSoundEnabled(sound)
+  }, [sound])
+
+  if (screen === 'scene') return sceneId ? <SceneScreen /> : <VillageCut />
+  if (screen === 'map') return <VillageCut />
+  if (screen === 'fin') return <EndingScreen />
+  return <TitleScreen />
 }
