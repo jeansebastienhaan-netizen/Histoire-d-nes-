@@ -392,6 +392,73 @@ body {
   font-style: italic;
 }
 
+/* --- écran de fin --- */
+.ending-screen {
+  justify-content: center;
+}
+.ending-block {
+  width: 100%;
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  animation: fade-in 0.6s ease;
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.ending-text {
+  text-align: center;
+  color: var(--creme);
+}
+.ending-chant {
+  font-style: italic;
+}
+.wish-final {
+  background: #24243e;
+  border: 1px solid #46466e;
+  border-radius: 16px;
+  padding: 20px;
+  width: 100%;
+}
+.wish-final-line {
+  font-style: italic;
+  line-height: 1.7;
+  color: var(--or);
+  text-align: center;
+}
+.epilogues {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  overflow-y: auto;
+}
+.epilogue-item {
+  background: var(--nuit-2);
+  border-radius: 12px;
+  padding: 12px 14px;
+}
+.epilogue-name {
+  color: var(--or);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.epilogue-item p {
+  margin-top: 4px;
+  line-height: 1.45;
+  color: var(--creme);
+}
+.ending-merci {
+  text-align: center;
+}
+.zone-tilleul {
+  animation: glow 1.6s ease-in-out infinite;
+}
+
 /* --- divers --- */
 .toast {
   position: fixed;

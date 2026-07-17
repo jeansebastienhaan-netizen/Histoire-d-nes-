@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useGameStore } from '../store/gameStore.js'
+import { playMistiflouk } from '../engine/soundManager.js'
 
 // Compagnon d'interface : n'apparaît qu'après le chapitre d'Aloïs (flag a_mistiflouk).
 // Piste sonore par vibration, avec repli visuel si navigator.vibrate est absent.
@@ -11,6 +12,7 @@ export default function Mistiflouk() {
 
   const wiggle = () => {
     if (navigator.vibrate) navigator.vibrate([60, 40, 60, 40, 120])
+    playMistiflouk()
     setPulsing(true)
     setTimeout(() => setPulsing(false), 800)
   }

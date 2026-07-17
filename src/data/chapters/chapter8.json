@@ -1,0 +1,101 @@
+{
+  "id": "chapter8",
+  "character": "manu",
+  "chapter": 8,
+  "completeOnFragment": "fragment_08",
+  "start": "start",
+  "nodes": {
+    "start": {
+      "speaker": "carnet",
+      "text": "Le garage de Manu, c'est la caverne d'Ali Baba des choses qui roulent. Au centre, sous une bâche, dort la vieille mobylette bleue — celle qui livrait le pain du village, autrefois. Manu a juré de la faire repartir.",
+      "next": "manu_probleme"
+    },
+    "manu_probleme": {
+      "speaker": "manu",
+      "text": "Manu s'essuie les mains et écrit au feutre sur l'établi : « Tout est réparé. Tout ! Mais un moteur, ça se règle à l'OREILLE. Le petit cliquetis qui dit que ça va, le ronron qui dit que c'est parfait… Sans le son, je règle à l'aveugle. Il me faut tes mains. »",
+      "next": "manu_choix"
+    },
+    "manu_choix": {
+      "speaker": "manu",
+      "text": "« Le plan : tu poses les mains sur le réservoir, tu sens les vibrations, et tu guides la dernière pièce exactement où elle doit aller. Partant ? »",
+      "choices": [
+        {
+          "label": "« Cette mobylette va revivre, Manu. Le village y tient. »",
+          "effects": { "coeur": 1 },
+          "next": "avant_jeu"
+        },
+        {
+          "label": "Poser Mistiflouk sur le moteur : un serpent-sonar vaut tous les stéthoscopes.",
+          "condition": { "flag": "a_mistiflouk" },
+          "effects": { "ruse": 1, "coeur": 1 },
+          "next": "avant_jeu_mistiflouk"
+        },
+        {
+          "label": "« Sentir un moteur avec les mains ? Malin. On fait comme ça. »",
+          "effects": { "ruse": 1 },
+          "next": "avant_jeu"
+        },
+        {
+          "label": "« On y passera la nuit s'il le faut. Elle repartira. »",
+          "effects": { "determination": 1 },
+          "next": "avant_jeu"
+        }
+      ]
+    },
+    "avant_jeu": {
+      "speaker": "carnet",
+      "text": "Manu tend la dernière pièce — un petit carburateur brillant comme un bijou. Sur le moteur, une place l'attend. Il faut l'amener là, d'une main sûre, sans rien bousculer en chemin.",
+      "next": "jeu_moteur"
+    },
+    "avant_jeu_mistiflouk": {
+      "speaker": "carnet",
+      "text": "Mistiflouk s'enroule sur le réservoir et se met à vibrer par petites saccades — plus fort quand la main approche du bon endroit, comme un jeu de « chaud-froid ». Manu en reste bouche bée : « Je veux le même en outil. »",
+      "next": "jeu_moteur"
+    },
+    "jeu_moteur": {
+      "type": "minigame",
+      "game": "DragPhysics",
+      "config": {
+        "prompt": "Guide la pièce jusqu'à son logement, d'un geste précis.",
+        "item": "⚙️",
+        "target": "Le moteur"
+      },
+      "onSuccess": "reussite",
+      "onFail": "pause"
+    },
+    "pause": {
+      "speaker": "manu",
+      "text": "« Minute, pause outil. » Manu verse deux verres de limonade de son thermos. « Un bon mécano sait quand ses mains ont besoin de souffler. Elle a attendu des années, elle peut attendre dix minutes. »",
+      "choices": [
+        { "label": "Réessayer maintenant", "next": "jeu_moteur" },
+        { "label": "Revenir plus tard", "next": "sortie_douce" }
+      ]
+    },
+    "sortie_douce": {
+      "speaker": "carnet",
+      "text": "Manu remet la bâche sur la mobylette avec la douceur d'un père qui borde son enfant. « Elle sera là. Moi aussi », écrit-il sur l'établi. Les garages de Manu ne ferment jamais vraiment.",
+      "next": "END"
+    },
+    "reussite": {
+      "speaker": "manu",
+      "text": "Clic. La pièce s'emboîte, parfaite. Manu donne un coup de kick, pose les deux mains sur le réservoir… et son visage s'illumine : « Elle tourne ! Je la SENS tourner ! Rond comme une horloge ! Tu viens de réveiller la doyenne du village ! »",
+      "next": "fragment_trouve"
+    },
+    "fragment_trouve": {
+      "speaker": "carnet",
+      "text": "Dans la sacoche en cuir de la mobylette, sous une carte routière de l'ancien temps, dort un papier doré plié en quatre. Le huitième fragment du vœu — il voyageait avec le pain, autrefois.",
+      "next": "fin_fragment"
+    },
+    "fin_fragment": {
+      "type": "reward",
+      "fragment": "fragment_08",
+      "sound": "moteur",
+      "next": "epilogue"
+    },
+    "epilogue": {
+      "speaker": "carnet",
+      "text": "Et au petit matin, le village fut réveillé par un ronron bleu qui faisait le tour de la place — teuf, teuf, teuf. Le huitième bruit était revenu, et il sentait bon le pain frais et l'essence des souvenirs.",
+      "next": "END"
+    }
+  }
+}

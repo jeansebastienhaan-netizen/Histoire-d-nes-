@@ -1,5 +1,6 @@
 import { create } from 'zustand'
 import { loadSave, writeSave, clearSave } from './save.js'
+import { playFragmentFound, playSoundRestored } from '../engine/soundManager.js'
 
 const initialProgress = {
   currentChapter: 1,
@@ -45,12 +46,16 @@ export const useGameStore = create((set, get) => ({
     set({ flags: [...current] })
   },
   addFragment(fragmentId) {
-    if (!get().fragments.includes(fragmentId))
+    if (!get().fragments.includes(fragmentId)) {
       set({ fragments: [...get().fragments, fragmentId] })
+      playFragmentFound()
+    }
   },
   restoreSound(soundId) {
-    if (!get().soundsRestored.includes(soundId))
+    if (!get().soundsRestored.includes(soundId)) {
+      playSoundRestored(get().soundsRestored.length)
       set({ soundsRestored: [...get().soundsRestored, soundId] })
+    }
   },
   completeChapter(chapterNumber) {
     const done = new Set(get().completedChapters)

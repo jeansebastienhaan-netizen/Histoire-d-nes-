@@ -38,11 +38,16 @@ Chaque push sur `main` déclenche `.github/workflows/deploy.yml` (build + GitHub
 ## État d'avancement
 
 - [x] Sprint 1 — squelette PWA, écran titre, carte du village, moteur de dialogue, sauvegarde, déploiement
-- [x] Sprint 2 — chapitre 1 (Mamy) jouable ⚠️ **dialogues provisoires : en attente de `GAME_DESIGN.md`**
-- [ ] Sprint 3 — chapitre d'Aloïs + Mistiflouk
-- [ ] Sprints suivants — un chapitre à la fois
-- [ ] Dernier sprint — les 7 fins + épilogues + passage PWABuilder
+- [x] Sprint 2 — chapitre 1 (Mamy)
+- [x] Sprint 3 — chapitre d'Aloïs + Mistiflouk (piste sonore, 3 branches, compagnon d'interface)
+- [x] Chapitres 3 à 12 — les 12 rencontres jouables, 12 fragments, 12 bruits restaurés
+- [x] Les 7 fins (3 pures, 3 duos, 1 harmonie) + 12 épilogues individuels
+- [ ] Passage PWABuilder (manuel : voir `GUIDE_CLAUDE_CODE.md` §8)
 
-> **Important** : le contenu narratif (ordre des chapitres, dialogues, fragments du vœu, fins)
-> doit venir de `GAME_DESIGN.md` (non fourni pour l'instant). Tout le texte actuel est un
-> contenu d'attente, structurellement définitif mais narrativement à remplacer.
+Valider les graphes de dialogue : `node scripts/validate-chapters.mjs`
+
+> **Note** : `GAME_DESIGN.md` (document narratif de référence) n'a pas été fourni ;
+> les dialogues ont été écrits directement selon les contraintes de ton du guide
+> technique (carnet bienveillant, personnages montrés sous leur meilleur jour,
+> humour de situation). Chaque chapitre est un JSON autonome dans
+> `src/data/chapters/` — facile à remplacer si le document de référence arrive.

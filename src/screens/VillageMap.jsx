@@ -63,6 +63,25 @@ export default function VillageMap() {
           strokeLinecap="round"
         />
 
+        {state.fragments.length >= fragmentsData.order.length && (
+          <g
+            className="zone zone-open zone-tilleul"
+            transform="translate(50, 47)"
+            onClick={state.showEnding}
+            role="button"
+            aria-label="Le grand tilleul — lire le vœu"
+          >
+            <circle r="9" fill="transparent" />
+            <line x1="0" y1="2" x2="0" y2="7" stroke="#8a6a3d" strokeWidth="1.6" />
+            <circle cx="0" cy="-1.5" r="5.5" fill="#e8c56a" opacity="0.9" />
+            <circle cx="-3.5" cy="0.5" r="3.5" fill="#d4af5a" />
+            <circle cx="3.5" cy="0.5" r="3.5" fill="#d4af5a" />
+            <text x="0" y="13" textAnchor="middle" fontSize="3" className="zone-label">
+              Le grand tilleul
+            </text>
+          </g>
+        )}
+
         {characters.map((c) => {
           const status = zoneStatus(c, state)
           return (

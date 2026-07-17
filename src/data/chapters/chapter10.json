@@ -1,0 +1,97 @@
+{
+  "id": "chapter10",
+  "character": "lo",
+  "chapter": 10,
+  "completeOnFragment": "fragment_10",
+  "start": "start",
+  "nodes": {
+    "start": {
+      "speaker": "carnet",
+      "text": "En contrebas du village, la rivière continue de couler — muette, elle aussi, mais toujours dansante. C'est là qu'on trouve Lo, pieds nus sur les pierres plates, en train de faire ce que Lo fait de mieux au monde : danser.",
+      "next": "lo_idee"
+    },
+    "lo_idee": {
+      "speaker": "lo",
+      "text": "Lo tourne sur une pierre, s'arrête net, et écrit d'un geste vif : « Tout le monde dit qu'on ne peut pas danser sans musique. FAUX. La rivière a un rythme — regarde les vaguelettes, une-deux-trois, une-deux-trois. Je prépare une danse pour le village. Danse avec moi. »",
+      "next": "lo_choix"
+    },
+    "lo_choix": {
+      "speaker": "lo",
+      "text": "« C'est une danse qui se danse à deux minimum. Sinon ce n'est pas une danse de village, c'est une danse de tout seul. »",
+      "choices": [
+        {
+          "label": "« Je danse comme un tabouret, mais pour toi, je me lance. »",
+          "effects": { "coeur": 1 },
+          "next": "avant_jeu"
+        },
+        {
+          "label": "« Attends, je regarde les vaguelettes d'abord — je veux comprendre le rythme. »",
+          "effects": { "ruse": 1 },
+          "next": "avant_jeu"
+        },
+        {
+          "label": "« Apprends-moi. Je recommencerai jusqu'à l'avoir. »",
+          "effects": { "determination": 1 },
+          "next": "avant_jeu"
+        }
+      ]
+    },
+    "avant_jeu": {
+      "speaker": "carnet",
+      "text": "Lo montre les pas : un saut de pierre en pierre, au rythme exact de l'eau. La rivière compte pour nous — une-deux-trois, une-deux-trois. Il suffit de l'écouter avec les yeux.",
+      "next": "jeu_danse"
+    },
+    "jeu_danse": {
+      "type": "minigame",
+      "game": "RhythmTap",
+      "config": {
+        "prompt": "Danse avec la rivière : saute (tape) au sommet de chaque vague !",
+        "bpm": 72,
+        "taps": 8,
+        "tolerance": 0.42
+      },
+      "onSuccess": "reussite",
+      "onPartial": "presque",
+      "onFail": "pause"
+    },
+    "pause": {
+      "speaker": "lo",
+      "text": "Lo rattrape son danseur par la manche avant le grand plouf, et rit sans bruit. « Règle numéro un : la rivière ne se moque jamais. Règle numéro deux : on sèche ses pieds et on recommence. »",
+      "choices": [
+        { "label": "Reprendre la danse", "next": "jeu_danse" },
+        { "label": "Revenir danser plus tard", "next": "sortie_douce" }
+      ]
+    },
+    "sortie_douce": {
+      "speaker": "carnet",
+      "text": "Lo raccompagne son partenaire en dansant à reculons sur le sentier, parce que marcher normalement, c'est perdre une occasion de danser. « Reviens à la prochaine lune, la rivière garde nos pas. »",
+      "next": "END"
+    },
+    "reussite": {
+      "speaker": "lo",
+      "text": "Dernier saut, réception parfaite, les bras en étoile. Lo écrit, encore essoufflée : « TU L'AS ! La danse de la rivière ! Quand le son reviendra, on la dansera tous, avec la vraie musique de l'eau. C'est promis-juré. »",
+      "next": "fragment_trouve"
+    },
+    "presque": {
+      "speaker": "lo",
+      "text": "« Deux pas dans l'eau… mais les plus beaux danseurs sont ceux qui n'ont pas peur de se mouiller ! » Lo salue bien bas, comme au spectacle. « La danse est prête. Avec une figure bonus : l'éclaboussure. Je la garde, elle est de toi. »",
+      "next": "fragment_trouve"
+    },
+    "fragment_trouve": {
+      "speaker": "carnet",
+      "text": "Sous la pierre plate du dernier saut — la pierre que Lo appelle « la scène » — brille quelque chose : une boîte de fer enfoncée là depuis longtemps. Dedans, au sec, un papier doré. Le dixième fragment du vœu.",
+      "next": "fin_fragment"
+    },
+    "fin_fragment": {
+      "type": "reward",
+      "fragment": "fragment_10",
+      "sound": "riviere",
+      "next": "epilogue"
+    },
+    "epilogue": {
+      "speaker": "carnet",
+      "text": "Et d'un coup, la rivière retrouva sa voix : le clapotis, le glouglou, le chuuu des vaguelettes sur les pierres. Le dixième bruit était revenu. Lo dansa dessus jusqu'à la nuit tombée, et la rivière, c'est certain, dansait avec elle.",
+      "next": "END"
+    }
+  }
+}

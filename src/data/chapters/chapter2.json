@@ -1,0 +1,128 @@
+{
+  "id": "chapter2",
+  "character": "alois",
+  "chapter": 2,
+  "completeOnFragment": "fragment_02",
+  "start": "start",
+  "nodes": {
+    "start": {
+      "speaker": "carnet",
+      "text": "Au bout de la ruelle, une échelle grimpe vers le grenier d'Aloïs. C'est le plus bel endroit du village : des malles, des cartes anciennes, un phonographe endormi. Aloïs connaît l'histoire de chaque trésor.",
+      "next": "alois_accueil"
+    },
+    "alois_accueil": {
+      "speaker": "alois",
+      "text": "Aloïs agite son ardoise, les yeux brillants : « Tu tombes bien ! Il y a QUELQU'UN dans mon grenier. Quelque chose qui glisse entre les caisses. Je ne veux pas lui faire peur… je veux le rencontrer. »",
+      "next": "alois_indice"
+    },
+    "alois_indice": {
+      "speaker": "alois",
+      "text": "« Regarde : la poussière dessine des vagues, là, et là. Ça se déplace sans faire de bruit — forcément, avec le Grand Silence ! Mais j'ai remarqué un truc : quand je tape du pied, les vagues changent de direction. Il SENT les vibrations. »",
+      "next": "branche_choix"
+    },
+    "branche_choix": {
+      "speaker": "alois",
+      "text": "« Alors, comment on s'y prend pour l'approcher ? »",
+      "choices": [
+        {
+          "label": "S'asseoir sans bouger, paume ouverte, et attendre qu'il vienne.",
+          "effects": { "coeur": 1 },
+          "setFlags": ["approche_douce"],
+          "next": "branche_coeur"
+        },
+        {
+          "label": "Observer les traces dans la poussière pour deviner sa cachette.",
+          "effects": { "ruse": 1 },
+          "next": "branche_ruse"
+        },
+        {
+          "label": "Tapoter le plancher en rythme, encore et encore, jusqu'à ce qu'il réponde.",
+          "effects": { "determination": 1 },
+          "next": "branche_determination"
+        }
+      ]
+    },
+    "branche_coeur": {
+      "speaker": "carnet",
+      "text": "Ils s'assoient tous les deux au milieu du grenier, immobiles comme des statues de musée. Au bout d'un long moment, un petit museau pointe entre deux caisses… puis se ravise. Il est curieux, mais prudent. Il faudra deviner où il se cache.",
+      "next": "puzzle_cachette"
+    },
+    "branche_ruse": {
+      "speaker": "carnet",
+      "text": "À quatre pattes, nez au plancher, les deux enquêteurs suivent les vagues de poussière. Les traces tournent autour de trois cachettes possibles. Aloïs lève trois doigts : à nous de déduire la bonne.",
+      "next": "puzzle_cachette"
+    },
+    "branche_determination": {
+      "speaker": "carnet",
+      "text": "Toc… toc-toc… toc. Aloïs et son visiteur tapotent le plancher sans se lasser, comme un code secret. Et soudain — toc-toc, en réponse ! Ça vient de l'un des trois recoins du grenier. Lequel ?",
+      "next": "puzzle_cachette"
+    },
+    "puzzle_cachette": {
+      "type": "minigame",
+      "game": "LogicPuzzle",
+      "config": {
+        "intro": "Trois cachettes possibles. Aloïs écrit les indices sur son ardoise : « Il aime la chaleur. Il aime ce qui est rond. Et il n'aime PAS ce qui pique. »",
+        "question": "Où se cache le mystérieux habitant du grenier ?",
+        "options": [
+          { "label": "La malle aux manteaux d'hiver, tout au fond, près du courant d'air", "correct": false },
+          { "label": "Le carton des guirlandes de Noël, plein d'épines de sapin", "correct": false },
+          { "label": "Le vieux phonographe, rond et tiède de soleil", "correct": true }
+        ],
+        "attempts": 2
+      },
+      "onSuccess": "trouve",
+      "onPartial": "trouve_presque",
+      "onFail": "pause"
+    },
+    "pause": {
+      "speaker": "alois",
+      "text": "« Il a filé ! Mais un explorateur ne renonce jamais. » Aloïs sort deux biscuits de sa poche — un pour chacun. « On reprend quand tu veux. »",
+      "choices": [
+        { "label": "Réessayer maintenant", "next": "puzzle_cachette" },
+        { "label": "Revenir plus tard", "next": "sortie_douce" }
+      ]
+    },
+    "sortie_douce": {
+      "speaker": "carnet",
+      "text": "Aloïs raccompagne son ami jusqu'à l'échelle et lui glisse une carte du grenier « pour la prochaine expédition ». Le mystérieux habitant attendra — les trésors savent attendre.",
+      "next": "END"
+    },
+    "trouve": {
+      "speaker": "carnet",
+      "text": "Du premier coup ! Dans le pavillon doré du phonographe, lové comme une virgule, dort un petit serpent vert. Il ouvre un œil, pas effrayé du tout, et vient s'enrouler doucement autour du poignet d'Aloïs.",
+      "next": "bapteme"
+    },
+    "trouve_presque": {
+      "speaker": "carnet",
+      "text": "La deuxième cachette était la bonne ! Dans le pavillon doré du phonographe, lové comme une virgule, dort un petit serpent vert. Il ouvre un œil, pas effrayé du tout, et vient s'enrouler doucement autour du poignet d'Aloïs.",
+      "next": "bapteme"
+    },
+    "bapteme": {
+      "speaker": "alois",
+      "text": "« Il vibre ! Tu sens ? Il fait brrr avec tout son corps, comme un téléphone ! C'est son langage à lui — le silence ne peut rien contre ça. » Aloïs réfléchit trois secondes. « Je te présente… MISTIFLOUK. Serpent-sonar. Membre officiel de l'enquête. »",
+      "next": "mistiflouk_don"
+    },
+    "mistiflouk_don": {
+      "speaker": "alois",
+      "text": "« Il t'aime bien, tu sais. Regarde, il tend la tête vers toi. Emmène-le dans l'enquête : quand quelque chose d'important se cache quelque part, il le sentira avant tout le monde. Moi je garde le grenier — un explorateur protège son camp de base. »",
+      "next": "surprise_phono"
+    },
+    "surprise_phono": {
+      "speaker": "carnet",
+      "text": "En se déroulant du phonographe, Mistiflouk a déclenché le vieux mécanisme. Et sous l'aiguille, coincé dans le pavillon, un petit papier doré s'envole : le deuxième fragment du vœu.",
+      "next": "fin_fragment"
+    },
+    "fin_fragment": {
+      "type": "reward",
+      "fragment": "fragment_02",
+      "sound": "boite_a_musique",
+      "setFlags": ["a_mistiflouk"],
+      "next": "epilogue"
+    },
+    "epilogue": {
+      "speaker": "carnet",
+      "text": "Alors le phonographe toussota, grinça… et égrena trois notes, toutes rondes, toutes claires. Le deuxième bruit du village venait de rentrer à la maison. Et sur l'épaule du héros, un petit serpent vibrait de joie.",
+      "next": "END"
+    }
+  }
+}
