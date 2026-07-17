@@ -1,5 +1,5 @@
 {
-  "_note": "Le vœu, écrit autrefois dans le carnet de Mamy, se reconstitue fragment par fragment.",
+  "_note": "Chaque éclat rendu, l'habitant confie sa ligne du vœu du village — celui qu'Étincelle exaucera en s'envolant, comme le veut la tradition des étoiles filantes réparées.",
   "order": [
     "fragment_01", "fragment_02", "fragment_03", "fragment_04",
     "fragment_05", "fragment_06", "fragment_07", "fragment_08",
@@ -7,18 +7,18 @@
     "fragment_13"
   ],
   "fragments": {
-    "fragment_01": { "text": "« Je voudrais que ceux que j'aime n'oublient jamais… »", "from": "mamy" },
-    "fragment_02": { "text": "« …les trésors qu'on déniche à deux, »", "from": "alois" },
-    "fragment_03": { "text": "« les mains qui savent tout réparer, »", "from": "xavier" },
-    "fragment_04": { "text": "« les graines plantées avec patience, »", "from": "papy" },
-    "fragment_05": { "text": "« les parties qu'on recommence encore, »", "from": "jules" },
-    "fragment_06": { "text": "« les histoires lues à mi-voix, »", "from": "oxane" },
-    "fragment_07": { "text": "« les musiques qu'on invente le soir, »", "from": "cyril" },
-    "fragment_08": { "text": "« les moteurs qui repartent toujours, »", "from": "manu" },
-    "fragment_09": { "text": "« les tables où chacun a sa place, »", "from": "noelia" },
-    "fragment_10": { "text": "« les danses au bord de la rivière, »", "from": "lo" },
-    "fragment_11": { "text": "« les étoiles qu'on compte ensemble, »", "from": "lana" },
-    "fragment_12": { "text": "« les animaux qui connaissent nos secrets, »", "from": "marjo" },
-    "fragment_13": { "text": "« …et que jamais, jamais, notre village ne cesse de chanter. »", "from": "mousquetaires" }
+    "fragment_01": { "text": "« Petite étoile, nous te souhaitons… »", "from": "mamy" },
+    "fragment_02": { "text": "« …des voyages plein les poches et des trésors à raconter, »", "from": "alois" },
+    "fragment_03": { "text": "« des mains sûres pour te bâtir un nid solide là-haut, »", "from": "xavier" },
+    "fragment_04": { "text": "« de la patience, car tout ce qui brille commence par pousser, »", "from": "papy" },
+    "fragment_05": { "text": "« des victoires, et de belles défaites pour en rire après, »", "from": "jules" },
+    "fragment_06": { "text": "« des histoires à n'en plus finir — sans jamais lire la fin d'abord, »", "from": "oxane" },
+    "fragment_07": { "text": "« une chanson à toi que personne d'autre ne connaît, »", "from": "cyril" },
+    "fragment_08": { "text": "« un moteur qui ne cale jamais — enfin, façon de parler, »", "from": "manu" },
+    "fragment_09": { "text": "« une place à table chaque fois que tu redescendras, »", "from": "noelia" },
+    "fragment_10": { "text": "« des danses avec la pluie, le vent et les rivières, »", "from": "lo" },
+    "fragment_11": { "text": "« un ciel entier à explorer, et l'envie de revenir, »", "from": "lana" },
+    "fragment_12": { "text": "« des amis à plumes, à poils et à écailles partout où tu iras, »", "from": "marjo" },
+    "fragment_13": { "text": "« …et souviens-toi : ici, tu auras toujours un village. Un pour tous ! »", "from": "mousquetaires" }
   }
 }

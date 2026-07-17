@@ -36,8 +36,8 @@ export default function VillageMap() {
   statusRef.current = Object.fromEntries(
     characters.map((c) => [c.id, zoneStatus(c, state)])
   )
-  const allFragmentsRef = useRef(allFragments)
-  allFragmentsRef.current = allFragments
+  const fragCountRef = useRef(state.fragments.length)
+  fragCountRef.current = state.fragments.length
 
   const showToast = (msg) => {
     setToast(msg)
@@ -91,7 +91,7 @@ export default function VillageMap() {
       }
 
       ctx.drawImage(bases[frame % 2], 0, 0)
-      renderLife(ctx, frame, statusRef.current, allFragmentsRef.current)
+      renderLife(ctx, frame, statusRef.current, fragCountRef.current, fragmentsData.order.length)
       drawHero(ctx, hero.x - 5, hero.y - 12, hero.waypoints.length > 0, Math.floor(now / 140), hero.facing)
       raf = requestAnimationFrame(loop)
     }
@@ -117,13 +117,13 @@ export default function VillageMap() {
     const character = BY_ID[id]
     const status = statusRef.current[id]
     if (status === 'locked') {
-      showToast(`${character.name} — cette porte est encore fermée… Continue l’enquête !`)
+      showToast(`${character.name} — cette porte est encore fermée… Continue la chasse aux éclats !`)
       return
     }
     const dest = ZONES[id]
     if (status === 'done') {
       walkTo(dest.x, dest.y + 1.2, () =>
-        showToast(`${character.name} te salue de la main. Le bruit est revenu ici.`)
+        showToast(`${character.name} te salue de la main. Son éclat a rejoint Étincelle.`)
       )
       return
     }

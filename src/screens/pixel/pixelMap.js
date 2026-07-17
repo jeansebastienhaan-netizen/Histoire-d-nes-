@@ -412,8 +412,38 @@ export function renderBase(ctx, frame) {
   Object.values(BUILDINGS).forEach((draw) => draw(ctx))
 }
 
-export function renderLife(ctx, frame, zoneStatus, allFragments) {
+// Étincelle dans son cratère, près du tilleul — elle grossit et brille
+// à mesure qu'on lui rend ses éclats (0 → 13).
+function drawStar(ctx, frame, count, total) {
+  const x = 11.4 * TILE, y = 12.4 * TILE
+  // le cratère
+  px(ctx, x - 7, y + 3, 15, 4, C.soilD)
+  px(ctx, x - 5, y + 2, 11, 3, C.soil)
+  px(ctx, x - 9, y + 5, 4, 2, C.soilD); px(ctx, x + 6, y + 5, 4, 2, C.soilD)
+  const t = count / total
+  const glow = frame % 2 === 0 ? 1 : 0
+  // halo qui grandit avec les éclats rendus
+  if (t > 0.25) px(ctx, x - 4 - glow, y - 5 - glow, 9 + glow * 2, 9 + glow * 2, 'rgba(240,192,80,0.22)')
+  if (t > 0.6) px(ctx, x - 6 - glow, y - 7 - glow, 13 + glow * 2, 13 + glow * 2, 'rgba(240,192,80,0.16)')
+  // le corps de l'étoile (croix pixel + cœur)
+  const body = t >= 1 ? '#f8dc88' : t > 0.5 ? C.gold : '#c8a45a'
+  px(ctx, x - 1, y - 5, 3, 9, body)
+  px(ctx, x - 4, y - 2, 9, 3, body)
+  px(ctx, x - 2, y - 3, 5, 5, t >= 1 ? '#fff2c8' : '#e8d3a8')
+  // yeux
+  px(ctx, x - 1, y - 1, 1, 1, C.ink)
+  px(ctx, x + 1, y - 1, 1, 1, C.ink)
+  // étincelles quand complète
+  if (t >= 1 && glow) {
+    px(ctx, x - 8, y - 8, 1, 1, '#fff'); px(ctx, x + 8, y - 6, 1, 1, '#fff')
+    px(ctx, x + 6, y - 10, 1, 1, '#fff')
+  }
+}
+
+export function renderLife(ctx, frame, zoneStatus, fragmentCount = 0, total = 13) {
+  const allFragments = fragmentCount >= total
   tilleul(ctx, allFragments)
+  drawStar(ctx, frame, fragmentCount, total)
   // les habitants
   for (const [id, [x, y]] of Object.entries(NPC_SPOTS)) {
     npc(ctx, x, y, id, frame)

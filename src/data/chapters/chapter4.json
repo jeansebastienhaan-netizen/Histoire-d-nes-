@@ -7,25 +7,15 @@
   "nodes": {
     "start": {
       "speaker": "carnet",
-      "text": "Au potager, le Grand Silence a fait sa victime la plus discrète : Papy. Il faut dire que Papy parlait déjà trois mots par semaine, et encore, les bonnes semaines. Mamy jure qu'il a toujours communiqué par légumes : une tomate mûre pour « bonjour », un panier de haricots pour « je t'aime ». Mais SON bruit à lui a disparu : le petit chant de l'arrosoir, le soir, sur les feuilles.",
+      "text": "Au potager, le mot de panique de Papy n'avait pas menti : la citrouille a TRIPLÉ dans la nuit. Elle est désormais grosse comme une brouette et demie, luisante, magnifique, et Papy la contemple depuis l'aube avec un mélange de fierté et de soupçon. Son éclat à lui est tombé PILE dessous — et tout ce qui pousse au-dessus d'un éclat d'étoile pousse, disons, avec enthousiasme.",
       "next": "papy_accueil"
     },
     "papy_accueil": {
       "speaker": "papy",
-      "text": "Papy accueille l'enquêteur en soulevant son chapeau de paille d'un centimètre — chez lui, c'est une ovation. Puis il montre du doigt : là, entre les rangs de semis, une empreinte de chausson G-É-A-N-T-E, bien nette dans la terre fraîche. Et à côté, posé sur une motte : un petit sachet de tisane. À la camomille.",
-      "next": "papy_indice"
-    },
-    "papy_indice": {
-      "speaker": "carnet",
-      "text": "De la camomille… comme l'odeur chez Mamy ! Le voleur est donc passé par le potager, en chaussons, avec sa tisane, et — le carnet en frissonne — il s'est PENCHÉ sur les semis. Il y a une trace de genou. Un voleur de bruits qui s'agenouille pour regarder pousser les courgettes. De plus en plus étrange.",
-      "next": "papy_probleme"
-    },
-    "papy_probleme": {
-      "speaker": "papy",
-      "text": "Papy sort son ardoise. Il écrit peu, mais il écrit juste : « Plant de citrouille. Concours dimanche. À transplanter ce soir. Brouette. Semis fragiles. Toi. » Il montre la brouette, le plant champion (déjà énorme), et le potager fraîchement semé qu'il faudra traverser SANS écraser un seul semis. Puis il s'assoit sur son seau, confiant, terrifiant de confiance.",
+      "text": "Papy accueille l'enquêteur en soulevant son chapeau de paille d'un centimètre — chez lui, c'est une ovation. Puis il sort son ardoise. Il écrit peu, mais il écrit juste : « Éclat sous la citrouille. Citrouille sur l'éclat. Problème circulaire. » Il montre la brouette. Puis les semis fraîchement plantés entre ici et là-bas. Puis toi.",
       "choices": [
         {
-          "label": "« Confiez-moi le champion. Je le traiterai comme un membre de la famille. »",
+          "label": "« Confiez-moi la championne. Je la traiterai comme un membre de la famille. »",
           "effects": { "coeur": 1 },
           "next": "avant_jeu"
         },
@@ -35,7 +25,7 @@
           "next": "avant_jeu"
         },
         {
-          "label": "« Ce plant arrivera de l'autre côté même si je dois y passer la nuit. »",
+          "label": "« Cette citrouille arrivera de l'autre côté même si j'y passe la nuit. »",
           "effects": { "determination": 1 },
           "next": "avant_jeu"
         }
@@ -43,14 +33,14 @@
     },
     "avant_jeu": {
       "speaker": "carnet",
-      "text": "La brouette est chargée, le plant champion salue la foule (deux poules). Entre le départ et le carré d'arrivée : des semis partout, tendres et invisibles ou presque. Papy lève un doigt : premier avertissement. Il n'y en aura pas de deuxième — enfin si, deux autres, mais après c'est terminé.",
+      "text": "La citrouille géante est hissée dans la brouette (à quatre, avec des mots qu'on ne répétera pas à Mamy). Entre le pied de citrouille et le carré de repos, il y a tout le potager fraîchement semé — des semis tendres, invisibles ou presque, que Papy surveille comme le lait sur le feu. Il lève un doigt : premier avertissement. Il y en aura trois. Après, c'est terminé.",
       "next": "jeu_brouette"
     },
     "jeu_brouette": {
       "type": "minigame",
       "game": "SteadyHand",
       "config": {
-        "intro": "Guide la brouette 🛞 du départ jusqu'au carré de terre 🏁 sans toucher un seul semis 🌱. Un semis touché : la brouette repart du début !",
+        "intro": "Guide la brouette 🛞 et sa citrouille géante jusqu'au carré 🏁 sans toucher un seul semis 🌱. Un semis touché : la brouette repart du début !",
         "item": "🛞",
         "goal": { "x": 86, "y": 12, "label": "🏁 le carré" },
         "lives": 3
@@ -61,7 +51,7 @@
     },
     "jeu_rate": {
       "speaker": "papy",
-      "text": "Papy relève l'enquêteur, épousseté, et l'assoit sur le seau à côté de lui. Il écrit : « Les semis repoussent. Les brouettes se redressent. Personne n'est mort. » Puis il tend un radis, en signe de paix. C'est le plus long discours de consolation qu'il ait jamais fait.",
+      "text": "Papy relève l'enquêteur, l'époussette, et l'assoit sur le seau à côté de lui. Il écrit : « Les semis repoussent. Les brouettes se redressent. Personne n'est mort. » Puis il tend un radis, en signe de paix. C'est le plus long discours de consolation qu'il ait jamais fait.",
       "choices": [
         { "label": "Reprendre la brouette", "next": "jeu_brouette" },
         { "label": "Revenir plus tard", "next": "sortie_douce" }
@@ -69,22 +59,17 @@
     },
     "sortie_douce": {
       "speaker": "carnet",
-      "text": "Papy raccompagne l'enquêteur à la barrière et lui glisse trois tomates dans les poches. Traduction, d'après Mamy : « Reviens vite, c'était bien. »",
+      "text": "Papy raccompagne l'enquêteur à la barrière et lui glisse trois tomates dans les poches. Traduction, d'après Mamy : « Reviens vite, c'était bien. » Derrière lui, la citrouille luit doucement dans le soir. Elle a peut-être encore grossi. Personne n'ose vérifier.",
       "next": "END"
     },
     "jeu_reussi": {
       "speaker": "papy",
-      "text": "Pas un semis touché. PAS UN. Papy retire son chapeau en entier — du jamais-vu de mémoire de village — et le tient contre son cœur pendant que le plant champion s'installe dans sa nouvelle terre. Puis il écrit un seul mot, souligné deux fois : « Jardinier. » Il n'y a pas de plus haute décoration ici.",
-      "next": "surprise"
+      "text": "Pas un semis touché. PAS UN. Papy retire son chapeau en entier — du jamais-vu de mémoire de village — pendant que la citrouille s'installe dans son carré de repos. Puis il creuse à l'endroit du pied, à mains nues, avec une douceur d'infirmier… et le quatrième éclat apparaît, doré, tiède, encore tout vibrant de sève. Papy écrit un seul mot, souligné deux fois : « Jardinier. » Il n'y a pas de plus haute décoration ici.",
+      "next": "fin_fragment"
     },
     "jeu_presque": {
       "speaker": "papy",
-      "text": "Le plant est arrivé — deux semis ont été décoiffés en route et Papy les a replantés sans un mot, avec la douceur d'un infirmier. Puis il a tapoté l'épaule de l'enquêteur : dans sa langue, ça signifie « le principal est sauf, et toi aussi ».",
-      "next": "surprise"
-    },
-    "surprise": {
-      "speaker": "carnet",
-      "text": "En creusant le carré d'arrivée, la bêche heurte quelque chose : une boîte en fer, encore une ! Étiquette du voleur : « CHANSON D'AROZOIR — rayon bruits d'eau — très aprécié ». Dedans, la boîte est vide… mais un fragment doré est collé au fond, comme oublié. Papy le décolle, le regarde, puis écrit : « Il a aimé mon arrosoir. Il a bon goût. Ça ne l'excuse pas. »",
+      "text": "La citrouille est arrivée — deux semis ont été décoiffés en route, et Papy les a replantés sans un mot, avec la douceur d'un infirmier. Puis il a creusé au pied de citrouille et déterré le quatrième éclat, doré et tiède. Il a tapoté l'épaule de l'enquêteur : dans sa langue, ça signifie « le principal est sauf, et toi aussi ».",
       "next": "fin_fragment"
     },
     "fin_fragment": {
@@ -95,7 +80,7 @@
     },
     "epilogue": {
       "speaker": "carnet",
-      "text": "Le soir même, quand Papy pencha son arrosoir sur le plant champion, le petit chant de l'eau revint — tchhh, ploc, ploc — et les feuilles se mirent à briller. Papy écouta jusqu'à la dernière goutte. Sur l'ardoise du tableau de l'enquête, il ajouta : « 4 bruits récupérés. Le voleur boit de la camomille, chausse du 52 et s'agenouille devant les semis. On cherche un géant fatigué qui aime les jardins. »",
+      "text": "Au cratère, le quatrième éclat se souda dans un DING rond comme une goutte d'eau — la note de l'arrosoir, jura Papy, qui s'y connaît. Étincelle tinta longuement vers lui : dans sa langue à elle, ça devait vouloir dire merci pour la citrouille. Sur le tableau de mission, Papy écrivit : « 4 sur 13. La citrouille géante reste au village. On ne discute pas. Elle a un prénom : Grosse Lulu. » Le concours du canton n'a qu'à bien se tenir.",
       "next": "END"
     }
   }

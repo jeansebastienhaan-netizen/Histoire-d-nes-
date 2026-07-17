@@ -7,41 +7,36 @@
   "nodes": {
     "start": {
       "speaker": "carnet",
-      "text": "Le mardi 3, à l'aube, le coq du village a ouvert le bec, pris sa grande inspiration… et rien. Il a refait le geste trois fois, vexé, puis il est retourné se coucher. Ce matin-là, TOUS les bruits avaient disparu. Pas un tintement, pas un grincement, pas un ronflement — et pourtant, chez Papy, c'était garanti d'ordinaire.",
+      "text": "Hier soir, à 21h21 très exactement, une étoile filante a raté son virage. Elle a traversé le ciel en zigzag — les étoiles filantes ne zigzaguent JAMAIS —, frôlé le clocher, décoiffé trois pigeons, et s'est écrasée dans la prairie, juste à côté du grand tilleul. BOUM. Un petit cratère fumant, et dedans : une étoile de la taille d'un ballon, toute ébréchée, qui tinte faiblement. Comme une clochette triste.",
       "next": "intro_2"
     },
     "intro_2": {
       "speaker": "carnet",
-      "text": "On a d'abord cru à une panne. On a secoué les cloches : muettes. Tapé sur les casseroles : rien. Le facteur a klaxonné pendant dix minutes : le klaxon faisait la tête. Alors le village s'est mis aux ardoises, et quelqu'un a écrit en grand sur la place : LES BRUITS N'ONT PAS DISPARU. ON NOUS LES A PRIS. Ce quelqu'un, c'était Mamy. Et Mamy ne se trompe jamais deux fois par siècle.",
-      "next": "intro_3"
-    },
-    "intro_3": {
-      "speaker": "carnet",
-      "text": "C'est donc chez elle que l'enquête commence. Sa porte est ouverte — elle l'est toujours — et il flotte une odeur de gâteau tiède et… d'autre chose. Une odeur d'infusion. De la camomille ? Bizarre : Mamy ne boit que du café, assez fort pour réveiller une pierre.",
+      "text": "Au matin, tout le village est venu voir. Il lui manque TREIZE éclats, projetés un peu partout dans la nuit. Et depuis, il se passe des choses bizarres dans les maisons… Le conseil de crise s'est réuni là où se réunissent tous les conseils de crise : dans la cuisine de Mamy, autour d'un gâteau.",
       "next": "mamy_accueil"
     },
     "mamy_accueil": {
       "speaker": "mamy",
-      "text": "« Te voilà, toi. » Mamy pousse une part de gâteau et son ardoise : « Regarde l'horloge avant toute chose. Elle s'est arrêtée à 5h07, la nuit du vol. Et regarde la poussière, là, dessous : des traces de pas. Des pas de CHAUSSONS. Taille immense. Or je connais toutes les pantoufles de ce village, c'est mon métier de grand-mère : celles-là ne sont pas d'ici. »",
-      "next": "mamy_theorie"
+      "text": "« Te voilà, toi. Assieds-toi, prends du gâteau, on a une étoile sur les bras. » Derrière Mamy, sa vieille horloge sonne. Puis re-sonne. Puis RE-re-sonne. « Oui, je sais. Depuis la chute, elle sonne 21h21 toutes les dix minutes. L'heure de l'accident, gravée dans son balancier. Cette étoile a laissé des morceaux d'elle-même partout — et chaque morceau fait des siennes. »",
+      "next": "mamy_mission"
     },
-    "mamy_theorie": {
+    "mamy_mission": {
       "speaker": "mamy",
-      "text": "« Quelqu'un est entré ici à 5h07, a pris le tic-tac de mon horloge et a filé sans rien casser. Un voleur qui ne vole QUE les bruits… Il nous faut des preuves, des indices, une liste de suspects. Bref : il nous faut une enquête. Tu es engagé. Le salaire, c'est du gâteau. »",
+      "text": "« Une étoile qui tombe, ça ne se laisse pas traîner : ça se répare et ça se renvoie chez elle. C'est comme ça qu'on faisait de mon temps, et de mon temps, on savait faire. Il nous faut quelqu'un de jeune, de malin et de poli pour récupérer les treize éclats. J'ai voté pour toi. À l'unanimité. J'étais seule à voter, c'est plus simple. »",
       "choices": [
         {
-          "label": "« Engagé ! On retrouvera le tic-tac, promis. Il vous manque, hein ? »",
+          "label": "« La pauvre… elle doit avoir si peur, toute seule dans son cratère. J'accepte ! »",
           "effects": { "coeur": 1 },
           "setFlags": ["a_aide_mamy"],
           "next": "mamy_probleme"
         },
         {
-          "label": "« 5h07… Donc le voleur travaille de nuit et finit avant le coq. Intéressant. »",
+          "label": "« 21h21 pile… Donc chaque éclat a gardé une trace de la chute. Ça va nous aider. J'en suis. »",
           "effects": { "ruse": 1 },
           "next": "mamy_probleme"
         },
         {
-          "label": "« Je ne dormirai pas tant que ce village ne fera pas de bruit. Enfin, si, mais vous me comprenez. »",
+          "label": "« Treize éclats, treize maisons ? Je commence aujourd'hui et je ne m'arrête plus. »",
           "effects": { "determination": 1 },
           "next": "mamy_probleme"
         }
@@ -49,25 +44,25 @@
     },
     "mamy_probleme": {
       "speaker": "mamy",
-      "text": "« Premier problème à régler : hier, le vent a ouvert la fenêtre et mélangé les ardoises que les voisins m'avaient confiées pour affichage. Cinq ardoises, zéro signature — les gens signent de moins en moins, c'est un scandale. Si on veut interroger tout le monde, il faut d'abord savoir qui a écrit quoi. Toi qui as l'œil, prouve-le. »",
+      "text": "« Première mission : y voir clair. Cette nuit, cinq voisins m'ont écrit des mots de panique — dans le noir, sans lunettes, et personne n'a signé, évidemment. Si on veut savoir où sont tombés les éclats, il faut d'abord savoir QUI a écrit QUOI. Toi qui as l'œil, prouve-le. »",
       "next": "avant_puzzle"
     },
     "avant_puzzle": {
       "speaker": "carnet",
-      "text": "Mamy étale les cinq ardoises sur la table. Elle, elle sait déjà, évidemment — elle connaît chaque écriture, chaque manie et chaque histoire de ce village depuis soixante ans. Mais un bon enquêteur doit faire ses preuves. Elle croise les bras. Elle attend. Le gâteau refroidit, la pression monte.",
-      "next": "puzzle_ardoises"
+      "text": "Mamy étale les cinq mots de panique sur la table. Elle, elle sait déjà — soixante ans qu'elle connaît chaque manie de ce village. Mais un bon chasseur d'éclats doit faire ses preuves. Elle croise les bras. Le gâteau refroidit. La pression monte.",
+      "next": "puzzle_mots"
     },
-    "puzzle_ardoises": {
+    "puzzle_mots": {
       "type": "minigame",
       "game": "MatchPuzzle",
       "config": {
-        "intro": "Cinq ardoises, cinq voisins. Lis bien : chaque ardoise trahit son auteur — une passion, une manie, une bêtise.",
+        "intro": "Cinq mots de panique, cinq voisins. Lis bien : chaque mot trahit son auteur — une passion, une manie, une catastrophe personnelle.",
         "items": [
-          { "id": "a1", "text": "« RDV o but a la tonbé de la nui. VI1 pa an retar !! (signé : le Capitin) »" },
-          { "id": "a2", "text": "« Chapitre 12 : le majordome était le COUPABLE ?! Rends-le-moi vite, il me reste 40 pages !! »" },
-          { "id": "a3", "text": "« Ne touche pas à l'arrosoir ce soir. Elles ont eu leur compte d'eau. Signé : quelqu'un que les limaces respectent. »" },
-          { "id": "a4", "text": "« La deuxième corde sonne faux depuis mardi. Mardi… le jour où TOUT a commencé. Coïncidence ?? »" },
-          { "id": "a5", "text": "« Défense de grignoter les ardoises du tableau d'affichage. Berlingot, je te VOIS. »" }
+          { "id": "m1", "text": "« Mon ballon FLOTTE à deux mètres du sol depuis hier soir !! Le match de dimanche est COMPROMIS !! (mais c'est un peu stylé) »" },
+          { "id": "m2", "text": "« Tous mes romans se sont ouverts au DERNIER chapitre. Tout seuls. On m'a divulgâché 214 fins cette nuit. J'exige une enquête et des excuses. »" },
+          { "id": "m3", "text": "« La citrouille a triplé dans la nuit. Je n'ai rien arrosé. Je le jure sur mes limaces. »" },
+          { "id": "m4", "text": "« Ma guitare joue toute seule depuis 21h21. Une jolie mélodie, d'ailleurs. Elle est douée. C'est vexant. »" },
+          { "id": "m5", "text": "« Les poules couvent quelque chose qui BRILLE et Berlingot monte la garde devant le poulailler. Berlingot ne monte JAMAIS la garde. C'est louche. »" }
         ],
         "owners": [
           { "id": "jules", "name": "Jules" },
@@ -76,7 +71,7 @@
           { "id": "cyril", "name": "Cyril" },
           { "id": "marjo", "name": "Marjo" }
         ],
-        "solution": { "a1": "jules", "a2": "oxane", "a3": "papy", "a4": "cyril", "a5": "marjo" },
+        "solution": { "m1": "jules", "m2": "oxane", "m3": "papy", "m4": "cyril", "m5": "marjo" },
         "maxMistakes": 2
       },
       "onSuccess": "puzzle_reussi",
@@ -85,30 +80,30 @@
     },
     "puzzle_reussi": {
       "speaker": "mamy",
-      "text": "« Cinq sur cinq, du premier coup. » Mamy hoche lentement la tête, ce qui est chez elle l'équivalent d'un feu d'artifice. « L'orthographe de Jules, le suspense d'Oxane, les limaces de Papy, la corde de Cyril et la chèvre de Marjo. Tu lis les gens comme je lis les gâteaux : à la cuisson. L'enquête est entre de bonnes mains. »",
+      "text": "« Cinq sur cinq, du premier coup. » Mamy hoche lentement la tête — chez elle, c'est un feu d'artifice. « Le ballon de Jules, les romans d'Oxane, la citrouille de Papy, la guitare de Cyril et les poules de Marjo. Cinq éclats déjà localisés, et je parie que les huit autres n'ont pas fait moins de bêtises. La chasse aux éclats est ouverte. »",
       "next": "recompense"
     },
     "puzzle_presque": {
       "speaker": "mamy",
-      "text": "« Quelques hésitations… mais tu t'es corrigé, et c'est exactement ça, enquêter : se tromper proprement, puis viser juste. » Mamy range les ardoises en les tapotant. « Retiens ce que tu as lu, surtout l'ardoise de Cyril. Sa corde qui sonne faux “depuis mardi”… Mardi. Comme mon horloge. Notre voleur a commencé par la musique. »",
+      "text": "« Quelques hésitations, puis tout juste — c'est exactement ça, enquêter : se tromper proprement, et viser mieux. » Mamy épingle les cinq mots sur son buffet, façon tableau de mission. « Retiens bien tout ça. Surtout l'heure : 21h21. Quelque chose me dit qu'elle reviendra sur le tapis. »",
       "next": "recompense"
     },
     "puzzle_rate": {
       "speaker": "mamy",
-      "text": "« Stop. » Mamy retourne toutes les ardoises d'un geste. « Règle numéro un de l'enquête : quand on embrouille tout, on pose le crayon et on mange du gâteau. » Elle en ressert une part d'office. « Les indices ne s'enfuient pas, eux. On reprend quand tu veux — et cette fois, lis chaque ardoise deux fois. »",
+      "text": "« Stop. » Mamy retourne tous les mots d'un geste. « Règle numéro un de la maison : quand on embrouille tout, on pose le crayon et on mange du gâteau. » Elle en ressert une part d'office. « Les éclats ne s'envoleront pas sans leur étoile. On reprend quand tu veux — et cette fois, lis chaque mot deux fois. »",
       "choices": [
-        { "label": "Réessayer maintenant, gâteau en main", "next": "puzzle_ardoises" },
+        { "label": "Réessayer, gâteau en main", "next": "puzzle_mots" },
         { "label": "Revenir plus tard", "next": "sortie_douce" }
       ]
     },
     "sortie_douce": {
       "speaker": "carnet",
-      "text": "Mamy raccompagne son enquêteur jusqu'au seuil et glisse un morceau de gâteau « pour la route et pour la réflexion ». Sa porte restera ouverte. Elle l'est toujours.",
+      "text": "Mamy raccompagne son enquêteur jusqu'au seuil, une part de gâteau « pour la route et pour la réflexion » dans la main. Dehors, près du tilleul, la petite étoile tinte doucement dans son cratère. Elle attendra. Mais pas cent ans, d'après Mamy.",
       "next": "END"
     },
     "recompense": {
       "speaker": "carnet",
-      "text": "En rangeant la dernière ardoise, Mamy s'immobilise. Entre deux pages de son vieux carnet dépasse un papier doré, plié en quatre, couvert d'une écriture qu'elle reconnaît : la sienne, en beaucoup plus jeune. « Ça alors. Mon vœu… J'avais écrit un vœu, il y a très longtemps. Et quelqu'un l'a découpé en morceaux. » Elle relève la tête : « Le voleur ne prend pas que les bruits. Retrouve les autres morceaux. Tous. »",
+      "text": "Et soudain, l'horloge de Mamy sonne si fort que tout le monde sursaute. Mamy ouvre le boîtier du balancier… et le voilà : un éclat d'étoile, doré, chaud comme un caillou d'été, niché contre le mécanisme. « Le premier des treize », souffle Mamy. « Il s'était caché dans ma pendule — voilà pourquoi elle radotait. File le rendre à sa propriétaire. Elle est dans le cratère, elle tinte, tu ne peux pas la rater. »",
       "next": "fin_fragment"
     },
     "fin_fragment": {
@@ -119,7 +114,7 @@
     },
     "epilogue": {
       "speaker": "carnet",
-      "text": "Et à l'instant précis où le fragment doré toucha la main de l'enquêteur, la vieille horloge frissonna, toussota… et se remit à faire tic-tac. Un tout petit bruit — le premier depuis mardi. Mamy le nota aussitôt : « 1 bruit récupéré. Le voleur n'aime pas qu'on enquête. Continuons de lui déplaire. » Quelque part, très loin, quelqu'un éternua dans une boîte en fer.",
+      "text": "Au cratère, quand l'éclat retrouva l'étoile, il se passa quelque chose de magnifique : il se souda tout seul, dans un petit DING cristallin — la première note d'un chant. L'étoile brilla un peu plus fort et tinta trois fois, ce qui, tout le monde en fut convaincu, voulait dire merci. Sur le tableau de mission, Mamy écrivit : « 1 éclat sur 13. L'étoile chante à mesure qu'on la répare. Douze notes manquantes. Au travail. »",
       "next": "END"
     }
   }

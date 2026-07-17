@@ -7,25 +7,25 @@
   "nodes": {
     "start": {
       "speaker": "carnet",
-      "text": "Tout en haut du village, l'observatoire de Lana veille sur les étoiles. Enfin, veillait : depuis mardi, Lana ne quitte plus sa lunette, car le Grand Silence a fait UNE victime céleste. L'Étoile du Berger — la première allumée, la plus fidèle — a disparu du ciel la nuit du vol. Or les étoiles, ça ne s'éteint pas comme ça. Ça se VOLE encore moins. En principe.",
-      "next": "lana_theorie"
+      "text": "Tout en haut du village, l'observatoire de Lana tourne à plein régime depuis la nuit de la chute. Lana n'a presque pas dormi — et pour une fois, ce n'est pas à cause des étoiles filantes ordinaires. Son éclat à elle est perché SUR la coupole, attiré par le grand télescope comme un aimant, et il refuse de descendre. Mais ce n'est pas le plus important. Le plus important, c'est ce que Lana a DÉCOUVERT.",
+      "next": "lana_revelation"
     },
-    "lana_theorie": {
+    "lana_revelation": {
       "speaker": "lana",
-      "text": "« Assieds-toi, j'ai refait tous mes calculs onze fois. » Lana tapote son ardoise couverte de chiffres, de flèches et d'un dessin de sandwich (elle a des priorités). « L'Étoile du Berger n'a pas disparu : elle s'est ÉTEINTE DE TRISTESSE. Les étoiles se nourrissent des bruits qui montent de la terre, tout le monde sait ça — enfin, moi je le sais, et je te le dis, donc maintenant tout le monde, c'est nous deux. Village muet : étoile éteinte. CQFD. »",
+      "text": "« Assieds-toi. J'ai refait tous mes calculs onze fois, et j'ai croisé avec le télescope de Barnabé et l'Atlas d'Oxane. » Lana tapote son ardoise couverte de chiffres, de flèches et d'un dessin de sandwich (elle a des priorités). « Étincelle est une ÉTOILETTE. Une étoile de moins de cent ans, tombée pendant sa première leçon de vol. Et maintenant, regarde là-haut. Les deux grosses étoiles, juste au-dessus du village. Tu vois qu'elles CLIGNOTENT ? Elles clignotent en alternance, toutes les 21 secondes. C'est un appel. Ce sont ses PARENTS. Ils la cherchent. »",
       "next": "lana_epreuve"
     },
     "lana_epreuve": {
       "speaker": "lana",
-      "text": "« Pour la rallumer, il faut lui prouver que l'intelligence du village, elle, brille encore. Les étoiles sont sensibles à trois choses : la logique, la logique, et les sandwichs. J'ai préparé TROIS énigmes du ciel — mes plus retorses. Réponds juste, et l'étoile nous verra briller d'ici. Rate, et… non, en fait, ne rate pas. »",
+      "text": "« La Nuit des Étoiles Filantes est dans deux jours — la seule nuit où le ciel descend assez bas pour un rattrapage de leçon de vol. D'ici là, il me faut MON éclat, sur MA coupole. Problème : il ne réagit ni à l'échelle, ni au balai, ni à mes injures scientifiques. Il réagit à UNE chose : quand je réfléchis à voix haute, il brille plus fort. Cet éclat aime l'intelligence. Alors on va réfléchir TRÈS fort, tous les deux. J'ai préparé mes trois énigmes du ciel — mes plus retorses. Réponds juste, et il descendra tout seul pour écouter. »",
       "choices": [
         {
-          "label": "« Pose tes énigmes. On va la rallumer ensemble, ton étoile. »",
+          "label": "« Pose tes énigmes. On va le faire descendre en réfléchissant, ton éclat. »",
           "effects": { "coeur": 1 },
           "next": "jeu_enigmes"
         },
         {
-          "label": "Poser Mistiflouk sur la lunette : un sonar, ça aide à réfléchir en silence.",
+          "label": "Poser Mistiflouk sur la lunette : un sonar qui vibre, ça intriguera l'éclat autant que nous.",
           "condition": { "flag": "a_mistiflouk" },
           "effects": { "ruse": 1 },
           "next": "avant_jeu_mistiflouk"
@@ -39,7 +39,7 @@
     },
     "avant_jeu_mistiflouk": {
       "speaker": "carnet",
-      "text": "Mistiflouk s'enroule autour de la lunette astronomique et pointe sa petite tête vers le ciel, très pénétré. Lana l'observe : « Un serpent qui sent les sons… Dis-moi, s'il entend les étoiles, je change TOUTE ma thèse. » Mistiflouk ne confirme ni n'infirme — c'est un scientifique prudent. Place aux énigmes.",
+      "text": "Mistiflouk s'enroule autour de la lunette astronomique et pointe sa petite tête vers la coupole, très pénétré. Là-haut, l'éclat se penche pour mieux voir — un serpent-sonar, ça ne se croise pas tous les jours, même quand on est un morceau d'étoile. Lana jubile : « Excellent. Il est intrigué. Maintenant, les énigmes. Public captif, conditions idéales. »",
       "next": "jeu_enigmes"
     },
     "jeu_enigmes": {
@@ -49,7 +49,7 @@
         "maxMistakes": 1,
         "rounds": [
           {
-            "intro": "Lana retourne sa première ardoise, l'œil brillant.",
+            "intro": "Lana retourne sa première ardoise, l'œil brillant. Sur la coupole, l'éclat se penche.",
             "question": "« Je meurs chaque matin, je nais chaque soir, et pourtant j'ai des millions d'années. Qui suis-je ? »",
             "options": [
               { "label": "Le ciel étoilé", "correct": true },
@@ -83,7 +83,7 @@
     },
     "jeu_rate": {
       "speaker": "lana",
-      "text": "« Vérification des calculs ! » Lana ne dit jamais « c'est raté », elle dit « vérification des calculs ». Elle partage son sandwich en deux parts rigoureusement égales — elle a un compas. « Les énigmes du ciel demandent un cerveau reposé et nourri. Mange. Réfléchis. Et on reprend tout depuis la première ardoise, parce que la science, c'est ça : on recommence. »",
+      "text": "« Vérification des calculs ! » Lana ne dit jamais « c'est raté », elle dit « vérification des calculs ». Elle partage son sandwich en deux parts rigoureusement égales — elle a un compas. Sur la coupole, l'éclat s'est rassis, déçu comme un spectateur à l'entracte. « Il attend la suite. Mange. Réfléchis. Et on reprend tout depuis la première ardoise, parce que la science, c'est ça : on recommence. »",
       "choices": [
         { "label": "Reprendre les énigmes", "next": "jeu_enigmes" },
         { "label": "Revenir plus tard", "next": "sortie_douce" }
@@ -91,22 +91,17 @@
     },
     "sortie_douce": {
       "speaker": "carnet",
-      "text": "Lana raccompagne l'enquêteur en désignant le ciel : « Elle attendra. Les étoiles sont patientes — c'est nous qui sommes pressés. » Puis elle remonte à sa lunette quatre à quatre, parce que patiente, elle, pas trop.",
+      "text": "Lana raccompagne l'enquêteur en désignant les deux étoiles qui clignotent là-haut : « Dis-toi que ses parents nous regardent réviser. Pas de pression. » Puis elle remonte à sa lunette quatre à quatre, parce que la patience, elle, c'est pour les étoiles.",
       "next": "END"
     },
     "jeu_reussi": {
       "speaker": "lana",
-      "text": "« Trois sur trois SANS UNE ERREUR ?! » Lana vérifie ses propres corrigés, par principe, puis rend les armes : « Même l'énigme des étoiles filantes ! Celle qui a piégé l'instituteur, le maire et ma tante Berthe qui fait pourtant les mots croisés en STYLO ! » Elle note dans son registre : « Cette nuit, l'intelligence du village a brillé à l'œil nu. » ",
-      "next": "revelation"
+      "text": "« Trois sur trois SANS UNE ERREUR ?! » Lana vérifie ses propres corrigés, par principe, puis rend les armes. Et sur la coupole, il se passe exactement ce qu'elle avait prédit : l'éclat, qui s'est penché de plus en plus à chaque bonne réponse, glisse le long du dôme et atterrit en douceur sur le pupitre, entre les cartes du ciel, pour écouter de plus près. « Et voilà », dit Lana en le cueillant. « L'intelligence attire les étoiles. Je le mets dans ma thèse. »",
+      "next": "fin_fragment"
     },
     "jeu_presque": {
       "speaker": "lana",
-      "text": "« Une erreur, corrigée aussitôt — c'est exactement comme ça que travaillent les vrais astronomes. » Lana tamponne son registre. « Galilée aussi s'est trompé, tu sais. Moins vite que toi, mais il n'avait pas mes énigmes. L'étoile a vu l'essentiel : ici, on cherche. Et chercher, ça brille. »",
-      "next": "revelation"
-    },
-    "revelation": {
-      "speaker": "lana",
-      "text": "Lana colle soudain son œil à la lunette. « Attends. ATTENDS. Il y a soixante ans, d'après le registre de l'observatoire… l'Étoile du Berger s'était DÉJÀ éteinte. Trois jours. Et le registre note, écoute ça : “Extinction survenue lors du grand chagrin du Veilleur. Rallumée à son premier sourire.” LE VEILLEUR. C'est un NOM, tu comprends ? Quelqu'un portait ce nom-là. Quelqu'un dont le chagrin éteint les étoiles… »",
+      "text": "« Une erreur, corrigée aussitôt — c'est exactement comme ça que travaillent les vrais astronomes. » Sur la coupole, l'éclat hésite, puis glisse le long du dôme et atterrit sur le pupitre : la curiosité a gagné. Lana le cueille, solennelle : « Galilée aussi s'est trompé, tu sais. Moins vite que toi. Mais il n'avait pas mes énigmes. »",
       "next": "fin_fragment"
     },
     "fin_fragment": {
@@ -117,7 +112,7 @@
     },
     "epilogue": {
       "speaker": "carnet",
-      "text": "Dans le registre de l'observatoire, à la page d'il y a soixante ans, dormait un fragment doré — le onzième. Et cette nuit-là, le carillon de la terrasse tinta au vent revenu, onzième bruit récupéré, pendant qu'à l'horizon une petite lueur tremblota : l'Étoile du Berger, en veilleuse, comme quelqu'un qui hésite à rentrer. Sur le tableau de l'enquête, Lana écrivit : « 11 bruits récupérés. Le V. de la signature, c'est LE VEILLEUR. Son chagrin éteint les étoiles. Il ne nous reste que deux questions : où est-il, et qui va le consoler ? »",
+      "text": "Au cratère, le onzième éclat se souda dans un DING cristallin de carillon — et au même instant, là-haut, les deux étoiles-parents clignotèrent TROIS fois de suite, très vite. Lana, qui n'en perdait pas une miette à la lunette, traduisit sans hésiter : « Ça veut dire “merci”. Ou “dépêchez-vous”. Probablement les deux. » Sur le tableau de mission, elle écrivit : « 11 sur 13. Fenêtre de décollage : la Nuit des Étoiles Filantes, après-demain. Deux éclats. On y est presque. NE RATONS PAS ÇA. »",
       "next": "END"
     }
   }

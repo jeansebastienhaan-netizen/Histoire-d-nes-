@@ -7,17 +7,17 @@
   "nodes": {
     "start": {
       "speaker": "carnet",
-      "text": "Au garage, la mobylette bleue de Manu est en panne de son. Elle roule, hein — mais sans son ron-ron, Manu dit que c'est « comme un chat empaillé : techniquement, tout y est ». Or la mobylette bleue livre le pain à trois hameaux. Un village sans ron-ron, passe encore. Sans pain, jamais.",
+      "text": "Au garage, la mobylette bleue de Manu tourne toute seule. Littéralement : elle roule en petits cercles réguliers au milieu du garage, sans personne dessus, avec l'application d'un poney de manège. L'éclat s'est logé dans le moteur, et de toute évidence, il adore conduire.",
       "next": "manu_situation"
     },
     "manu_situation": {
       "speaker": "manu",
-      "text": "« Te voilà, l'enquêteur. » Manu s'essuie les mains, ce qui étale le cambouis au lieu de l'enlever — c'est le principe du cambouis. « Le voleur est passé, oui. Il a pris le ron-ron, le cliquetis ET le pschitt de la pompe. Mais je m'en vais te dire un truc : il a REGONFLÉ mon pneu avant. Il était à plat depuis quinze jours. Le voleur m'a fait ma révision, tu te rends compte ? J'sais plus si je porte plainte ou si je lui laisse un pourboire. »",
+      "text": "« Te voilà, l'enquêteur. » Manu s'essuie les mains, ce qui étale le cambouis au lieu de l'enlever — c'est le principe du cambouis. « Alors : l'éclat est dans le moteur. La bleue tourne en rond depuis 21h21. Elle a fait, à mon estimation, quatre cents tours. Et je vais te dire un truc qui reste entre nous : le moteur n'a JAMAIS aussi bien tourné. Cet éclat, c'est un mécano né. J'sais plus si je le rends à l'étoile ou si je l'embauche. »",
       "next": "manu_probleme"
     },
     "manu_probleme": {
       "speaker": "manu",
-      "text": "« Pour réparer le ron-ron, il me faut mes outils de précision. Ils sont dans l'armoire blindée. Le code de l'armoire est sur un papier. Le papier est DANS l'armoire. » Manu laisse un silence de mécanicien. « Oui, je sais. Bref : j'avais laissé des indices pour moi-même, en cas d'oubli. Le problème, c'est que je les ai faits malins, et que moi, le soir, je suis bête. Débrouille-toi avec. »",
+      "text": "« Pour le sortir sans abîmer ni l'éclat ni la bleue, il me faut mes outils de précision. Ils sont dans l'armoire blindée. Le code de l'armoire est sur un papier. Le papier est DANS l'armoire. » Manu laisse un silence de mécanicien. « Oui, je sais. Heureusement, j'avais laissé des indices pour moi-même, en cas d'oubli. Le problème, c'est que je les ai faits malins, et que moi, le soir, je suis bête. Débrouille-toi avec. »",
       "choices": [
         {
           "label": "« On va le retrouver ensemble, ce code. À deux cerveaux, on en vaut un bon. »",
@@ -25,13 +25,13 @@
           "next": "jeu_code"
         },
         {
-          "label": "Demander à Mistiflouk de renifler l'armoire : les outils, ça rêve en cliquetis.",
+          "label": "Demander à Mistiflouk d'écouter l'armoire : les indices, ça se sent peut-être aussi.",
           "condition": { "flag": "a_mistiflouk" },
           "effects": { "ruse": 1 },
           "next": "avant_code_mistiflouk"
         },
         {
-          "label": "« Tes indices ne me font pas peur. Je ne repartirai pas sans le ron-ron. »",
+          "label": "« Tes indices ne me font pas peur. Je ne repartirai pas sans cet éclat. »",
           "effects": { "determination": 1 },
           "next": "jeu_code"
         }
@@ -39,7 +39,7 @@
     },
     "avant_code_mistiflouk": {
       "speaker": "carnet",
-      "text": "Mistiflouk se colle à l'armoire blindée et vibre doucement : les outils sont bien là, ils rêvent en cliquetis, tout va bien pour eux. Manu observe le serpent, très intéressé : « Il détecte les bruits à travers le métal ? Dis. Il ferait pas des diagnostics moteur, ton collègue ? Je le paie en souris. Enfin, en quoi ça se paie, un serpent ? » Reste le code à trouver.",
+      "text": "Mistiflouk se colle à l'armoire blindée et vibre doucement : rien ne chante là-dedans — l'éclat est bien dans la mobylette, confirmation sonar. Manu observe le serpent, très intéressé : « Il fait des diagnostics à travers le métal ? Dis. Il chercherait pas du travail, ton collègue ? Je paie en souris. Enfin, en quoi ça se paie, un serpent ? » Reste le code à trouver.",
       "next": "jeu_code"
     },
     "jeu_code": {
@@ -61,7 +61,7 @@
     },
     "code_rate": {
       "speaker": "manu",
-      "text": "L'armoire reste fermée, imperturbable. Manu hoche la tête, presque fier : « Sécurisée, hein ? C'est moi qui l'ai réglée. Je m'en veux et je me félicite, c'est deux sentiments en même temps, ça fatigue. » Il te tend un verre de grenadine d'atelier. « On relit les indices à tête reposée et on y retourne. »",
+      "text": "L'armoire reste fermée, imperturbable. Manu hoche la tête, presque fier : « Sécurisée, hein ? C'est moi qui l'ai réglée. Je m'en veux et je me félicite, c'est deux sentiments en même temps, ça fatigue. » Il te tend un verre de grenadine d'atelier. « On relit les indices à tête reposée et on y retourne. La bleue, elle, elle tourne. Elle a le temps. »",
       "choices": [
         { "label": "Retenter le code", "next": "jeu_code" },
         { "label": "Revenir plus tard", "next": "sortie_douce" }
@@ -69,22 +69,22 @@
     },
     "sortie_douce": {
       "speaker": "carnet",
-      "text": "Manu raccompagne l'enquêteur et confie à la mobylette, à l'écrit : « On le retrouvera, ton ron-ron. » La mobylette ne répond pas, mais c'est normal, même avant elle ne répondait pas.",
+      "text": "Manu raccompagne l'enquêteur en jetant un œil attendri à la mobylette qui entame son quatre cent quarante-troisième tour. « Regarde-la. On dirait moi jeune. » Personne n'ose demander de précisions.",
       "next": "END"
     },
     "code_reussi": {
       "speaker": "manu",
-      "text": "CLIC-CLAC. L'armoire s'ouvre du premier coup. Manu en reste bouche bée : « Quatre, trois, zéro. QUATRE, TROIS, ZÉRO ! Mais bien sûr ! Deux roues fois deux roues, trois coups de kick, et zéro parce que la bleue, c'est la bleue. T'es rentré dans ma tête, et je te préviens : c'est mal rangé là-dedans. Chapeau, l'artiste. »",
-      "next": "reparation"
+      "text": "CLIC-CLAC. L'armoire s'ouvre du premier coup. Manu en reste bouche bée : « Quatre, trois, zéro. QUATRE, TROIS, ZÉRO ! Mais bien sûr ! Deux roues fois deux roues, trois coups de kick, et zéro parce que la bleue, c'est la bleue. T'es entré dans ma tête, et je te préviens : c'est mal rangé là-dedans. Chapeau, l'artiste. Maintenant, opération à moteur ouvert. »",
+      "next": "operation"
     },
     "code_presque": {
       "speaker": "manu",
-      "text": "CLIC-CLAC. L'armoire cède au bout de quelques essais. « Bon. T'as mis moins de temps que Manu-du-soir, c'est déjà une victoire scientifique. » Il ouvre les tiroirs de précision avec des gestes de chirurgien. « Au travail. »",
-      "next": "reparation"
+      "text": "CLIC-CLAC. L'armoire cède au bout de quelques essais. « T'as mis moins de temps que Manu-du-soir, c'est déjà une victoire scientifique. » Il ouvre les tiroirs de précision avec des gestes de chirurgien. « Maintenant, opération à moteur ouvert. »",
+      "next": "operation"
     },
-    "reparation": {
+    "operation": {
       "speaker": "carnet",
-      "text": "Dans le tiroir du bas, sous les clés de 12, une surprise : une boîte en fer du voleur, étiquetée « RON-RON DE MOBILETE — rayon bruits ronds — révisé, regonflé, bichoné ». Vide, évidemment. Mais accroché à l'étiquette par un élastique : un fragment doré, et un petit mot à l'écriture à déliés : « Belle mécanique. Prends-en soin. — V. »",
+      "text": "Manu intercepte la mobylette au vol — geste rodé, quatre cents tours d'entraînement — cale la bleue sur sa béquille et ouvre le moteur avec ses outils de précision. L'éclat est là, blotti contre le piston, doré de cambouis, l'air parfaitement heureux. Manu le cueille délicatement, l'essuie avec SON chiffon (l'honneur suprême), et le tend : « Beau boulot, petit. Le moteur n'a jamais aussi bien tourné. Repasse quand tu veux — l'étoile aussi, on fera la révision gratuite. »",
       "next": "fin_fragment"
     },
     "fin_fragment": {
@@ -95,7 +95,7 @@
     },
     "epilogue": {
       "speaker": "carnet",
-      "text": "Au premier coup de kick — au TROISIÈME coup de kick, pardon — la mobylette bleue toussa, hésita, puis ron-ronna comme un chat vivant. Huitième bruit récupéré. Manu resta une minute entière la main sur le guidon, sans rien dire, ce qui chez lui non plus n'est pas rare, mais là c'était différent. Sur le tableau de l'enquête, il écrivit : « 8 bruits récupérés. V. regonfle les pneus et signe ses mots. Les gars : notre voleur nous AIME. Reste à comprendre pourquoi il nous a tout pris. »",
+      "text": "Au cratère, le huitième éclat se souda dans un DING rond et régulier — un ron-ron d'étoile, dirait Manu, et il le dit. Étincelle brillait maintenant si fort qu'on la voyait depuis le garage. Sur le tableau de mission, Manu écrivit : « 8 sur 13. La bleue redémarre au TROISIÈME coup de kick, comme avant. Je confirme mon diagnostic : cet éclat était un mécano. L'étoile a de la chance de l'avoir. »",
       "next": "END"
     }
   }
