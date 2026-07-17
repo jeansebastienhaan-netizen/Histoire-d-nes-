@@ -71,9 +71,9 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: apk-${{ github.run_number }}
-          name: 'Le Grand Silence — APK (build ${{ github.run_number }})'
+          name: 'Mistiflouk — APK (build ${{ github.run_number }})'
           body: |
-            📱 **APK Android du Grand Silence**
+            📱 **APK Android de Mistiflouk**
 
             1. Télécharger `app-release-signed.apk` ci-dessous sur le téléphone
             2. L'ouvrir et autoriser l'installation depuis des sources inconnues (première fois seulement)
