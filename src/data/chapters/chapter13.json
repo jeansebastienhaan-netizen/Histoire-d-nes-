@@ -7,82 +7,106 @@
   "nodes": {
     "start": {
       "speaker": "carnet",
-      "text": "Tout au bout du village, perchée dans le grand chêne, se trouve la cabane des Mousquetaires — trois inséparables qui ont fait le serment de tout faire ensemble, toujours. Sur la porte, une pancarte : « Entrée réservée aux porteurs de douze fragments. » Ils savent tout, ces trois-là.",
-      "next": "mousquetaires_accueil"
+      "text": "Tout au bout du village, perchée dans le grand chêne, la cabane des Mousquetaires — trois inséparables qui savent TOUT, tamponnent tout « CONFIDENTIEL » (y compris la liste des courses) et n'ouvrent leur porte qu'aux grands mérites. Sur la pancarte du jour : « ENTRÉE RÉSERVÉE AUX PORTEURS DE DOUZE FRAGMENTS. Les autres : revenez avec douze fragments. C'est pourtant clair. »",
+      "next": "accueil"
     },
-    "mousquetaires_accueil": {
+    "accueil": {
       "speaker": "mousquetaires",
-      "text": "Trois ardoises se lèvent en même temps, parfaitement synchronisées : « On t'observe depuis le début. » — « L'horloge, le phonographe, la cloche, le sifflet de Marjo… » — « C'est toi qui ramènes les bruits. Alors on a voté : tu mérites de connaître LE secret. Mais d'abord, l'épreuve. Tradition oblige. »",
-      "next": "mousquetaires_choix"
+      "text": "Le panier-ascenseur descend tout seul : on t'attendait. Là-haut, trois ardoises se lèvent en cadence parfaite : « On t'observe depuis le premier jour. » — « L'horloge, la boîte à musique, le marteau, l'arrosoir, le ballon, les pages, la guitare, le ron-ron, la cloche, la rivière, le carillon, le sifflet. Douze bruits. On a compté. On compte TOUJOURS. » — « Et pendant que tu enquêtais… nous aussi. Voici LE DOSSIER. »",
+      "next": "dossier"
     },
-    "mousquetaires_choix": {
+    "dossier": {
       "speaker": "mousquetaires",
-      "text": "« L'épreuve des Mousquetaires : une seule question, un temps limité, et tout ce que tu as appris dans le village. Prêt ? Prête ? »",
+      "text": "Le plus petit soulève une latte du plancher et sort un cahier tamponné CONFIDENTIEL quatre fois (dont une à l'envers). « Le Veilleur. Gardien des bruits du village depuis TOUJOURS. C'est lui qui rangeait chaque bruit à la nuit et le ressortait à l'aube, bien accordé, bien réparé. Lis les vieilles histoires : “le géant aux chaussons”, “le raccommodeur d'échos”… C'est LUI. » — « Il y a soixante ans, le village a failli l'oublier une première fois. Il a eu un grand chagrin. Une étoile s'est éteinte. » — « Et mardi… il a craqué. Plus personne n'écoutait personne. Alors il a TOUT rangé, et il est parti se coucher. »",
+      "next": "epreuve_annonce"
+    },
+    "epreuve_annonce": {
+      "speaker": "mousquetaires",
+      "text": "« Le dernier fragment du vœu est dans notre boîte à trois cadenas. On te le donne… si tu passes le GRAND EXAMEN. » — « Trois questions sur TA propre enquête. Un vrai enquêteur se souvient de tout. » — « Et le sablier tourne, évidemment. Tradition oblige. »",
       "choices": [
         {
-          "label": "« Je suis venu jusqu'ici grâce à tout le village. Posez votre question. »",
+          "label": "« Posez vos questions. Cette enquête, je l'ai vécue — je m'en souviendrai toute ma vie. »",
           "effects": { "coeur": 1 },
-          "next": "avant_jeu"
+          "next": "grand_examen"
         },
         {
-          "label": "« Une question de Mousquetaires… donc une question piège. Je me méfie. »",
+          "label": "« Trois questions, trois cadenas, trois Mousquetaires… vous aimez le chiffre trois, ça se recoupe. J'écoute. »",
           "effects": { "ruse": 1 },
-          "next": "avant_jeu"
+          "next": "grand_examen"
         },
         {
-          "label": "« Posez-la. Je ne redescendrai pas de cet arbre sans le secret. »",
+          "label": "« Envoyez. Et préparez la boîte, je ne redescendrai pas sans le fragment. »",
           "effects": { "determination": 1 },
-          "next": "avant_jeu"
+          "next": "grand_examen"
         }
       ]
     },
-    "avant_jeu": {
-      "speaker": "carnet",
-      "text": "Les trois Mousquetaires se concertent en langage des signes inventé, hochent la tête, et retournent lentement une grande ardoise commune. Le sablier de la cabane est déjà retourné.",
-      "next": "jeu_epreuve"
-    },
-    "jeu_epreuve": {
+    "grand_examen": {
       "type": "minigame",
       "game": "TimedDialogue",
       "config": {
-        "prompt": "« Le Grand Silence a volé les sons du village. Mais il y a UNE chose qu'il n'a jamais réussi à faire taire. Laquelle ? »",
-        "seconds": 12,
-        "options": [
-          { "label": "Les liens entre les gens — on n'a jamais cessé de se parler, autrement.", "result": "success" },
-          { "label": "Les ardoises — tout le monde écrit sans arrêt.", "result": "partial" },
-          { "label": "Rien. Le silence a tout pris.", "result": "fail" }
+        "intro": "Le Grand Examen des Mousquetaires : trois questions sur ton enquête, sablier retourné. Un vrai enquêteur n'oublie RIEN.",
+        "maxWrong": 1,
+        "rounds": [
+          {
+            "prompt": "« Question 1 : à quelle heure l'horloge de Mamy s'est-elle arrêtée, la nuit du vol ? »",
+            "seconds": 10,
+            "options": [
+              { "label": "5h07", "correct": true },
+              { "label": "3h33", "correct": false },
+              { "label": "Minuit pile", "correct": false }
+            ]
+          },
+          {
+            "prompt": "« Question 2 : quel livre le Veilleur a-t-il emprunté à la bibliothèque d'Oxane — fiche signée V. ? »",
+            "seconds": 10,
+            "options": [
+              { "label": "« Berceuses et autres armes douces »", "correct": true },
+              { "label": "« L'Atlas des constellations boudeuses »", "correct": false },
+              { "label": "« Réparer sans clous ni vis »", "correct": false }
+            ]
+          },
+          {
+            "prompt": "« Question 3 : quelle odeur flottait sur le passage du Veilleur, de la cuisine de Mamy au potager de Papy ? »",
+            "seconds": 10,
+            "options": [
+              { "label": "La camomille", "correct": true },
+              { "label": "Le café fort", "correct": false },
+              { "label": "La menthe poivrée", "correct": false }
+            ]
+          }
         ]
       },
-      "onSuccess": "reussite",
-      "onPartial": "presque",
-      "onFail": "pause"
+      "onSuccess": "examen_reussi",
+      "onPartial": "examen_presque",
+      "onFail": "examen_rate"
     },
-    "pause": {
+    "examen_rate": {
       "speaker": "mousquetaires",
-      "text": "Les trois secouent la tête en chœur, mais gentiment : « Faux ! Regarde-toi : tu as aidé Mamy, dansé avec Lo, rattrapé la chèvre de Marjo… » — « Le silence n'a PAS tout pris, la preuve est devant nous. » — « Allez, on te la repose. Les Mousquetaires donnent toujours une seconde chance. »",
+      "text": "Trois ardoises tombent en même temps : « AJOURNÉ ! » Mais les trois visages sourient — chez les Mousquetaires, l'examen raté fait partie du folklore. « Personne ne l'a jamais eu du premier coup. » — « Sauf nous. On se l'est fait passer à nous-mêmes. » — « Redescends, relis le tableau de l'enquête sur la place, et remonte. Les grands enquêteurs révisent. C'est même à ça qu'on les reconnaît. »",
       "choices": [
-        { "label": "Répondre à nouveau", "next": "jeu_epreuve" },
-        { "label": "Redescendre réfléchir et revenir", "next": "sortie_douce" }
+        { "label": "Repasser l'examen tout de suite", "next": "grand_examen" },
+        { "label": "Redescendre réviser et revenir", "next": "sortie_douce" }
       ]
     },
     "sortie_douce": {
       "speaker": "carnet",
-      "text": "Les Mousquetaires font descendre leur visiteur avec le panier-ascenseur, l'honneur suprême de la cabane. Trois ardoises s'agitent en haut : « Reviens ! Le secret ne s'évaporera pas ! »",
+      "text": "Le panier-ascenseur redescend l'enquêteur avec les honneurs et un tampon CONFIDENTIEL sur la main — c'est leur façon de dire « à bientôt ». Là-haut, trois ardoises s'agitent : « Le fragment ne s'évaporera pas ! On monte la garde ! On monte TOUJOURS la garde ! »",
       "next": "END"
     },
-    "reussite": {
+    "examen_reussi": {
       "speaker": "mousquetaires",
-      "text": "Les trois ardoises se lèvent d'un coup : « EXACT ! » — « Les liens ! Le silence n'a jamais pu couper les liens ! » — « Épreuve réussie à l'unanimité. Un pour tous… » Et tous les trois ensemble, solennels : « …et tous pour le village. Voici le secret. »",
+      "text": "« TROIS SUR TROIS ! » Les trois ardoises claquent en l'air comme des mouettes. « 5h07, les berceuses, la camomille — tu as TOUT retenu ! » — « Décision votée à l'unanimité moins zéro voix : tu es nommé QUATRIÈME MOUSQUETAIRE À TITRE EXCEPTIONNEL. » — « Ne t'emballe pas : c'est surtout des corvées. Mais d'abord : la boîte. Un pour tous… » Et tous les trois ensemble, solennels : « …et tous pour le village. »",
       "next": "secret"
     },
-    "presque": {
+    "examen_presque": {
       "speaker": "mousquetaires",
-      "text": "« Les ardoises… presque ! » — « Les ardoises, c'est l'outil. Mais l'important, c'est ce qui passe PAR les ardoises : les liens entre les gens. » — « Réponse acceptée au deuxième degré. Épreuve validée, deux voix contre une — la démocratie des Mousquetaires. Voici le secret. »",
+      "text": "« Deux bonnes réponses et demie — on a compté l'hésitation, on compte TOUT. » — « Examen VALIDÉ, deux voix pour, une voix pour aussi mais qui veut le faire remarquer. » — « Tu as suivi cette enquête avec le cœur et la mémoire. C'est exactement ce qu'il faut pour la suite. La boîte, maintenant. Un pour tous… » Et tous les trois ensemble : « …et tous pour le village. »",
       "next": "secret"
     },
     "secret": {
       "speaker": "mousquetaires",
-      "text": "Le plus petit des trois soulève une latte du plancher de la cabane. Dessous, dans une boîte fermée par trois cadenas — un par Mousquetaire — repose le dernier papier doré. « On l'a trouvé il y a longtemps. On a juré de le garder jusqu'à ce que quelqu'un mérite les douze autres. C'est toi. »",
+      "text": "Trois clés, trois cadenas, trois gestes parfaitement synchronisés. Dans la boîte : le treizième fragment doré… et une photo très ancienne, cornée, du village en fête. Au dos, une écriture à déliés : « Le jour où ils ont planté le tilleul. Je leur ai écrit une berceuse pour la fête. Ils l'ont chantée toute la nuit. Meilleur jour de service en neuf cents ans. — V. » Le plus petit des Mousquetaires chuchote-écrit : « Il attend sous le tilleul. On l'a vu. Il ATTEND que quelqu'un vienne l'écouter. Vas-y. Toi. »",
       "next": "fin_fragment"
     },
     "fin_fragment": {
@@ -93,7 +117,7 @@
     },
     "epilogue": {
       "speaker": "carnet",
-      "text": "Et là-haut, dans la cabane du grand chêne, il se passa quelque chose d'immense : un rire. Puis deux. Puis trois. Les rires des Mousquetaires dégringolèrent de l'arbre comme des noisettes, et roulèrent dans tout le village. Le treizième bruit était revenu. Le vœu était complet. Il ne restait plus qu'à le lire — sous le grand tilleul de la place.",
+      "text": "Et là-haut, dans la cabane du grand chêne, il se passa quelque chose d'immense : un rire. Puis deux. Puis trois. Les rires des Mousquetaires dégringolèrent de l'arbre comme des noisettes et roulèrent dans tout le village — treizième bruit récupéré. Le vœu de Mamy était complet. Sur le tableau de l'enquête, une dernière ligne apparut, tamponnée CONFIDENTIEL par habitude : « Le Veilleur attend sous le grand tilleul. Apportez le vœu. Apportez tout le monde. Fin de l'enquête — début du plus important. »",
       "next": "END"
     }
   }

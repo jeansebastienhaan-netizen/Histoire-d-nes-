@@ -7,83 +7,84 @@
   "nodes": {
     "start": {
       "speaker": "carnet",
-      "text": "Le garage de Manu, c'est la caverne d'Ali Baba des choses qui roulent. Au centre, sous une bâche, dort la vieille mobylette bleue — celle qui livrait le pain du village, autrefois. Manu a juré de la faire repartir.",
+      "text": "Au garage, la mobylette bleue de Manu est en panne de son. Elle roule, hein — mais sans son ron-ron, Manu dit que c'est « comme un chat empaillé : techniquement, tout y est ». Or la mobylette bleue livre le pain à trois hameaux. Un village sans ron-ron, passe encore. Sans pain, jamais.",
+      "next": "manu_situation"
+    },
+    "manu_situation": {
+      "speaker": "manu",
+      "text": "« Te voilà, l'enquêteur. » Manu s'essuie les mains, ce qui étale le cambouis au lieu de l'enlever — c'est le principe du cambouis. « Le voleur est passé, oui. Il a pris le ron-ron, le cliquetis ET le pschitt de la pompe. Mais je m'en vais te dire un truc : il a REGONFLÉ mon pneu avant. Il était à plat depuis quinze jours. Le voleur m'a fait ma révision, tu te rends compte ? J'sais plus si je porte plainte ou si je lui laisse un pourboire. »",
       "next": "manu_probleme"
     },
     "manu_probleme": {
       "speaker": "manu",
-      "text": "Manu s'essuie les mains et écrit au feutre sur l'établi : « Tout est réparé. Tout ! Mais un moteur, ça se règle à l'OREILLE. Le petit cliquetis qui dit que ça va, le ronron qui dit que c'est parfait… Sans le son, je règle à l'aveugle. Il me faut tes mains. »",
-      "next": "manu_choix"
-    },
-    "manu_choix": {
-      "speaker": "manu",
-      "text": "« Le plan : tu poses les mains sur le réservoir, tu sens les vibrations, et tu guides la dernière pièce exactement où elle doit aller. Partant ? »",
+      "text": "« Pour réparer le ron-ron, il me faut mes outils de précision. Ils sont dans l'armoire blindée. Le code de l'armoire est sur un papier. Le papier est DANS l'armoire. » Manu laisse un silence de mécanicien. « Oui, je sais. Bref : j'avais laissé des indices pour moi-même, en cas d'oubli. Le problème, c'est que je les ai faits malins, et que moi, le soir, je suis bête. Débrouille-toi avec. »",
       "choices": [
         {
-          "label": "« Cette mobylette va revivre, Manu. Le village y tient. »",
+          "label": "« On va le retrouver ensemble, ce code. À deux cerveaux, on en vaut un bon. »",
           "effects": { "coeur": 1 },
-          "next": "avant_jeu"
+          "next": "jeu_code"
         },
         {
-          "label": "Poser Mistiflouk sur le moteur : un serpent-sonar vaut tous les stéthoscopes.",
+          "label": "Demander à Mistiflouk de renifler l'armoire : les outils, ça rêve en cliquetis.",
           "condition": { "flag": "a_mistiflouk" },
-          "effects": { "ruse": 1, "coeur": 1 },
-          "next": "avant_jeu_mistiflouk"
-        },
-        {
-          "label": "« Sentir un moteur avec les mains ? Malin. On fait comme ça. »",
           "effects": { "ruse": 1 },
-          "next": "avant_jeu"
+          "next": "avant_code_mistiflouk"
         },
         {
-          "label": "« On y passera la nuit s'il le faut. Elle repartira. »",
+          "label": "« Tes indices ne me font pas peur. Je ne repartirai pas sans le ron-ron. »",
           "effects": { "determination": 1 },
-          "next": "avant_jeu"
+          "next": "jeu_code"
         }
       ]
     },
-    "avant_jeu": {
+    "avant_code_mistiflouk": {
       "speaker": "carnet",
-      "text": "Manu tend la dernière pièce — un petit carburateur brillant comme un bijou. Sur le moteur, une place l'attend. Il faut l'amener là, d'une main sûre, sans rien bousculer en chemin.",
-      "next": "jeu_moteur"
+      "text": "Mistiflouk se colle à l'armoire blindée et vibre doucement : les outils sont bien là, ils rêvent en cliquetis, tout va bien pour eux. Manu observe le serpent, très intéressé : « Il détecte les bruits à travers le métal ? Dis. Il ferait pas des diagnostics moteur, ton collègue ? Je le paie en souris. Enfin, en quoi ça se paie, un serpent ? » Reste le code à trouver.",
+      "next": "jeu_code"
     },
-    "avant_jeu_mistiflouk": {
-      "speaker": "carnet",
-      "text": "Mistiflouk s'enroule sur le réservoir et se met à vibrer par petites saccades — plus fort quand la main approche du bon endroit, comme un jeu de « chaud-froid ». Manu en reste bouche bée : « Je veux le même en outil. »",
-      "next": "jeu_moteur"
-    },
-    "jeu_moteur": {
+    "jeu_code": {
       "type": "minigame",
-      "game": "DragPhysics",
+      "game": "CodeLock",
       "config": {
-        "prompt": "Guide la pièce jusqu'à son logement, d'un geste précis.",
-        "item": "⚙️",
-        "target": "Le moteur"
+        "intro": "L'armoire blindée de Manu. Trois chiffres, trois indices écrits par Manu-du-matin pour Manu-du-soir. Bon courage.",
+        "clues": [
+          "« Le nombre de roues de la mobylette, multiplié par lui-même. »",
+          "« Le nombre de coups de kick pour démarrer un matin d'hiver. Indice : c'est jamais le premier, jamais le deuxième, et le quatrième j'ai jamais eu besoin. »",
+          "« Le nombre de mobylettes que j'aime plus que la bleue. Réfléchis bien. Voilà. »"
+        ],
+        "code": "430",
+        "attempts": 3
       },
-      "onSuccess": "reussite",
-      "onFail": "pause"
+      "onSuccess": "code_reussi",
+      "onPartial": "code_presque",
+      "onFail": "code_rate"
     },
-    "pause": {
+    "code_rate": {
       "speaker": "manu",
-      "text": "« Minute, pause outil. » Manu verse deux verres de limonade de son thermos. « Un bon mécano sait quand ses mains ont besoin de souffler. Elle a attendu des années, elle peut attendre dix minutes. »",
+      "text": "L'armoire reste fermée, imperturbable. Manu hoche la tête, presque fier : « Sécurisée, hein ? C'est moi qui l'ai réglée. Je m'en veux et je me félicite, c'est deux sentiments en même temps, ça fatigue. » Il te tend un verre de grenadine d'atelier. « On relit les indices à tête reposée et on y retourne. »",
       "choices": [
-        { "label": "Réessayer maintenant", "next": "jeu_moteur" },
+        { "label": "Retenter le code", "next": "jeu_code" },
         { "label": "Revenir plus tard", "next": "sortie_douce" }
       ]
     },
     "sortie_douce": {
       "speaker": "carnet",
-      "text": "Manu remet la bâche sur la mobylette avec la douceur d'un père qui borde son enfant. « Elle sera là. Moi aussi », écrit-il sur l'établi. Les garages de Manu ne ferment jamais vraiment.",
+      "text": "Manu raccompagne l'enquêteur et confie à la mobylette, à l'écrit : « On le retrouvera, ton ron-ron. » La mobylette ne répond pas, mais c'est normal, même avant elle ne répondait pas.",
       "next": "END"
     },
-    "reussite": {
+    "code_reussi": {
       "speaker": "manu",
-      "text": "Clic. La pièce s'emboîte, parfaite. Manu donne un coup de kick, pose les deux mains sur le réservoir… et son visage s'illumine : « Elle tourne ! Je la SENS tourner ! Rond comme une horloge ! Tu viens de réveiller la doyenne du village ! »",
-      "next": "fragment_trouve"
+      "text": "CLIC-CLAC. L'armoire s'ouvre du premier coup. Manu en reste bouche bée : « Quatre, trois, zéro. QUATRE, TROIS, ZÉRO ! Mais bien sûr ! Deux roues fois deux roues, trois coups de kick, et zéro parce que la bleue, c'est la bleue. T'es rentré dans ma tête, et je te préviens : c'est mal rangé là-dedans. Chapeau, l'artiste. »",
+      "next": "reparation"
     },
-    "fragment_trouve": {
+    "code_presque": {
+      "speaker": "manu",
+      "text": "CLIC-CLAC. L'armoire cède au bout de quelques essais. « Bon. T'as mis moins de temps que Manu-du-soir, c'est déjà une victoire scientifique. » Il ouvre les tiroirs de précision avec des gestes de chirurgien. « Au travail. »",
+      "next": "reparation"
+    },
+    "reparation": {
       "speaker": "carnet",
-      "text": "Dans la sacoche en cuir de la mobylette, sous une carte routière de l'ancien temps, dort un papier doré plié en quatre. Le huitième fragment du vœu — il voyageait avec le pain, autrefois.",
+      "text": "Dans le tiroir du bas, sous les clés de 12, une surprise : une boîte en fer du voleur, étiquetée « RON-RON DE MOBILETE — rayon bruits ronds — révisé, regonflé, bichoné ». Vide, évidemment. Mais accroché à l'étiquette par un élastique : un fragment doré, et un petit mot à l'écriture à déliés : « Belle mécanique. Prends-en soin. — V. »",
       "next": "fin_fragment"
     },
     "fin_fragment": {
@@ -94,7 +95,7 @@
     },
     "epilogue": {
       "speaker": "carnet",
-      "text": "Et au petit matin, le village fut réveillé par un ronron bleu qui faisait le tour de la place — teuf, teuf, teuf. Le huitième bruit était revenu, et il sentait bon le pain frais et l'essence des souvenirs.",
+      "text": "Au premier coup de kick — au TROISIÈME coup de kick, pardon — la mobylette bleue toussa, hésita, puis ron-ronna comme un chat vivant. Huitième bruit récupéré. Manu resta une minute entière la main sur le guidon, sans rien dire, ce qui chez lui non plus n'est pas rare, mais là c'était différent. Sur le tableau de l'enquête, il écrivit : « 8 bruits récupérés. V. regonfle les pneus et signe ses mots. Les gars : notre voleur nous AIME. Reste à comprendre pourquoi il nous a tout pris. »",
       "next": "END"
     }
   }

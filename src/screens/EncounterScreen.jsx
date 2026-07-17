@@ -21,8 +21,15 @@ import RhythmTap from '../minigames/RhythmTap.jsx'
 import DragPhysics from '../minigames/DragPhysics.jsx'
 import TimedDialogue from '../minigames/TimedDialogue.jsx'
 import AnimalRoundup from '../minigames/AnimalRoundup.jsx'
+import CodeLock from '../minigames/CodeLock.jsx'
+import MatchPuzzle from '../minigames/MatchPuzzle.jsx'
+import SimonSays from '../minigames/SimonSays.jsx'
+import SteadyHand from '../minigames/SteadyHand.jsx'
 
-const MINIGAMES = { LogicPuzzle, RhythmTap, DragPhysics, TimedDialogue, AnimalRoundup }
+const MINIGAMES = {
+  LogicPuzzle, RhythmTap, DragPhysics, TimedDialogue, AnimalRoundup,
+  CodeLock, MatchPuzzle, SimonSays, SteadyHand,
+}
 
 export default function EncounterScreen() {
   const store = useGameStore()

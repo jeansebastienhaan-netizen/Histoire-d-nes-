@@ -7,82 +7,101 @@
   "nodes": {
     "start": {
       "speaker": "carnet",
-      "text": "Le samedi, la place du marché appartient à Noélia. Son étal déborde de confitures, de bouquets et de gâteaux — mais surtout, chez Noélia, personne ne repart les mains vides ni le cœur lourd. C'est sa spécialité, bien plus que les confitures.",
-      "next": "noelia_probleme"
+      "text": "Le marché de Noélia, c'était le cœur bruyant du village : la cloche d'ouverture, les « et pour la p'tite dame ? », les rires au-dessus des cageots. Depuis mardi, on y fait ses courses en mimant, et certains malentendus sont entrés dans la légende — demandez donc à M. Robert, qui voulait un poireau et repartit avec un parapluie.",
+      "next": "noelia_accueil"
     },
-    "noelia_probleme": {
+    "noelia_accueil": {
       "speaker": "noelia",
-      "text": "Noélia jongle entre trois clients, un carnet de commandes et un nourrisson qui dort dans son écharpe. Elle écrit en vitesse : « Sans la cloche du marché, personne ne sait quand on ferme ! Tout le monde arrive en même temps… Aide-moi à servir avant que les tartes ne refroidissent ! »",
-      "next": "noelia_choix"
+      "text": "« Enfin du renfort ! » Noélia jaillit de derrière son étal, boucles d'oreilles en bataille. « C'est jour de marché, mon commis est grippé, et sans les voix, je dois lire TOUTES les commandes sur ardoise en servant TOUT LE MONDE. Toi, tu as une tête à retenir les choses. Je te prends à l'essai. Paiement en beignets, négociable en confiture. »",
+      "next": "noelia_commandes"
     },
-    "noelia_choix": {
+    "noelia_commandes": {
       "speaker": "noelia",
-      "text": "« Madame Berthe attend sa commande, le facteur veut son bouquet, et je n'ai que deux mains ! »",
+      "text": "« Écoute la tournée du matin, je ne le dirai qu'UNE fois : Mémé Rosa veut TROIS pots de miel — pas deux, elle compte. Le facteur veut UN fromage, le ROND — le carré lui fait peur, ne demande pas. Et les jumeaux prennent tout ce qui COLLE : caramels, nougat, ruban adhésif s'il le faut. C'est bon, c'est en tête ? Le marché ouvre… MAINTENANT. »",
       "choices": [
         {
-          "label": "« Occupe-toi du petit, je prends les commandes. »",
-          "effects": { "coeur": 1 },
-          "next": "avant_jeu"
-        },
-        {
-          "label": "« Organisons la file : les pressés à gauche, les bavards à droite. »",
+          "label": "« Rosa, trois miels. Facteur, fromage rond. Jumeaux, ce qui colle. On y va ! »",
           "effects": { "ruse": 1 },
-          "next": "avant_jeu"
+          "next": "jeu_marche"
         },
         {
-          "label": "« On sert tout le monde avant que ça refroidisse. Top chrono ! »",
+          "label": "« Compte sur moi. Personne ne repartira sans son sourire ni sa commande. »",
+          "effects": { "coeur": 1 },
+          "next": "jeu_marche"
+        },
+        {
+          "label": "« Le marché ne fermera pas avant que la dernière commande soit servie. Promis. »",
           "effects": { "determination": 1 },
-          "next": "avant_jeu"
+          "next": "jeu_marche"
         }
       ]
     },
-    "avant_jeu": {
-      "speaker": "carnet",
-      "text": "Noélia tend le carnet de commandes. Madame Berthe s'avance, son ardoise à la main — mais la moitié des mots sont effacés par la pluie. Il va falloir deviner vite, et deviner juste.",
-      "next": "jeu_commande"
-    },
-    "jeu_commande": {
+    "jeu_marche": {
       "type": "minigame",
       "game": "TimedDialogue",
       "config": {
-        "prompt": "Sur l'ardoise de Mme Berthe, il reste : « …comme tous les samedis, ma petite Noélia. » Vite, sa commande ?",
-        "seconds": 8,
-        "options": [
-          { "label": "La tarte aux pommes et un bouquet de dahlias — comme tous les samedis !", "result": "success" },
-          { "label": "Des confitures, plein de confitures", "result": "partial" },
-          { "label": "Euh… un poulet ?", "result": "fail" }
+        "intro": "Le coup de feu du marché ! Les clients arrivent, les ardoises se lèvent — sers vite et JUSTE.",
+        "maxWrong": 1,
+        "rounds": [
+          {
+            "prompt": "Le facteur agite son ardoise : « Comme d'habitude ! » Vite, tu lui donnes…",
+            "seconds": 7,
+            "options": [
+              { "label": "Le fromage rond", "correct": true },
+              { "label": "Le fromage carré", "correct": false },
+              { "label": "Trois pots de miel", "correct": false }
+            ]
+          },
+          {
+            "prompt": "Mémé Rosa tend son panier en te fixant droit dans les yeux. Elle VA compter. Tu mets…",
+            "seconds": 6,
+            "options": [
+              { "label": "Trois pots de miel", "correct": true },
+              { "label": "Deux pots de miel et un sourire", "correct": false },
+              { "label": "Quatre pots, pour la marge", "correct": false }
+            ]
+          },
+          {
+            "prompt": "Les jumeaux déboulent en dérapant. Ils veulent LA chose. Tu leur donnes…",
+            "seconds": 6,
+            "options": [
+              { "label": "Caramels et nougat — tout ce qui colle", "correct": true },
+              { "label": "Des pommes, c'est plus sain", "correct": false },
+              { "label": "Un fromage carré chacun", "correct": false }
+            ]
+          }
         ]
       },
-      "onSuccess": "reussite",
-      "onPartial": "presque",
-      "onFail": "pause"
+      "onSuccess": "jeu_reussi",
+      "onPartial": "jeu_presque",
+      "onFail": "jeu_rate"
     },
-    "pause": {
+    "jeu_rate": {
       "speaker": "noelia",
-      "text": "Madame Berthe rit tellement qu'elle doit s'asseoir sur une cagette. Noélia essuie une larme de rire : « Un POULET ! Elle est végétarienne depuis quarante ans ! Allez, on respire, on regarde bien madame Berthe, et on devine encore. »",
+      "text": "« Ouille ouille ouille. » Noélia rattrape la commande de justesse et étouffe un fou rire muet. « Mémé Rosa a failli avoir le fromage carré — le village ne s'en serait pas remis. Allez : pause beignet obligatoire, on répète la tournée, et on remet ça. Le commerce, c'est comme les crêpes : la première est toujours pour le chien. »",
       "choices": [
-        { "label": "Redeviner tout de suite", "next": "jeu_commande" },
-        { "label": "Revenir aider plus tard", "next": "sortie_douce" }
+        { "label": "Reprendre le service", "next": "noelia_commandes" },
+        { "label": "Revenir plus tard", "next": "sortie_douce" }
       ]
     },
     "sortie_douce": {
       "speaker": "carnet",
-      "text": "Noélia glisse un pot de confiture « pour la route » — impossible de refuser, elle a un don pour ça. Sur l'étiquette : « Reviens vite. Il y aura toujours une place pour toi à ma table. »",
+      "text": "Noélia raccompagne l'enquêteur avec un beignet « d'encouragement » — à ne pas confondre avec le beignet « de félicitations », qui a du sucre glace. La différence compte beaucoup ici.",
       "next": "END"
     },
-    "reussite": {
+    "jeu_reussi": {
       "speaker": "noelia",
-      "text": "Madame Berthe applaudit sans bruit, ravie. Noélia souffle enfin : « Tarte, dahlias, comme tous les samedis. Tu lis dans les gens, toi — c'est le plus beau des talents de marché. » L'étal se vide, les paniers se remplissent, tout le monde sourit.",
-      "next": "fragment_trouve"
+      "text": "« Service PARFAIT ! » Noélia fait claquer son torchon comme un fouet de gala. « Rosa a recompté trois fois : trois pots. Le facteur a serré son fromage rond sur son cœur. Les jumeaux sont collés l'un à l'autre, ce qui les ralentit ENFIN. Toi, tu es embauché à vie — et le beignet de félicitations est pour toi. Celui avec le sucre glace, oui. »",
+      "next": "indice"
     },
-    "presque": {
+    "jeu_presque": {
       "speaker": "noelia",
-      "text": "« Des confitures ! Presque — elle en prend AUSSI, mais le samedi c'est tarte et dahlias. » Noélia complète le panier en un tournemain. « À nous deux, on a quand même servi tout le marché avant que ça refroidisse. Championne équipe ! »",
-      "next": "fragment_trouve"
+      "text": "« Une petite frayeur, mais le marché est servi ! » Noélia s'évente avec son ardoise. « Tu sais quoi ? Même mon commis se trompe, et lui, il a les commandes écrites sur le bras. Beignet de félicitations quand même — je gratte un peu de sucre glace, voilà, ne le dis à personne. »",
+      "next": "indice"
     },
-    "fragment_trouve": {
+    "indice": {
       "speaker": "carnet",
-      "text": "En rangeant l'étal, Noélia soulève la vieille toile cirée de la table commune — celle où le village entier a déjeuné pendant des générations. Épinglé dessous, protégé du temps : un papier doré. Le neuvième fragment du vœu.",
+      "text": "En rangeant l'étal, Noélia soulève le grand panier des invendus… et se fige. Dessous : une boîte en fer, « CLOCHE DU MARCHÉ — DING — rayon bruits de fête », vide, avec un fragment doré posé dessus. Et un mot à déliés : « Ta cloche sonnait faux d'un quart de ton. Je l'ai accordée. Elle te réveillera mieux. — V. » Noélia relit trois fois, puis écrit : « Il a ACCORDÉ ma cloche. Ce voleur me brise le cœur. Quelqu'un doit le serrer dans ses bras, et vite. »",
       "next": "fin_fragment"
     },
     "fin_fragment": {
@@ -93,7 +112,7 @@
     },
     "epilogue": {
       "speaker": "carnet",
-      "text": "Et à six heures tapantes, la cloche du marché sonna la fermeture — ding, ding — pour personne et pour tout le monde. Le neuvième bruit était revenu. Noélia la fit sonner trois fois de plus, pour le plaisir.",
+      "text": "Le lendemain à l'aube, la cloche du marché sonna l'ouverture : DING — un ding rond, juste, magnifique, accordé au quart de ton près. Neuvième bruit récupéré. Tout le marché applaudit sans bruit, par habitude, puis quelqu'un se souvint qu'on pouvait taper des mains SUR quelque chose, et le premier applaudissement du retour fit pleurer Mémé Rosa. Sur le tableau de l'enquête, Noélia écrivit : « 9 bruits récupérés. V. répare tout ce qu'il vole. Théorie : il ne vole pas. Il RANGE. Mais qu'est-ce qu'il attend pour tout nous rendre ?! »",
       "next": "END"
     }
   }

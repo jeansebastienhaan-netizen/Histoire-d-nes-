@@ -7,30 +7,30 @@
   "nodes": {
     "start": {
       "speaker": "carnet",
-      "text": "En contrebas du village, la rivière continue de couler — muette, elle aussi, mais toujours dansante. C'est là qu'on trouve Lo, pieds nus sur les pierres plates, en train de faire ce que Lo fait de mieux au monde : danser.",
-      "next": "lo_idee"
+      "text": "Au bord de la rivière, il manque le plus vieux bruit du monde : l'eau. Plus de clapotis, plus de glouglou entre les pierres — la rivière coule en silence, et c'est si étrange que les grenouilles ont déménagé. C'est ici que danse Lo, tous les soirs. Elle dit que la rivière était son orchestre. Depuis mardi, elle danse « a cappella », et ça lui fend le cœur en rythme.",
+      "next": "lo_accueil"
     },
-    "lo_idee": {
+    "lo_accueil": {
       "speaker": "lo",
-      "text": "Lo tourne sur une pierre, s'arrête net, et écrit d'un geste vif : « Tout le monde dit qu'on ne peut pas danser sans musique. FAUX. La rivière a un rythme — regarde les vaguelettes, une-deux-trois, une-deux-trois. Je prépare une danse pour le village. Danse avec moi. »",
-      "next": "lo_choix"
+      "text": "Lo salue d'une pirouette — chez elle, ça remplace bonjour, au revoir et beaucoup d'autres phrases. Sur son ardoise, calligraphiée comme une affiche de spectacle : « J'ai un plan pour rappeler la rivière. La Danse de l'Eau — celle qui se transmet depuis toujours, la danse qui IMITE la rivière. Si quelqu'un la danse parfaitement, l'eau se reconnaîtra et reviendra chanter. Mais il faut être DEUX. C'est une danse à deux. Ça tombe bien : te voilà. »",
+      "next": "lo_indice"
     },
-    "lo_choix": {
+    "lo_indice": {
       "speaker": "lo",
-      "text": "« C'est une danse qui se danse à deux minimum. Sinon ce n'est pas une danse de village, c'est une danse de tout seul. »",
+      "text": "« D'abord, un détail pour ton enquête. » Lo montre la berge : dans la boue sèche, une empreinte de chausson géante… au milieu des empreintes de pas de danse. « Il a dansé. Le voleur a ESSAYÉ ma danse, tout seul, une nuit. Il connaît les pas — les vieux pas, ceux que ma grand-mère dansait. Mais il s'est arrêté au milieu. Là. Comme quelqu'un qui n'a plus la force. Ou plus de partenaire. »",
       "choices": [
         {
-          "label": "« Je danse comme un tabouret, mais pour toi, je me lance. »",
+          "label": "« Alors dansons-la en entier. Pour la rivière — et un peu pour lui, on dirait. »",
           "effects": { "coeur": 1 },
           "next": "avant_jeu"
         },
         {
-          "label": "« Attends, je regarde les vaguelettes d'abord — je veux comprendre le rythme. »",
+          "label": "« Montre-moi les pas par petits groupes. Je les empile dans ma tête, c'est ma méthode. »",
           "effects": { "ruse": 1 },
           "next": "avant_jeu"
         },
         {
-          "label": "« Apprends-moi. Je recommencerai jusqu'à l'avoir. »",
+          "label": "« Je danserai jusqu'à ce que la rivière chante. Même avec deux pieds gauches. »",
           "effects": { "determination": 1 },
           "next": "avant_jeu"
         }
@@ -38,48 +38,54 @@
     },
     "avant_jeu": {
       "speaker": "carnet",
-      "text": "Lo montre les pas : un saut de pierre en pierre, au rythme exact de l'eau. La rivière compte pour nous — une-deux-trois, une-deux-trois. Il suffit de l'écouter avec les yeux.",
+      "text": "Lo se place sur la première pierre plate et lève les bras : la leçon commence. Quatre directions, comme les quatre mouvements de l'eau — la cascade, le remous, la rive gauche, la rive droite. Elle montre, tu répètes. La séquence s'allonge à chaque figure. Et Lo est adorable mais c'est une chorégraphe : elle voit TOUT.",
       "next": "jeu_danse"
     },
     "jeu_danse": {
       "type": "minigame",
-      "game": "RhythmTap",
+      "game": "SimonSays",
       "config": {
-        "prompt": "Danse avec la rivière : saute (tape) au sommet de chaque vague !",
-        "bpm": 72,
-        "taps": 8,
-        "tolerance": 0.42
+        "intro": "La Danse de l'Eau : observe les pas s'illuminer, puis répète-les dans l'ordre. La chorégraphie s'allonge à chaque manche !",
+        "pads": [
+          { "label": "⬆️", "color": "#5a9aa0" },
+          { "label": "⬇️", "color": "#7ec8a9" },
+          { "label": "⬅️", "color": "#e8c56a" },
+          { "label": "➡️", "color": "#c85a4a" }
+        ],
+        "length": 7,
+        "lives": 2,
+        "speed": 480
       },
-      "onSuccess": "reussite",
-      "onPartial": "presque",
-      "onFail": "pause"
+      "onSuccess": "jeu_reussi",
+      "onPartial": "jeu_presque",
+      "onFail": "jeu_rate"
     },
-    "pause": {
+    "jeu_rate": {
       "speaker": "lo",
-      "text": "Lo rattrape son danseur par la manche avant le grand plouf, et rit sans bruit. « Règle numéro un : la rivière ne se moque jamais. Règle numéro deux : on sèche ses pieds et on recommence. »",
+      "text": "Lo t'arrête d'un geste doux et s'assoit sur la pierre plate, jambes croisées. Sur l'ardoise : « Même la rivière ne descend pas la montagne d'un coup. Elle fait des détours, elle recommence. Souffle. Regarde mes pas encore une fois. La danse t'attendra — c'est sa plus grande qualité. »",
       "choices": [
         { "label": "Reprendre la danse", "next": "jeu_danse" },
-        { "label": "Revenir danser plus tard", "next": "sortie_douce" }
+        { "label": "Revenir plus tard", "next": "sortie_douce" }
       ]
     },
     "sortie_douce": {
       "speaker": "carnet",
-      "text": "Lo raccompagne son partenaire en dansant à reculons sur le sentier, parce que marcher normalement, c'est perdre une occasion de danser. « Reviens à la prochaine lune, la rivière garde nos pas. »",
+      "text": "Lo raccompagne l'enquêteur jusqu'au chemin en dansant à moitié — elle ne sait pas marcher autrement. Sur son ardoise : « Reviens à l'heure dorée. C'est là que la danse est la plus facile. »",
       "next": "END"
     },
-    "reussite": {
+    "jeu_reussi": {
       "speaker": "lo",
-      "text": "Dernier saut, réception parfaite, les bras en étoile. Lo écrit, encore essoufflée : « TU L'AS ! La danse de la rivière ! Quand le son reviendra, on la dansera tous, avec la vraie musique de l'eau. C'est promis-juré. »",
-      "next": "fragment_trouve"
+      "text": "La dernière figure s'achève, parfaite, et Lo reste immobile trois secondes — l'immobilité, chez elle, c'est la plus grande des ovations. Puis elle écrit, la main tremblante : « Pas une erreur. Tu as dansé l'eau MIEUX que l'eau. Ma grand-mère disait que cette danse choisissait ses danseurs. Elle vient de te choisir. »",
+      "next": "indice_final"
     },
-    "presque": {
+    "jeu_presque": {
       "speaker": "lo",
-      "text": "« Deux pas dans l'eau… mais les plus beaux danseurs sont ceux qui n'ont pas peur de se mouiller ! » Lo salue bien bas, comme au spectacle. « La danse est prête. Avec une figure bonus : l'éclaboussure. Je la garde, elle est de toi. »",
-      "next": "fragment_trouve"
+      "text": "« Deux petits accrocs — mais l'eau aussi trébuche sur les pierres, c'est même comme ça qu'elle chante. » Lo applaudit sans bruit, à sa façon : en pluie de doigts. « La danse est complète. La rivière a tout vu. Maintenant, on écoute. »",
+      "next": "indice_final"
     },
-    "fragment_trouve": {
+    "indice_final": {
       "speaker": "carnet",
-      "text": "Sous la pierre plate du dernier saut — la pierre que Lo appelle « la scène » — brille quelque chose : une boîte de fer enfoncée là depuis longtemps. Dedans, au sec, un papier doré. Le dixième fragment du vœu.",
+      "text": "Sous la pierre plate du final — celle où le voleur s'était arrêté — brille un fragment doré, posé sur un mouchoir plié. Et sur le mouchoir, brodées à l'ancienne, deux initiales : « V. » et, dessous, plus petit, une phrase à déliés : « Ta grand-mère dansait mieux que toi. Mais toi, tu danses avec plus de joie. Elle serait d'accord. — V. » Lo serre le mouchoir très fort. « Il connaissait ma grand-mère. Notre voleur a l'âge du village. »",
       "next": "fin_fragment"
     },
     "fin_fragment": {
@@ -90,7 +96,7 @@
     },
     "epilogue": {
       "speaker": "carnet",
-      "text": "Et d'un coup, la rivière retrouva sa voix : le clapotis, le glouglou, le chuuu des vaguelettes sur les pierres. Le dixième bruit était revenu. Lo dansa dessus jusqu'à la nuit tombée, et la rivière, c'est certain, dansait avec elle.",
+      "text": "Et la rivière revint. Pas d'un coup : d'abord un glouglou timide entre deux pierres, puis le clapotis, puis tout l'orchestre — et Lo dansa dessus jusqu'à la nuit, pendant que les grenouilles remménageaient en famille. Dixième bruit récupéré. Sur le tableau de l'enquête, Lo écrivit : « 10 bruits récupérés. V. connaissait ma grand-mère. Il a son âge, ses chaussons, et un mouchoir brodé. Cherchez dans les histoires les plus anciennes du village. Moi, je retourne danser — quelqu'un doit bien fêter tout ça. »",
       "next": "END"
     }
   }

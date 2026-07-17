@@ -482,6 +482,40 @@ const PORTRAITS = {
   },
 }
 
+// Le Veilleur — gardien des bruits, géant fatigué en bonnet de nuit
+PORTRAITS.veilleur = {
+  bg: '#3a3a52',
+  draw: (skin = '#e8cdb0') => (
+    <>
+      <Bust skin={skin} shirt="#5c5c78">
+        {/* manteau gris à gros boutons (il en manque un !) */}
+        <line x1="50" y1="68" x2="50" y2="100" stroke="#46465e" strokeWidth="2.5" />
+        <circle cx="43" cy="78" r="2" fill="#8a8aa8" />
+        <circle cx="43" cy="90" r="2" fill="none" stroke="#8a8aa8" strokeWidth="1" strokeDasharray="2 1.6" />
+      </Bust>
+      <Head skin={skin} />
+      {/* bonnet de nuit à pompon */}
+      <path d="M32 36 Q32 18 50 18 Q68 18 68 36 L64 34 Q64 24 50 24 Q36 24 36 34 Z" fill="#7a7a9a" />
+      <path d="M32 36 Q30 20 50 18 Q72 18 74 12 Q80 8 82 14 Q83 20 74 22 Q70 24 68 36 Q66 25 50 24 Q34 25 32 36" fill="#7a7a9a" />
+      <circle cx="82" cy="14" r="4" fill="#e8c56a" />
+      {/* grands sourcils broussailleux + yeux fatigués mais doux */}
+      <path d="M37 36 Q43 32 48 36 M52 36 Q57 32 63 36" stroke="#d8d8e4" strokeWidth="2.4" fill="none" strokeLinecap="round" />
+      <path d="M40 42 Q43 44 46 42 M54 42 Q57 44 60 42" stroke={INK} strokeWidth="1.8" fill="none" strokeLinecap="round" />
+      <path d="M39 46 Q43 47.5 47 46 M53 46 Q57 47.5 61 46" stroke="#c9a98c" strokeWidth="1" fill="none" />
+      {/* grande barbe grise douce */}
+      <path d="M34 44 Q33 62 50 64 Q67 62 66 44 Q64 56 50 56 Q36 56 34 44" fill="#d8d8e4" />
+      <path d="M42 52 Q50 57 58 52 Q55 60 50 60 Q45 60 42 52" fill="#d8d8e4" />
+      <path d="M44 51 Q50 54 56 51" stroke="#8a8aa8" strokeWidth="1" fill="none" strokeLinecap="round" />
+      {/* tasse de camomille */}
+      <g transform="translate(70 80)">
+        <rect x="-6" y="-4" width="12" height="10" rx="2.5" fill="#e8d3a8" />
+        <path d="M6 -2 Q11 -1 6 4" stroke="#e8d3a8" strokeWidth="2.4" fill="none" />
+        <path d="M-2 -7 q-1 -3 1 -5 M2 -7 q1 -3 -1 -5" stroke="#d8d3c8" strokeWidth="1" fill="none" className="smoke" />
+      </g>
+    </>
+  ),
+}
+
 // speaker "carnet" → on montre le carnet de Mamy lui-même
 PORTRAITS.carnet = {
   bg: '#46466e',

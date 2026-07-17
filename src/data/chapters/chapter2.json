@@ -7,109 +7,89 @@
   "nodes": {
     "start": {
       "speaker": "carnet",
-      "text": "Au bout de la ruelle, une échelle grimpe vers le grenier d'Aloïs. C'est le plus bel endroit du village : des malles, des cartes anciennes, un phonographe endormi. Aloïs connaît l'histoire de chaque trésor.",
-      "next": "alois_accueil"
+      "text": "Direction le grenier d'Aloïs, le plus grand entrepôt de trésors du canton : cartes au trésor (dessinées par lui), momies (des chaussettes), et le célèbre phonographe du grand-oncle Barnabé. Aloïs attend en haut de l'échelle, casque d'aviateur vissé sur la tête, loupe au poing. Sur son ardoise : « ENFIN. Un collègue. »",
+      "next": "alois_rapport"
     },
-    "alois_accueil": {
+    "alois_rapport": {
       "speaker": "alois",
-      "text": "Aloïs agite son ardoise, les yeux brillants : « Tu tombes bien ! Il y a QUELQU'UN dans mon grenier. Quelque chose qui glisse entre les caisses. Je ne veux pas lui faire peur… je veux le rencontrer. »",
-      "next": "alois_indice"
+      "text": "« Rapport d'enquête ! » Aloïs tourne les pages de son calepin à toute vitesse. « La nuit du vol, j'ai entendu le phonographe jouer TOUT SEUL. Enfin, entendu… c'était le dernier bruit de ma vie, alors je m'en souviens bien : une berceuse. Le temps de monter, plus rien. Mais le voleur a laissé une trace — regarde. » Il brandit une boîte en fer, vide, étiquetée à la main : « BOÎTE À MUSIQUE — FRAGILE — NE PA RÉVEILLER ».",
+      "next": "alois_deduction"
     },
-    "alois_indice": {
+    "alois_deduction": {
       "speaker": "alois",
-      "text": "« Regarde : la poussière dessine des vagues, là, et là. Ça se déplace sans faire de bruit — forcément, avec le Grand Silence ! Mais j'ai remarqué un truc : quand je tape du pied, les vagues changent de direction. Il SENT les vibrations. »",
-      "next": "branche_choix"
-    },
-    "branche_choix": {
-      "speaker": "alois",
-      "text": "« Alors, comment on s'y prend pour l'approcher ? »",
+      "text": "« Analyse : primo, le voleur écrit “ne pa” sans S, donc il n'a pas eu école depuis très longtemps. Deuzio, il ENDORT les bruits avec une berceuse avant de les ranger en boîte. Tertio, il a lâché celle-ci en repartant : il était pressé, donc le coq allait chanter, donc il travaille de nuit ! » Il souffle un grand coup. « La suite de l'enquête est dans la malle de Barnabé. Problème : le code du cadenas. »",
       "choices": [
         {
-          "label": "S'asseoir sans bouger, paume ouverte, et attendre qu'il vienne.",
+          "label": "« On va l'ouvrir ensemble, doucement. Une malle de famille, ça se respecte. »",
           "effects": { "coeur": 1 },
           "setFlags": ["approche_douce"],
-          "next": "branche_coeur"
+          "next": "avant_code"
         },
         {
-          "label": "Observer les traces dans la poussière pour deviner sa cachette.",
+          "label": "« Barnabé a forcément laissé le code quelque part. Les grands-oncles font toujours ça. »",
           "effects": { "ruse": 1 },
-          "next": "branche_ruse"
+          "next": "avant_code"
         },
         {
-          "label": "Tapoter le plancher en rythme, encore et encore, jusqu'à ce qu'il réponde.",
+          "label": "« Cette malle s'ouvrira aujourd'hui. Dussé-je essayer les mille codes possibles. »",
           "effects": { "determination": 1 },
-          "next": "branche_determination"
+          "next": "avant_code"
         }
       ]
     },
-    "branche_coeur": {
+    "avant_code": {
       "speaker": "carnet",
-      "text": "Ils s'assoient tous les deux au milieu du grenier, immobiles comme des statues de musée. Au bout d'un long moment, un petit museau pointe entre deux caisses… puis se ravise. Il est curieux, mais prudent. Il faudra deviner où il se cache.",
-      "next": "puzzle_cachette"
+      "text": "Sous la pochette du phonographe, Aloïs déniche un papier jauni, de la main du grand-oncle Barnabé : « À celui qui voudra ouvrir ma malle : le code a autant de chiffres que le village a de Mousquetaires. Et si tu ne sais pas ça, tu n'as rien à faire dans ma malle. » Suivent trois devinettes, à l'encre violette.",
+      "next": "code_malle"
     },
-    "branche_ruse": {
-      "speaker": "carnet",
-      "text": "À quatre pattes, nez au plancher, les deux enquêteurs suivent les vagues de poussière. Les traces tournent autour de trois cachettes possibles. Aloïs lève trois doigts : à nous de déduire la bonne.",
-      "next": "puzzle_cachette"
-    },
-    "branche_determination": {
-      "speaker": "carnet",
-      "text": "Toc… toc-toc… toc. Aloïs et son visiteur tapotent le plancher sans se lasser, comme un code secret. Et soudain — toc-toc, en réponse ! Ça vient de l'un des trois recoins du grenier. Lequel ?",
-      "next": "puzzle_cachette"
-    },
-    "puzzle_cachette": {
+    "code_malle": {
       "type": "minigame",
-      "game": "LogicPuzzle",
+      "game": "CodeLock",
       "config": {
-        "intro": "Trois cachettes possibles. Aloïs écrit les indices sur son ardoise : « Il aime la chaleur. Il aime ce qui est rond. Et il n'aime PAS ce qui pique. »",
-        "question": "Où se cache le mystérieux habitant du grenier ?",
-        "options": [
-          { "label": "La malle aux manteaux d'hiver, tout au fond, près du courant d'air", "correct": false },
-          { "label": "Le carton des guirlandes de Noël, plein d'épines de sapin", "correct": false },
-          { "label": "Le vieux phonographe, rond et tiède de soleil", "correct": true }
+        "intro": "Le cadenas de la malle de Barnabé. Trois chiffres, trois devinettes — et Barnabé ne donnait jamais rien facilement.",
+        "clues": [
+          "« Le premier chiffre se cache dans le mot TRÉSOR : compte ses R. »",
+          "« Le deuxième est le nombre de pattes d'un serpent. Ne cherche pas trop longtemps. »",
+          "« Le troisième : les coins d'une ardoise, tout simplement. »"
         ],
-        "attempts": 2
+        "code": "204",
+        "attempts": 3
       },
-      "onSuccess": "trouve",
-      "onPartial": "trouve_presque",
-      "onFail": "pause"
+      "onSuccess": "malle_ouverte",
+      "onPartial": "malle_ouverte_essais",
+      "onFail": "code_rate"
     },
-    "pause": {
+    "code_rate": {
       "speaker": "alois",
-      "text": "« Il a filé ! Mais un explorateur ne renonce jamais. » Aloïs sort deux biscuits de sa poche — un pour chacun. « On reprend quand tu veux. »",
+      "text": "« Blocage de sécurité ! Barnabé avait prévu les curieux : trois erreurs et le cadenas boude un moment. » Aloïs s'assoit en tailleur, pas découragé pour deux sous. « C'est un test de patience. Les grands enquêteurs font des pauses. Les très grands mangent un biscuit. »",
       "choices": [
-        { "label": "Réessayer maintenant", "next": "puzzle_cachette" },
+        { "label": "Réessayer, les devinettes bien relues", "next": "code_malle" },
         { "label": "Revenir plus tard", "next": "sortie_douce" }
       ]
     },
     "sortie_douce": {
       "speaker": "carnet",
-      "text": "Aloïs raccompagne son ami jusqu'à l'échelle et lui glisse une carte du grenier « pour la prochaine expédition ». Le mystérieux habitant attendra — les trésors savent attendre.",
+      "text": "Aloïs raccompagne son collègue à l'échelle et note dans son calepin : « Enquête suspendue. Suspect toujours en fuite. Biscuits épuisés. » La malle attendra — Barnabé n'est plus pressé depuis longtemps.",
       "next": "END"
     },
-    "trouve": {
-      "speaker": "carnet",
-      "text": "Du premier coup ! Dans le pavillon doré du phonographe, lové comme une virgule, dort un petit serpent vert. Il ouvre un œil, pas effrayé du tout, et vient s'enrouler doucement autour du poignet d'Aloïs.",
-      "next": "bapteme"
-    },
-    "trouve_presque": {
-      "speaker": "carnet",
-      "text": "La deuxième cachette était la bonne ! Dans le pavillon doré du phonographe, lové comme une virgule, dort un petit serpent vert. Il ouvre un œil, pas effrayé du tout, et vient s'enrouler doucement autour du poignet d'Aloïs.",
-      "next": "bapteme"
-    },
-    "bapteme": {
+    "malle_ouverte": {
       "speaker": "alois",
-      "text": "« Il vibre ! Tu sens ? Il fait brrr avec tout son corps, comme un téléphone ! C'est son langage à lui — le silence ne peut rien contre ça. » Aloïs réfléchit trois secondes. « Je te présente… MISTIFLOUK. Serpent-sonar. Membre officiel de l'enquête. »",
-      "next": "mistiflouk_don"
+      "text": "CLAC. Le cadenas s'ouvre du premier coup. Aloïs en lâche sa loupe : « Du premier coup ! Même MOI je n'ai jamais… enfin je veux dire : bien joué, collègue, je n'en attendais pas moins. » Il soulève le couvercle avec un respect de professionnel.",
+      "next": "surprise_malle"
     },
-    "mistiflouk_don": {
+    "malle_ouverte_essais": {
       "speaker": "alois",
-      "text": "« Il t'aime bien, tu sais. Regarde, il tend la tête vers toi. Emmène-le dans l'enquête : quand quelque chose d'important se cache quelque part, il le sentira avant tout le monde. Moi je garde le grenier — un explorateur protège son camp de base. »",
-      "next": "surprise_phono"
+      "text": "CLAC. Le cadenas cède. « Il m'a fallu deux étés pour comprendre la devinette du serpent, alors tes petites erreurs, ça compte pour du beurre. » Aloïs soulève le couvercle avec un respect de professionnel.",
+      "next": "surprise_malle"
     },
-    "surprise_phono": {
+    "surprise_malle": {
       "speaker": "carnet",
-      "text": "En se déroulant du phonographe, Mistiflouk a déclenché le vieux mécanisme. Et sous l'aiguille, coincé dans le pavillon, un petit papier doré s'envole : le deuxième fragment du vœu.",
+      "text": "Dans la malle : les carnets de voyage de Barnabé, une boussole qui indique le sud par principe… et un panier. Et dans le panier, roulé en spirale impeccable, un petit serpent vert qui cligne des yeux comme quelqu'un qu'on réveille un dimanche. À son cou, une étiquette de Barnabé : « MISTIFLOUK. Serpent-sonar du Grand Désert. Sent les sons à travers les murs. Nourrir de silence — justement, on en a plein. »",
+      "next": "mistiflouk_adoption"
+    },
+    "mistiflouk_adoption": {
+      "speaker": "alois",
+      "text": "« Un serpent-SONAR ! Tu sais ce que ça veut dire ?! Il peut sentir les bruits volés À TRAVERS les boîtes ! C'est l'arme absolue contre le voleur ! » Mistiflouk, très digne, ondule jusqu'à l'épaule de l'enquêteur et s'y installe comme un col roulé. Aloïs en tremble : « Il t'a choisi. Il vibre quand un bruit est proche — c'est sa façon de parler. Ne le vexe jamais un jour de pluie. »",
       "next": "fin_fragment"
     },
     "fin_fragment": {
@@ -121,7 +101,7 @@
     },
     "epilogue": {
       "speaker": "carnet",
-      "text": "Alors le phonographe toussota, grinça… et égrena trois notes, toutes rondes, toutes claires. Le deuxième bruit du village venait de rentrer à la maison. Et sur l'épaule du héros, un petit serpent vibrait de joie.",
+      "text": "Au fond du panier dormait aussi un fragment doré — le deuxième. Et quand Mistiflouk vibra pour la première fois, la vieille boîte à musique de Barnabé s'ébroua et égrena trois notes toutes seules, comme au bon vieux temps. Aloïs nota solennellement : « 2 bruits récupérés. Le voleur a des berceuses. Nous, on a un serpent. Match équilibré. »",
       "next": "END"
     }
   }

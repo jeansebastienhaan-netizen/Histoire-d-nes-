@@ -58,6 +58,26 @@ export function playMistiflouk() {
   note(c, 220, 0.24, 0.25, 0.08, 'sine')
 }
 
+// Note simple pour les mini-jeux (Simon, pavé numérique…).
+export function playNote(freq, duration = 0.35, type = 'triangle') {
+  const c = audioContext()
+  if (!c) return
+  note(c, freq, 0, duration, 0.11, type)
+}
+
+export function playError() {
+  const c = audioContext()
+  if (!c) return
+  note(c, 175, 0, 0.25, 0.1, 'sawtooth')
+  note(c, 147, 0.14, 0.35, 0.08, 'sawtooth')
+}
+
+export function playWin() {
+  const c = audioContext()
+  if (!c) return
+  ;[523, 659, 784, 1047].forEach((f, i) => note(c, f, i * 0.11, 0.5, 0.09, 'triangle'))
+}
+
 // La grande fin : le village chante à nouveau.
 export function playVillageSong() {
   const c = audioContext()

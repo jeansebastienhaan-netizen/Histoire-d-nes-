@@ -43,6 +43,7 @@
     { "from": "lo", "text": "La danse de la rivière se danse chaque été, pieds nus. La figure de l'éclaboussure fait toujours un triomphe." },
     { "from": "lana", "text": "L'Étoile du Berger est revenue. Lana l'a vérifiée cent fois. Elle brille un peu plus fort qu'avant — c'est dans ses carnets." },
     { "from": "marjo", "text": "Coco le perroquet fut la première voix à revenir. Sa première phrase : le vœu, en entier, sans une faute. Marjo jure qu'elle ne lui a rien appris." },
-    { "from": "mousquetaires", "text": "Les Mousquetaires ont ajouté un quatrième cadenas à leur boîte. Dedans, une place vide : « Pour le prochain secret. »" }
+    { "from": "mousquetaires", "text": "Les Mousquetaires ont ajouté un quatrième cadenas à leur boîte. Dedans, une place vide, tamponnée CONFIDENTIEL : « Pour le prochain secret. »" },
+    { "from": "veilleur", "text": "Le Veilleur a repris son service de nuit — bruits rangés à la veillée, ressortis à l'aube, accordés au quart de ton. Et chaque premier mardi du mois, le village tient la Grande Soirée d'Écoute : on se tait, et on écoute quelqu'un raconter. Il ne rate jamais la sienne. La dernière fois, il a ri. Trois pommes sont tombées du tilleul, et Coco l'imite encore." }
   ]
 }
