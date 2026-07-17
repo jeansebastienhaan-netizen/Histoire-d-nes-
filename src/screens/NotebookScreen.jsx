@@ -11,10 +11,10 @@ export default function NotebookScreen() {
 
   return (
     <div className="screen notebook-screen">
-      <h2 className="notebook-title">Le carnet de Mamy</h2>
+      <h2 className="notebook-title">Le tableau de mission</h2>
 
       <section className="notebook-section">
-        <h3>Le vœu se reconstitue…</h3>
+        <h3>Le vœu du village — {fragments.length}/13 éclats rendus</h3>
         <div className="wish-lines">
           {fragmentsData.order.map((id) => {
             const collected = fragments.includes(id)
@@ -55,11 +55,13 @@ export default function NotebookScreen() {
 
       {soundsRestored.length > 0 && (
         <section className="notebook-section">
-          <h3>Les bruits revenus</h3>
+          <h3>Le chant d'Étincelle</h3>
           <p className="sounds-restored">
-            {soundsRestored.length} bruit{soundsRestored.length > 1 ? 's' : ''} du village{' '}
-            {soundsRestored.length > 1 ? 'ont' : 'a'} été retrouvé
-            {soundsRestored.length > 1 ? 's' : ''}.
+            {soundsRestored.length} note{soundsRestored.length > 1 ? 's' : ''} sur 13 —
+            chaque éclat ressoudé rend une note à sa chanson.{' '}
+            {soundsRestored.length >= 13
+              ? 'Le chant est complet !'
+              : 'Elle la fredonne, incomplète, dans son cratère.'}
           </p>
         </section>
       )}

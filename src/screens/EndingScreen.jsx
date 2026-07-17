@@ -8,7 +8,7 @@ import charactersData from '../data/characters.json'
 
 const NAMES = {
   ...Object.fromEntries(charactersData.characters.map((c) => [c.id, c.name])),
-  veilleur: 'Le Veilleur',
+  etoile: 'Étincelle',
 }
 
 // Choisit une des 7 fins selon le profil de réputation :
@@ -22,7 +22,7 @@ export function endingId(reputation) {
   return [top[0], mid[0]].sort().join('_')
 }
 
-const PHASES = ['tilleul', 'veilleur', 'voeu', 'chant', 'fin', 'epilogues', 'merci']
+const PHASES = ['tilleul', 'etoile', 'voeu', 'chant', 'fin', 'epilogues', 'merci']
 
 export default function EndingScreen() {
   const { reputation, goToMap, newGame } = useGameStore()
@@ -39,50 +39,51 @@ export default function EndingScreen() {
     <div className="screen ending-screen">
       {phase === 'tilleul' && (
         <div className="ending-block">
-          <h2 className="notebook-title">Sous le grand tilleul</h2>
+          <h2 className="notebook-title">La Nuit des Étoiles Filantes</h2>
           <p className="dialogue-text ending-text">
-            Il est là.
+            Tout le village est là, sous le grand tilleul, autour du cratère devenu
+            rampe de lancement (aménagement : les Mousquetaires ; coussins : Mamy ;
+            beignets : Noélia). Au centre, Étincelle brille de ses treize éclats
+            ressoudés, ronde et dorée comme une petite lune impatiente.
             <br /><br />
-            Assis contre le tronc du grand tilleul, immense et voûté, en chaussons gris
-            dont l'un est à moitié mâchouillé : le Veilleur. Autour de lui, des centaines
-            de boîtes en fer soigneusement empilées — toute la musique du village, rangée,
-            étiquetée, réparée. Il tient sa tasse de camomille sans la boire.
-            Quand le village s'approche, il baisse la tête, comme un géant qui voudrait
-            être plus petit.
+            Et là-haut, le ciel descend. Vraiment. Les étoiles semblent plus proches
+            que jamais, et deux d'entre elles, juste au-dessus du tilleul, clignotent
+            si fort qu'on dirait des phares. Ses parents. Ils sont venus la chercher.
             <br /><br />
-            Mamy s'avance la première. Elle ouvre son carnet : les treize fragments dorés
-            y ont repris leur place, bord contre bord. Elle fait signe : c'est à toi de lire.
+            Lana consulte sa montre, ses calculs, puis sa montre : « Fenêtre de
+            décollage dans dix minutes. Protocole, phase un : le vœu. »
           </p>
-          <button className="btn btn-primary" onClick={next}>Lire le vœu</button>
+          <button className="btn btn-primary" onClick={next}>Approcher</button>
         </div>
       )}
 
-      {phase === 'veilleur' && (
+      {phase === 'etoile' && (
         <div className="ending-block">
-          <h2 className="notebook-title">Le Veilleur</h2>
+          <div className="standing-figure standing-talking" style={{ margin: '0 auto 12px' }}>
+            <Avatar id="etoile" size={120} />
+          </div>
+          <h2 className="notebook-title">Étincelle</h2>
           <p className="dialogue-text ending-text">
-            Alors le Veilleur parle — et sa voix est le premier son qu'il ne s'est jamais
-            volé à lui-même, rouillée comme une porte de grenier :
+            Alors Étincelle tinte — longuement, doucement. Mistiflouk vibre.
+            Coco traduit en chantant. Lana valide scientifiquement. Et tout le monde
+            comprend, parce qu'au fond, tout le monde parle étoile depuis le début :
             <br /><br />
-            « Neuf cents ans que je range vos bruits chaque nuit, que je les répare,
-            que je les accorde, que je les ressors à l'aube. L'horloge. La rivière.
-            Vos rires. Personne ne le savait, et c'était très bien ainsi. Mais mardi… »
+            « Merci. Merci pour l'horloge, le phonographe, la citrouille, le miel,
+            la berceuse, les poules. J'ai raté mon premier envol… et c'était la plus
+            belle chute de toute l'histoire des étoiles. »
             <br /><br />
-            Il tourne sa tasse entre ses doigts géants. « Mardi, j'ai traversé le village,
-            et tout le monde parlait. Personne n'écoutait. Alors j'ai tout rangé une bonne
-            fois, et je suis allé me coucher. Ce n'était pas un vol. C'était… une bouderie.
-            Une bouderie de neuf cents ans d'ancienneté, ça prend de la place, je vous
-            l'accorde. » Il regarde le carnet de Mamy. « Ce vœu-là, je l'ai lu il y a
-            soixante ans. C'est le plus beau bruit que ce village ait jamais fait.
-            Relisez-le-moi. Et je rouvre tout. »
+            Puis elle tinte trois notes plus graves, et Coco traduit, solennel :
+            « La tradition est la tradition : une étoile filante réparée doit exaucer
+            UN vœu avant de repartir. Vous êtes tout un village… alors j'ai le droit
+            à un vœu de tout un village. Lisez-le-moi. »
           </p>
-          <button className="btn btn-primary" onClick={next}>Lui lire le vœu</button>
+          <button className="btn btn-primary" onClick={next}>Lire le vœu du village</button>
         </div>
       )}
 
       {phase === 'voeu' && (
         <div className="ending-block">
-          <h2 className="notebook-title">Le vœu</h2>
+          <h2 className="notebook-title">Le vœu du village</h2>
           <div className="wish-lines wish-final">
             {fragmentsData.order.map((id) => (
               <p key={id} className="wish-final-line">
@@ -97,17 +98,17 @@ export default function EndingScreen() {
       {phase === 'chant' && (
         <div className="ending-block">
           <p className="dialogue-text ending-text ending-chant">
-            À la dernière syllabe, le Veilleur se lève de toute sa hauteur —
-            et il ouvre les boîtes. Toutes. À pleines brassées, comme on sème.
+            À la dernière ligne du vœu, Étincelle se met à chanter — sa chanson
+            entière, les treize notes — et tout le village chante avec elle,
+            Coco en soliste, Cyril à la guitare, la rivière en percussions.
             <br /><br />
-            L'horloge de Mamy sonne. Le marteau de Xavier répond. La cloche,
-            la guitare, la rivière, le ballon de Jules, le ron-ron de la mobylette,
-            les rires de la cabane — tous les bruits du village se lèvent en même temps,
-            comme un orchestre qui n'attendait que son chef. Et dans le ciel,
-            l'Étoile du Berger se rallume, au premier sourire du Veilleur — Lana
-            avait raison, et elle le fera remarquer pendant des années.
+            Alors, portée par le chant, elle s'élève. Doucement d'abord, comme un
+            ballon qu'on lâche. Puis de plus en plus vite, traçant dans la nuit une
+            grande spirale dorée — un zigzag, évidemment, un zigzag magnifique —
+            jusqu'aux deux étoiles qui clignotent, qui la reçoivent, qui l'entourent.
             <br /><br />
-            Le Grand Silence est terminé.
+            Et pendant un instant, trois étoiles brillent ensemble au-dessus du
+            village, si fort que la nuit ressemble au matin.
           </p>
           <button className="btn btn-primary" onClick={next}>Continuer</button>
         </div>
@@ -123,7 +124,7 @@ export default function EndingScreen() {
 
       {phase === 'epilogues' && (
         <div className="ending-block">
-          <h2 className="notebook-title">Dans le village, depuis ce jour…</h2>
+          <h2 className="notebook-title">Dans le village, depuis cette nuit-là…</h2>
           <div className="epilogues">
             {endingsData.epilogues.map((e) => (
               <div key={e.from} className="epilogue-item">
@@ -143,7 +144,7 @@ export default function EndingScreen() {
         <div className="ending-block ending-merci">
           <h2 className="title-main">Fin</h2>
           <p className="title-tagline">
-            Merci d'avoir rendu sa voix au village.
+            Merci d'avoir ramené Étincelle chez elle.
           </p>
           <div className="title-buttons">
             <button className="btn btn-primary" onClick={goToMap}>

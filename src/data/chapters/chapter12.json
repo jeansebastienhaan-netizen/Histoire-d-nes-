@@ -7,20 +7,20 @@
   "nodes": {
     "start": {
       "speaker": "carnet",
-      "text": "Derrière la dernière barrière du village vit Marjo, la dresseuse : chèvres funambules, oies au garde-à-vous, et Coco, le perroquet doyen, qui répétait autrefois les potins du village avec un talent d'imitateur qui a brouillé deux familles. Aujourd'hui, la ménagerie est sens dessus dessous : la barrière est ouverte, l'enclos est vide, et Marjo court dans le pré avec un filet à papillons — pour la dignité, c'est déjà trop tard.",
+      "text": "Derrière la dernière barrière du village vit Marjo, la dresseuse : chèvres funambules, oies au garde-à-vous, et Coco, le perroquet doyen, imitateur de génie. Depuis la nuit de la chute, sa ménagerie a un secret : les poules COUVENT l'éclat. Elles l'ont trouvé dans le pré, l'ont pris pour l'œuf le plus prestigieux de l'histoire de la basse-cour, et l'ont installé dans le poulailler avec les honneurs. Berlingot la chèvre monte la garde. Gertrude l'oie filtre les visiteurs. C'est une forteresse.",
       "next": "marjo_situation"
     },
     "marjo_situation": {
       "speaker": "marjo",
-      "text": "« CATASTROPHE À TROIS PATTES ! Enfin, à dix pattes ! Enfin — Berlingot la chèvre, Gertrude l'oie et le lapin, dont le nom est secret parce qu'il n'écoute de toute façon pas ! » Marjo écrit si fort que la craie crisse (enfin, crisserait). « Mes bêtes obéissaient à la voix et au sifflet. Sans son, elles n'entendent plus rien — alors elles ont voté l'indépendance ! Et j'ai TROUVÉ QUELQUE CHOSE près de la barrière. Regarde. »",
+      "text": "« CATASTROPHE DIPLOMATIQUE ! » Marjo écrit si fort que la craie proteste. « Mes bêtes sont tombées AMOUREUSES de l'éclat. Il est chaud, il brille, il chante des berceuses la nuit — évidemment qu'elles l'adorent, moi-même je m'y attache ! Ce matin, j'ai voulu le récupérer en douceur. Résultat : évasion générale ! Berlingot, Gertrude et le lapin ont pris l'éclat et sont partis camper dans le pré ! Le lapin porte l'éclat. LE LAPIN. Le seul animal de cette ferme qui ne m'écoute jamais ! »",
       "next": "marjo_indice"
     },
     "marjo_indice": {
       "speaker": "carnet",
-      "text": "Près de la barrière : une pantoufle géante, grise, à moitié mâchouillée, et une boîte en fer cabossée, étiquette : « MEUH — non — BÊÊÊ — enfin bref, RAYON FERME ». Marjo raconte : « Il est venu prendre les cris de mes bêtes. Mais Coco a défendu la volière comme un chevalier : il lui a mordu la pantoufle ! Le Veilleur — appelons-le comme tout le monde maintenant — est reparti en boitillant… et il a laissé la barrière ouverte. Voilà pourquoi mes fugueurs se baladent ! »",
+      "text": "Dans le pré, le spectacle est effectivement remarquable : les trois fugueurs campent en cercle autour du lapin, qui garde l'éclat entre ses pattes comme un trophée. L'éclat, ravi de l'attention, brille de tous ses feux et leur chante des berceuses. Coco, resté à la volière, imite le chant de l'étoile À LA PERFECTION — détail qui, tout le monde le pressent, servira bientôt.",
       "choices": [
         {
-          "label": "« On les ramène tous les trois. Ils doivent jouer aux durs, mais ils ont peur, au fond. »",
+          "label": "« On les ramène tous les trois avec douceur. Ils protègent Étincelle à leur façon, au fond. »",
           "effects": { "coeur": 1 },
           "next": "avant_jeu"
         },
@@ -30,7 +30,7 @@
           "next": "avant_jeu_ruse"
         },
         {
-          "label": "Envoyer Mistiflouk en éclaireur : rien n'échappe à un serpent-sonar.",
+          "label": "Envoyer Mistiflouk parlementer : entre détecteurs de chants d'étoile, on se comprend.",
           "condition": { "flag": "a_mistiflouk" },
           "effects": { "ruse": 1, "coeur": 1 },
           "next": "avant_jeu_mistiflouk"
@@ -44,24 +44,24 @@
     },
     "avant_jeu": {
       "speaker": "carnet",
-      "text": "Marjo briefe son équipe (toi) en langage des gestes : main à plat pour Berlingot, doigt tendu pour Gertrude, et pour le lapin… elle mime un haussement d'épaules fataliste. « Un conseil : ils BOUGENT. Berlingot est rapide, Gertrude a son rythme, et le lapin se téléporte, je n'ai pas d'autre mot et j'ai cherché. Et fais vite : le soleil se couche, et une chèvre de nuit, c'est une légende urbaine qu'on n'a pas envie de créer. »",
+      "text": "Marjo briefe son équipe (toi) en langage des gestes : main à plat pour Berlingot, doigt tendu pour Gertrude, et pour le lapin… elle mime un haussement d'épaules fataliste. « Un conseil : ils BOUGENT. Berlingot est rapide, Gertrude a son rythme, et le lapin se téléporte — je n'ai pas d'autre mot, et j'ai cherché. Ramène-les à l'enclos avant le coucher du soleil : l'éclat suivra le lapin, et le lapin finira par suivre son ventre. »",
       "next": "jeu_animaux"
     },
     "avant_jeu_ruse": {
       "speaker": "carnet",
-      "text": "Marjo éclate d'un rire muet et remplit tes poches de trèfle frais. « L'esprit d'une dresseuse ! Le trèfle les attirera vers l'enclos — mais il faudra quand même les Y METTRE, et c'est là que ça se corse : Berlingot est rapide, Gertrude a son rythme, et le lapin se téléporte. J'ai cherché un autre mot. Il n'y en a pas. Et dépêche-toi : le soleil descend. »",
+      "text": "Marjo éclate d'un rire muet et remplit tes poches de trèfle frais. « L'esprit d'une dresseuse ! Le trèfle les attirera vers l'enclos — mais il faudra quand même les Y METTRE, et c'est là que ça se corse : Berlingot est rapide, Gertrude a son rythme, et le lapin se téléporte. J'ai cherché un autre mot. Il n'y en a pas. Et fais vite : le soleil descend. »",
       "next": "jeu_animaux"
     },
     "avant_jeu_mistiflouk": {
       "speaker": "carnet",
-      "text": "Mistiflouk file dans l'herbe haute et revient en trois ondulations : localisation complète. Berlingot broute le règlement du silence-ball (affiché trop bas), Gertrude patauge, le lapin est PARTOUT, dixit le sonar, ce qui n'est pas une donnée exploitable mais donne le ton. Marjo salue le serpent, très professionnelle : « Bienvenue dans l'équipe, collègue. Attention : le soleil descend, on fait vite. »",
+      "text": "Mistiflouk ondule jusqu'au campement et entame avec l'éclat une conversation vibrante de sonar à étoile — fascinant, mais sans effet sur les trois gardes du corps, qui resserrent les rangs autour de leur trésor chantant. Marjo salue le serpent, très professionnelle : « Belle tentative, collègue. Bienvenue dans l'équipe. Plan B : on ramène les gardes du corps un par un. Et vite, le soleil descend. »",
       "next": "jeu_animaux"
     },
     "jeu_animaux": {
       "type": "minigame",
       "game": "AnimalRoundup",
       "config": {
-        "prompt": "Attrape les trois fugueurs et dépose-les dans l'enclos avant la nuit ! Ils bougent tout seuls — et le lapin se téléporte quand on l'attrape mal.",
+        "prompt": "Attrape les trois gardes du corps et dépose-les dans l'enclos avant la nuit ! Ils bougent tout seuls — et le lapin se téléporte quand on l'attrape mal.",
         "animals": ["🐐", "🪿", "🐇"],
         "target": "L'enclos",
         "seconds": 45
@@ -71,25 +71,25 @@
     },
     "pause": {
       "speaker": "marjo",
-      "text": "« Pause réglementaire ! » Marjo distribue des carottes — une pour toi aussi, tu l'as méritée. « Règle d'or du dressage : jamais s'énerver, jamais courir plus bête que l'animal. Ils reviennent toujours rôder près de l'enclos, ce sont des fugueurs de confort. On respire, on observe leurs habitudes, et on remet ça. Le lapin ne peut pas se téléporter ET réfléchir, c'est sa faiblesse. »",
+      "text": "« Pause réglementaire ! » Marjo distribue des carottes — une pour toi aussi, tu l'as méritée. « Règle d'or du dressage : jamais s'énerver, jamais courir plus bête que l'animal. Ils reviennent toujours rôder près de l'enclos, ce sont des campeurs de confort. On respire, on observe, et on remet ça. Le lapin ne peut pas se téléporter ET réfléchir : c'est sa faiblesse. »",
       "choices": [
-        { "label": "Reprendre la chasse", "next": "jeu_animaux" },
+        { "label": "Reprendre la mission", "next": "jeu_animaux" },
         { "label": "Revenir plus tard", "next": "sortie_douce" }
       ]
     },
     "sortie_douce": {
       "speaker": "carnet",
-      "text": "Marjo raccompagne l'enquêteur avec Gertrude sous le bras — elle au moins s'est laissé faire, contre un morceau de pain. Sur l'ardoise : « Reviens vite. Coco veut te montrer quelque chose. Il n'arrête pas de taper du bec sur sa mangeoire, et chez Coco, ça veut dire DOSSIER IMPORTANT. »",
+      "text": "Marjo raccompagne l'enquêteur avec Gertrude sous le bras — elle au moins s'est laissé faire, contre un morceau de pain. Dans le pré, le campement s'organise pour la nuit : le lapin a posé l'éclat au centre, et l'éclat leur chante une berceuse. « Reviens vite », écrit Marjo. « Avant qu'ils n'élisent l'éclat chef de la ferme. Ils en sont capables. »",
       "next": "END"
     },
     "reussite": {
       "speaker": "marjo",
-      "text": "CLAC ! La barrière se referme sur les trois fugueurs, penauds et ravis, juste quand le soleil touche l'horizon. Marjo applaudit sans bruit : « Berlingot attrapée EN MOUVEMENT, Gertrude sans froisser une plume, et le lapin — tu as eu LE LAPIN. Je dis rarement ça : tu as le don. Viens, la récompense est dans la volière. Coco garde quelque chose depuis mardi, et il ne l'aurait montré à personne d'indigne. »",
+      "text": "CLAC ! La barrière se referme sur les trois fugueurs juste quand le soleil touche l'horizon. Et comme prévu par la science du dressage : le lapin, privé de public, regarde l'éclat, regarde sa gamelle, regarde l'éclat… et choisit la gamelle. L'éclat roule doucement jusqu'aux pieds de l'enquêteur, un peu vexé. Marjo applaudit sans bruit : « Berlingot attrapée EN MOUVEMENT, Gertrude sans froisser une plume, et tu as eu LE LAPIN. Je le dis rarement : tu as le don. Viens, Coco veut te montrer quelque chose. »",
       "next": "coco"
     },
     "coco": {
       "speaker": "carnet",
-      "text": "Dans la volière, Coco ouvre un œil de doyen, jauge l'enquêteur, et daigne enfin soulever sa patte : dessous, un papier doré plié par des années de bec soigneux — et un bouton de manteau gris, arraché. Marjo traduit le mime de Coco, qui rejoue toute la scène avec des effets dramatiques : « La nuit du vol… le Veilleur s'est penché sur la volière… il a regardé Coco longtemps… et il a PLEURÉ. Une larme, là, sur le rebord. Puis il a dit — Coco lit sur les lèvres — : “Toi au moins, tu répétais tout ce que vous disiez. Toi au moins, tu écoutais.” »",
+      "text": "Dans la volière, Coco jauge l'enquêteur de son œil de doyen, se racle le gosier… et IMITE LE CHANT D'ÉTINCELLE. En entier. Les onze notes déjà retrouvées, parfaitement justes, plus deux notes que personne n'a encore entendues — celles des éclats manquants, qu'il a mémorisées la nuit de la chute. Marjo traduit, émue : « Il dit qu'il connaît la fin de la chanson. Et qu'il la chantera avec elle, le soir du décollage. Coco sera l'interprète officiel de la Nuit des Étoiles Filantes. Il exige un perchoir au premier rang. »",
       "next": "fin_fragment"
     },
     "fin_fragment": {
@@ -100,7 +100,7 @@
     },
     "epilogue": {
       "speaker": "carnet",
-      "text": "Et au moment où le fragment changea de mains, le sifflet de Marjo, pendu à son cou, siffla tout seul — un trille clair, impossible, magnifique. Douzième bruit récupéré. Toutes les bêtes dressèrent l'oreille en même temps, et Berlingot exécuta son numéro de funambule sans qu'on lui demande rien, en pure joie. Sur le tableau de l'enquête, Marjo écrivit : « 12 bruits récupérés. Le Veilleur a pleuré devant ma volière. Il ne nous en veut pas. Il est SEUL. Quelqu'un sait sûrement toute l'histoire — et dans ce village, “quelqu'un sait tout” a une adresse : la cabane perchée. »",
+      "text": "Au cratère, le douzième éclat se souda dans un trille joyeux — la note du sifflet de Marjo, jurent les connaisseurs. Étincelle brillait maintenant comme une petite lune, et toute la ménagerie, alignée contre la barrière, la contemplait avec la fierté d'une famille d'accueil. Sur le tableau de mission, Marjo écrivit : « 12 sur 13. Mes bêtes réclament un droit de visite là-haut. J'ai dit qu'on négocierait. DERNIER éclat : la cabane perchée. Comme par hasard. »",
       "next": "END"
     }
   }

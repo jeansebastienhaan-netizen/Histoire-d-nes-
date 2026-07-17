@@ -13,9 +13,9 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['icons/*.png'],
       manifest: {
-        name: 'Le Grand Silence',
-        short_name: 'Grand Silence',
-        description: 'Un village muet, une enquête, treize rencontres.',
+        name: "L'Étoile Tombée",
+        short_name: 'Étoile Tombée',
+        description: "Une étoile s'est écrasée près du village. Treize éclats à retrouver avant la Nuit des Étoiles Filantes.",
         start_url: BASE,
         scope: BASE,
         display: 'standalone',

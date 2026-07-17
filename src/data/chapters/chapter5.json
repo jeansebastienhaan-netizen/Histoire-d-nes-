@@ -7,17 +7,17 @@
   "nodes": {
     "start": {
       "speaker": "carnet",
-      "text": "Au terrain de jeux, Jules a réagi au Grand Silence comme à tout dans la vie : en inventant un sport. Puisqu'on ne peut plus crier « PASSE ! », ni siffler les fautes, ni hurler « TRICHEUR ! » (surtout ça), il a créé… le silence-ball. Le règlement fait déjà trois ardoises recto verso. Personne n'y comprend rien. Tout le monde adore.",
+      "text": "Au terrain de jeux, le ballon de Jules flotte à deux mètres du sol, tranquille comme un petit nuage rond. N'importe qui aurait appelé à l'aide. Jules, lui, a réagi comme il réagit à tout dans la vie : il a inventé un sport. Le GRAVITÉ-BALL. Le règlement fait déjà trois pages recto verso. Personne n'y comprend rien. Tout le monde adore.",
       "next": "jules_recrutement"
     },
     "jules_recrutement": {
       "speaker": "jules",
-      "text": "« Tu tombes PILE ! » écrit Jules, qui écrit comme il court : vite et sans freiner. « Grand match d'inauguration ce soir, et il me manque un arbitre-adjoint. C'est un poste ÉNORME. Mais avant, tu dois passer l'examen du règlement. Tout le monde le rate. Même moi je l'ai raté, et c'est MOI qui l'ai écrit. »",
+      "text": "« Tu tombes PILE ! » Jules parle comme il court : vite et sans freiner. « L'éclat est DANS le ballon — c'est pour ça qu'il flotte, logique. Mais attention : on ne rend pas l'éclat avant le grand match d'inauguration de ce soir ! Enfin si, on le rend après. Bref : il me faut un arbitre-adjoint diplômé, et pour être diplômé, il faut passer l'examen du règlement. Tout le monde le rate. Même moi je l'ai raté, et c'est MOI qui l'ai écrit. »",
       "next": "jules_regles"
     },
     "jules_regles": {
       "speaker": "jules",
-      "text": "« Concentre-toi, je le dis UNE fois. Règle 1 : l'arbitre ne siffle pas, il agite son bonnet — le ORANGE FLUO, pas le vert, le vert c'est pour la mi-temps. Règle 2 : marquer en criant, ça vaut ZÉRO point, crier c'est tricher. Règle 3 : si le ballon touche la chèvre de Marjo, c'est corner. Elle broute TOUJOURS au même endroit, c'est pratique. Compris ? L'examen commence… MAINTENANT ! »",
+      "text": "« Concentre-toi, je le dis UNE fois. Règle 1 : le ballon flotte, donc on marque EN L'AIR — un but marqué au sol vaut ZÉRO, c'est la honte en plus. Règle 2 : l'arbitre ne siffle pas, il agite son bonnet ORANGE FLUO — pas le vert, le vert c'est la mi-temps. Règle 3 : si le ballon touche la chèvre de Marjo, c'est corner, elle broute TOUJOURS au même endroit, c'est pratique. Compris ? L'examen commence… MAINTENANT ! »",
       "choices": [
         {
           "label": "« Vas-y, pose tes questions. Je t'ai écouté comme un vrai coéquipier. »",
@@ -25,7 +25,7 @@
           "next": "jeu_examen"
         },
         {
-          "label": "« Bonnet orange, zéro point, corner-chèvre. Je viens de tout répéter dans ma tête. »",
+          "label": "« En l'air, bonnet orange, corner-chèvre. Je viens de tout répéter dans ma tête. »",
           "effects": { "ruse": 1 },
           "next": "jeu_examen"
         },
@@ -40,25 +40,25 @@
       "type": "minigame",
       "game": "TimedDialogue",
       "config": {
-        "intro": "L'examen officiel du silence-ball. Jules retourne son sablier de poche : les vrais arbitres répondent VITE.",
+        "intro": "L'examen officiel du gravité-ball. Jules retourne son sablier de poche : les vrais arbitres répondent VITE.",
         "maxWrong": 1,
         "rounds": [
           {
-            "prompt": "« Question 1 : je veux signaler une faute. Qu'est-ce que je fais ? »",
+            "prompt": "« Question 1 : Marco marque un but MAGNIFIQUE… au ras du sol. Ça vaut ? »",
             "seconds": 7,
             "options": [
-              { "label": "J'agite le bonnet orange fluo", "correct": true },
-              { "label": "J'agite le bonnet vert", "correct": false },
-              { "label": "Je siffle très fort dans ma tête", "correct": false }
+              { "label": "Zéro — on marque EN L'AIR, c'est du gravité-ball", "correct": true },
+              { "label": "Un point, un but est un but", "correct": false },
+              { "label": "Deux points pour l'audace", "correct": false }
             ]
           },
           {
-            "prompt": "« Question 2 : Marco marque un but MAGNIFIQUE en criant de joie. Ça vaut… »",
+            "prompt": "« Question 2 : je veux signaler une faute. Qu'est-ce que je fais ? »",
             "seconds": 6,
             "options": [
-              { "label": "Zéro point : crier, c'est tricher", "correct": true },
-              { "label": "Un point, le but est valable", "correct": false },
-              { "label": "Deux points pour le style", "correct": false }
+              { "label": "J'agite le bonnet orange fluo", "correct": true },
+              { "label": "J'agite le bonnet vert", "correct": false },
+              { "label": "Je crie très fort", "correct": false }
             ]
           },
           {
@@ -78,7 +78,7 @@
     },
     "examen_rate": {
       "speaker": "jules",
-      "text": "« ÉLIMINÉ ! Ha ! Le règlement du silence-ball ne pardonne pas ! » Jules te tape quand même dans la main, parce que chez lui la défaite est un détail technique. « Tout le monde le rate, je t'avais prévenu. Allez : je te redis les règles, tu re-tentes. Les grands arbitres, c'est comme les grands buteurs : ça insiste. »",
+      "text": "« ÉLIMINÉ ! Ha ! Le règlement du gravité-ball ne pardonne pas ! » Jules te tape quand même dans la main, parce que chez lui la défaite est un détail technique. « Tout le monde le rate, je t'avais prévenu. Allez : je te redis les règles, tu re-tentes. Les grands arbitres, c'est comme les grands buteurs : ça insiste. »",
       "choices": [
         { "label": "Réécouter les règles et repasser l'examen", "next": "jules_regles" },
         { "label": "Revenir plus tard", "next": "sortie_douce" }
@@ -86,22 +86,17 @@
     },
     "sortie_douce": {
       "speaker": "carnet",
-      "text": "Jules raccompagne l'enquêteur en dribblant avec un caillou. Sur son ardoise : « Le poste d'arbitre-adjoint reste ouvert. Je fais passer l'examen à la chèvre en attendant, elle a ses chances. »",
+      "text": "Jules raccompagne l'enquêteur en dribblant avec un caillou — le ballon officiel étant, rappelons-le, à deux mètres du sol. Sur son ardoise : « Le poste d'arbitre-adjoint reste ouvert. Je fais passer l'examen à la chèvre en attendant. Elle a ses chances. »",
       "next": "END"
     },
     "examen_reussi": {
       "speaker": "jules",
-      "text": "« TROIS SUR TROIS ?! » Jules fait le tour du terrain les bras en avion, en silence — c'est très impressionnant, un tour d'honneur muet. « Personne n'avait JAMAIS eu tout bon ! Te voilà arbitre-adjoint À VIE. Le bonnet orange est à toi. Enfin, le deuxième bonnet orange. Le premier, c'est le mien. »",
-      "next": "indice"
+      "text": "« TROIS SUR TROIS ?! » Jules fait le tour du terrain les bras en avion. « Personne n'avait JAMAIS eu tout bon ! Arbitre-adjoint À VIE ! » Le match d'inauguration est un triomphe : onze joueurs, une chèvre, zéro but au sol. Au coup de sifflet final — pardon, à l'agitation de bonnet finale — Jules attrape le ballon flottant et le presse doucement : l'éclat glisse dehors, doré et léger comme une bulle. Le ballon retombe. Tout le monde est un peu triste. « On gardera le gravité-ball pour les jours de grand vent », décrète Jules.",
+      "next": "fin_fragment"
     },
     "examen_presque": {
       "speaker": "jules",
-      "text": "« Une seule erreur… c'est le meilleur score depuis MOI. » Jules réfléchit à toute vitesse, ce qui chez lui fait de la fumée. « Bon : arbitre-adjoint STAGIAIRE. C'est pareil, mais je peux te crier dessus. Enfin, t'écrire dessus. Enfin, tu m'as compris. Bienvenue dans l'équipe ! »",
-      "next": "indice"
-    },
-    "indice": {
-      "speaker": "carnet",
-      "text": "Pendant la démonstration de tir au but, le ballon atterrit dans le fossé — et en le repêchant, Jules trouve une boîte en fer cabossée : « BRUIT DE BALON — POC — rayon jeux — remis en état aprè réparation ». Réparation ?! Le voleur RÉPARE les bruits abîmés avant de les ranger ?! Dans la boîte, au fond : un fragment doré. Jules le brandit comme une coupe du monde.",
+      "text": "« Une seule erreur… meilleur score depuis MOI. » Jules réfléchit à toute vitesse, ce qui chez lui fait de la fumée. « Arbitre-adjoint STAGIAIRE. C'est pareil, mais je peux t'écrire dessus. » Le match est un triomphe, et au bonnet final, Jules presse le ballon flottant : l'éclat glisse dehors, doré et léger comme une bulle. Le ballon retombe. « On gardera le gravité-ball pour les jours de grand vent », décrète Jules, ému.",
       "next": "fin_fragment"
     },
     "fin_fragment": {
@@ -112,7 +107,7 @@
     },
     "epilogue": {
       "speaker": "carnet",
-      "text": "Ce soir-là, au coup d'envoi du grand match, le ballon rebondit : POC. Un vrai POC, net et joyeux — le cinquième bruit récupéré. Tout le stade (onze personnes et une chèvre) fit une ola muette. Sur le tableau de l'enquête, Jules écrivit : « 5 bruits récupérés. NOUVEL INDICE ÉNORME : le voleur répare les bruits cassés. C'est le voleur le plus gentil que je connaisse. Ça reste un voleur. Carton orange. »",
+      "text": "Au cratère, le cinquième éclat se souda dans un DING bondissant — POC, aurait dit Jules, et il l'a dit. Étincelle brillait maintenant comme une lanterne de fête. Sur le tableau de mission, Jules écrivit : « 5 sur 13. L'étoile a assisté au match depuis son cratère. Je l'ai vue pencher pour l'équipe bleue. Elle a l'œil. » Puis il ajouta, plus petit : « Reviens vite, Étincelle. On fera une revanche. »",
       "next": "END"
     }
   }

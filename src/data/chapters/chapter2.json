@@ -7,50 +7,45 @@
   "nodes": {
     "start": {
       "speaker": "carnet",
-      "text": "Direction le grenier d'Aloïs, le plus grand entrepôt de trésors du canton : cartes au trésor (dessinées par lui), momies (des chaussettes), et le célèbre phonographe du grand-oncle Barnabé. Aloïs attend en haut de l'échelle, casque d'aviateur vissé sur la tête, loupe au poing. Sur son ardoise : « ENFIN. Un collègue. »",
+      "text": "Direction le grenier d'Aloïs, le plus grand entrepôt de trésors du canton. Depuis la chute, il s'y passe quelque chose d'inouï : le vieux phonographe du grand-oncle Barnabé joue TOUT SEUL, disque après disque, et il a bon goût. Aloïs attend en haut de l'échelle, casque d'aviateur vissé, loupe au poing. Sur son calepin : « PHÉNOMÈNE CONFIRMÉ. COLLÈGUE REQUIS. »",
       "next": "alois_rapport"
     },
     "alois_rapport": {
       "speaker": "alois",
-      "text": "« Rapport d'enquête ! » Aloïs tourne les pages de son calepin à toute vitesse. « La nuit du vol, j'ai entendu le phonographe jouer TOUT SEUL. Enfin, entendu… c'était le dernier bruit de ma vie, alors je m'en souviens bien : une berceuse. Le temps de monter, plus rien. Mais le voleur a laissé une trace — regarde. » Il brandit une boîte en fer, vide, étiquetée à la main : « BOÎTE À MUSIQUE — FRAGILE — NE PA RÉVEILLER ».",
-      "next": "alois_deduction"
+      "text": "« Rapport d'observation ! Le phonographe s'est allumé à 21h21 précises — j'ai vérifié, j'ai TOUT vérifié. Conclusion : un éclat s'est glissé dedans, et cet éclat aime la musique. » Il baisse la voix : « Mais avant de le récupérer, il nous faut l'équipement du grand-oncle Barnabé, explorateur de son état. Tout est dans sa malle. Problème : le code du cadenas. Barnabé ne donnait jamais rien facilement. Même mort, il fait passer des examens. »",
+      "next": "alois_choix"
     },
-    "alois_deduction": {
+    "alois_choix": {
       "speaker": "alois",
-      "text": "« Analyse : primo, le voleur écrit “ne pa” sans S, donc il n'a pas eu école depuis très longtemps. Deuzio, il ENDORT les bruits avec une berceuse avant de les ranger en boîte. Tertio, il a lâché celle-ci en repartant : il était pressé, donc le coq allait chanter, donc il travaille de nuit ! » Il souffle un grand coup. « La suite de l'enquête est dans la malle de Barnabé. Problème : le code du cadenas. »",
+      "text": "Aloïs déniche sous la pochette d'un disque un papier jauni, couvert de l'écriture violette de Barnabé : « À celui qui voudra ouvrir ma malle : trois chiffres, trois devinettes. Et si tu ne réfléchis pas, tu n'as rien à faire dans ma malle. »",
       "choices": [
         {
-          "label": "« On va l'ouvrir ensemble, doucement. Une malle de famille, ça se respecte. »",
+          "label": "« On l'ouvre ensemble, doucement. Une malle de famille, ça se respecte. »",
           "effects": { "coeur": 1 },
           "setFlags": ["approche_douce"],
-          "next": "avant_code"
+          "next": "code_malle"
         },
         {
-          "label": "« Barnabé a forcément laissé le code quelque part. Les grands-oncles font toujours ça. »",
+          "label": "« Des devinettes de grand-oncle… J'adore. Voyons ça de près. »",
           "effects": { "ruse": 1 },
-          "next": "avant_code"
+          "next": "code_malle"
         },
         {
           "label": "« Cette malle s'ouvrira aujourd'hui. Dussé-je essayer les mille codes possibles. »",
           "effects": { "determination": 1 },
-          "next": "avant_code"
+          "next": "code_malle"
         }
       ]
-    },
-    "avant_code": {
-      "speaker": "carnet",
-      "text": "Sous la pochette du phonographe, Aloïs déniche un papier jauni, de la main du grand-oncle Barnabé : « À celui qui voudra ouvrir ma malle : le code a autant de chiffres que le village a de Mousquetaires. Et si tu ne sais pas ça, tu n'as rien à faire dans ma malle. » Suivent trois devinettes, à l'encre violette.",
-      "next": "code_malle"
     },
     "code_malle": {
       "type": "minigame",
       "game": "CodeLock",
       "config": {
-        "intro": "Le cadenas de la malle de Barnabé. Trois chiffres, trois devinettes — et Barnabé ne donnait jamais rien facilement.",
+        "intro": "Le cadenas de la malle de Barnabé. Trois chiffres, trois devinettes à l'encre violette.",
         "clues": [
           "« Le premier chiffre se cache dans le mot TRÉSOR : compte ses R. »",
           "« Le deuxième est le nombre de pattes d'un serpent. Ne cherche pas trop longtemps. »",
-          "« Le troisième : les coins d'une ardoise, tout simplement. »"
+          "« Le troisième : les coins d'une carte au trésor, tout simplement. »"
         ],
         "code": "204",
         "attempts": 3
@@ -61,7 +56,7 @@
     },
     "code_rate": {
       "speaker": "alois",
-      "text": "« Blocage de sécurité ! Barnabé avait prévu les curieux : trois erreurs et le cadenas boude un moment. » Aloïs s'assoit en tailleur, pas découragé pour deux sous. « C'est un test de patience. Les grands enquêteurs font des pauses. Les très grands mangent un biscuit. »",
+      "text": "« Blocage de sécurité ! Barnabé avait prévu les curieux : trois erreurs et le cadenas boude un moment. » Aloïs s'assoit en tailleur, pas découragé pour deux sous. « C'est un test de patience. Les grands explorateurs font des pauses. Les très grands mangent un biscuit. »",
       "choices": [
         { "label": "Réessayer, les devinettes bien relues", "next": "code_malle" },
         { "label": "Revenir plus tard", "next": "sortie_douce" }
@@ -69,27 +64,32 @@
     },
     "sortie_douce": {
       "speaker": "carnet",
-      "text": "Aloïs raccompagne son collègue à l'échelle et note dans son calepin : « Enquête suspendue. Suspect toujours en fuite. Biscuits épuisés. » La malle attendra — Barnabé n'est plus pressé depuis longtemps.",
+      "text": "Aloïs raccompagne son collègue à l'échelle et note : « Mission suspendue. Phonographe toujours mélomane. Biscuits épuisés. » Là-haut, le disque suivant se lance tout seul. Une valse, cette fois. L'éclat a des goûts sûrs.",
       "next": "END"
     },
     "malle_ouverte": {
       "speaker": "alois",
-      "text": "CLAC. Le cadenas s'ouvre du premier coup. Aloïs en lâche sa loupe : « Du premier coup ! Même MOI je n'ai jamais… enfin je veux dire : bien joué, collègue, je n'en attendais pas moins. » Il soulève le couvercle avec un respect de professionnel.",
+      "text": "CLAC. Le cadenas s'ouvre du premier coup. Aloïs en lâche sa loupe : « Du premier coup ! Même MOI je n'ai jamais… enfin je veux dire : je n'en attendais pas moins d'un collègue. » Il soulève le couvercle avec un respect de professionnel.",
       "next": "surprise_malle"
     },
     "malle_ouverte_essais": {
       "speaker": "alois",
-      "text": "CLAC. Le cadenas cède. « Il m'a fallu deux étés pour comprendre la devinette du serpent, alors tes petites erreurs, ça compte pour du beurre. » Aloïs soulève le couvercle avec un respect de professionnel.",
+      "text": "CLAC. Le cadenas cède. « Il m'a fallu deux étés pour la devinette du serpent, alors tes petites erreurs, ça compte pour du beurre. » Aloïs soulève le couvercle avec un respect de professionnel.",
       "next": "surprise_malle"
     },
     "surprise_malle": {
       "speaker": "carnet",
-      "text": "Dans la malle : les carnets de voyage de Barnabé, une boussole qui indique le sud par principe… et un panier. Et dans le panier, roulé en spirale impeccable, un petit serpent vert qui cligne des yeux comme quelqu'un qu'on réveille un dimanche. À son cou, une étiquette de Barnabé : « MISTIFLOUK. Serpent-sonar du Grand Désert. Sent les sons à travers les murs. Nourrir de silence — justement, on en a plein. »",
-      "next": "mistiflouk_adoption"
+      "text": "Dans la malle : le télescope de voyage de Barnabé, une boussole qui indique le sud par principe… et un panier. Et dans le panier, roulé en spirale impeccable, un petit serpent vert qui cligne des yeux comme quelqu'un qu'on réveille un dimanche. À son cou, une étiquette : « MISTIFLOUK. Serpent-sonar du Grand Désert. Sent les chants à travers les murs. S'il vibre, c'est que ça chante. »",
+      "next": "mistiflouk_detecteur"
     },
-    "mistiflouk_adoption": {
+    "mistiflouk_detecteur": {
       "speaker": "alois",
-      "text": "« Un serpent-SONAR ! Tu sais ce que ça veut dire ?! Il peut sentir les bruits volés À TRAVERS les boîtes ! C'est l'arme absolue contre le voleur ! » Mistiflouk, très digne, ondule jusqu'à l'épaule de l'enquêteur et s'y installe comme un col roulé. Aloïs en tremble : « Il t'a choisi. Il vibre quand un bruit est proche — c'est sa façon de parler. Ne le vexe jamais un jour de pluie. »",
+      "text": "« Un serpent-SONAR ! Tu réalises ?! Les éclats d'étoile CHANTENT — Mamy l'a dit, une note par éclat ! Ce serpent peut les sentir à travers les murs, les malles, les citrouilles ! C'est le détecteur d'éclats ULTIME ! » Mistiflouk, très digne, ondule jusqu'à l'épaule de l'enquêteur, pointe le museau vers le phonographe… et vibre. Là-dedans. Évidemment.",
+      "next": "extraction"
+    },
+    "extraction": {
+      "speaker": "carnet",
+      "text": "Dans le pavillon du phonographe, calé contre la membrane comme dans un fauteuil de concert, brille le deuxième éclat. Aloïs l'extrait avec des pincettes de collectionneur, ému : « Il écoutait les disques de Barnabé… » Puis, solennel : « Il faut un nom à cette étoile. J'ai fait voter le village ce matin. Jules proposait “Turbo-Météore-3000”. C'est “Étincelle” qui a gagné. Jules conteste le scrutin. »",
       "next": "fin_fragment"
     },
     "fin_fragment": {
@@ -101,7 +101,7 @@
     },
     "epilogue": {
       "speaker": "carnet",
-      "text": "Au fond du panier dormait aussi un fragment doré — le deuxième. Et quand Mistiflouk vibra pour la première fois, la vieille boîte à musique de Barnabé s'ébroua et égrena trois notes toutes seules, comme au bon vieux temps. Aloïs nota solennellement : « 2 bruits récupérés. Le voleur a des berceuses. Nous, on a un serpent. Match équilibré. »",
+      "text": "Au cratère, le deuxième éclat se souda dans un DING plus riche que le premier — deux notes, déjà presque une mélodie. Étincelle tinta gaiement vers Mistiflouk, qui vibra en réponse : ces deux-là parlaient la même langue. Sur le tableau de mission, Aloïs écrivit : « 2 éclats sur 13. L'étoile s'appelle Étincelle. Nous avons un serpent détecteur. L'opération prend une ampleur historique. »",
       "next": "END"
     }
   }

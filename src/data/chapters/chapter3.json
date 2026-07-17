@@ -7,32 +7,27 @@
   "nodes": {
     "start": {
       "speaker": "carnet",
-      "text": "À l'atelier, quelque chose cloche. D'habitude, on entend Xavier avant de le voir : la scie, le rabot, et son fameux coup de marteau en trois temps — toc, toc-TOC — qu'il fait depuis toujours sans s'en rendre compte. Aujourd'hui : rien. Et détail troublant pour un atelier : le sol est PROPRE. Balayé de frais. Par quelqu'un d'autre que Xavier, donc.",
+      "text": "À l'atelier de Xavier, le spectacle vaut le détour : TOUS les outils flottent au plafond. Marteaux, scies, clous, rabots — suspendus en l'air comme un mobile géant, tournant lentement autour d'un point lumineux niché dans la poutre maîtresse. L'éclat de l'atelier a des pouvoirs d'aimant, et il a rangé l'atelier À SA façon.",
       "next": "xavier_situation"
     },
     "xavier_situation": {
       "speaker": "xavier",
-      "text": "Xavier, bras croisés dans la sciure balayée, tend son ardoise : « Le voleur est passé ici aussi. Il a pris le bruit de mes outils ET il a balayé derrière lui. Un voleur qui fait le ménage — on aura tout vu. Il a laissé sa pelle à poussière, là. Avec une étiquette. » L'étiquette dit : « MARTO 3 TEMPS — rayon bruits pointus — manipuler avec bouchons d'oreilles ».",
-      "next": "xavier_probleme"
-    },
-    "xavier_probleme": {
-      "speaker": "xavier",
-      "text": "« Le problème, c'est le banc de la place. Je l'avais promis pour dimanche, et sans le SON du marteau, mes mains ne savent plus taper juste. Trente ans que je cloue au rythme : toc, toc-TOC. Sans musique, je tape à côté. » Il retourne son ardoise : « Aide-moi à retrouver le rythme. Tape-le, et mes mains suivront. »",
+      "text": "Xavier, bras croisés sous son plafond d'outils, résume la situation avec son économie de mots légendaire : « Joli. Pas pratique. » Puis il développe, ce qui chez lui est un événement : « J'ai promis le banc de la place pour dimanche. Sans marteau, pas de banc. Et l'éclat, là-haut, il ne rend les outils que si on l'approche EN RYTHME. J'ai essayé en colère : il m'a aimanté la ceinture. J'ai fini au plafond. On n'en parle plus. »",
       "choices": [
         {
-          "label": "« Vos mains le connaissent encore, ce rythme. On va juste le leur rappeler ensemble. »",
+          "label": "« En rythme, alors. Montrez-moi sa pulsation, on va l'apprivoiser ensemble. »",
           "effects": { "coeur": 1 },
           "next": "avant_jeu"
         },
         {
-          "label": "Poser Mistiflouk sur l'établi : un serpent-sonar, ça vaut tous les métronomes.",
+          "label": "Poser Mistiflouk sur l'établi : un serpent-sonar, ça lit une pulsation mieux que personne.",
           "condition": { "flag": "a_mistiflouk" },
           "effects": { "ruse": 1 },
           "setFlags": ["mistiflouk_metronome"],
           "next": "avant_jeu_mistiflouk"
         },
         {
-          "label": "« Ce banc sera fini dimanche. Le voleur ne gagnera pas UNE livraison. »",
+          "label": "« Ce banc sera fini dimanche. L'éclat peut aimanter ce qu'il veut, j'irai le chercher. »",
           "effects": { "determination": 1 },
           "next": "avant_jeu"
         }
@@ -40,19 +35,19 @@
     },
     "avant_jeu": {
       "speaker": "carnet",
-      "text": "Xavier cale une planche, saisit son marteau et hoche le menton : à toi de battre la mesure. Attention : son rythme est plus vif qu'il n'y paraît, et Xavier fronce les sourcils au moindre contretemps. C'est un artisan : l'à-peu-près, ça n'existe pas.",
+      "text": "L'éclat pulse dans la poutre — toc, toc-TOC — un battement régulier, presque un rythme de forge. Xavier tend la main : « Tape sa mesure avec lui. S'il te sent dans le rythme, il se calme et il lâche tout. Rate, et on redécore le plafond. » Attention : sa pulsation est plus vive qu'elle n'en a l'air, et l'éclat remarque le moindre contretemps.",
       "next": "jeu_rythme"
     },
     "avant_jeu_mistiflouk": {
       "speaker": "carnet",
-      "text": "Mistiflouk s'enroule autour du manche du marteau et se met à onduler en cadence, très concentré, comme un chef d'orchestre qui aurait avalé sa baguette. Xavier le regarde, puis regarde l'enquêteur : « … J'ai un serpent métronome sur mon marteau. Bon. Au point où on en est. » À toi de suivre la mesure.",
+      "text": "Mistiflouk s'enroule autour d'une poutre et se met à onduler exactement sur la pulsation de l'éclat, comme un chef d'orchestre qui aurait avalé sa baguette. Xavier observe le serpent, puis l'enquêteur : « … J'ai un métronome à écailles dans mon atelier. Bon. Au point où on en est. » À toi de suivre la mesure qu'il te donne.",
       "next": "jeu_rythme"
     },
     "jeu_rythme": {
       "type": "minigame",
       "game": "RhythmTap",
       "config": {
-        "prompt": "Bats la mesure de l'atelier : tape PILE quand le cercle est au plus grand. Douze coups, pas un de travers.",
+        "prompt": "Cale-toi sur la pulsation de l'éclat : tape PILE quand le cercle est au plus grand. Douze battements, pas un de travers.",
         "bpm": 116,
         "taps": 12,
         "tolerance": 0.24
@@ -63,7 +58,7 @@
     },
     "jeu_rate": {
       "speaker": "xavier",
-      "text": "Xavier lève la main : pause. Il retourne son ardoise : « Même le bois a besoin de repos entre deux clous. Le rythme, ça ne se force pas, ça se trouve. Souffle un coup. Écoute dans ta tête : toc… toc-TOC. Quand tu l'as, on y retourne. »",
+      "text": "Un marteau frôle une oreille. Xavier lève la main : pause. « Même le bois a besoin de repos entre deux clous. Le rythme, ça ne se force pas, ça se trouve. Souffle. Écoute-le dans ta tête : toc… toc-TOC. Quand tu l'as, on y retourne. » L'éclat, là-haut, fait tournoyer les tournevis d'un air narquois.",
       "choices": [
         { "label": "Retenter, le rythme en tête", "next": "jeu_rythme" },
         { "label": "Revenir plus tard", "next": "sortie_douce" }
@@ -71,22 +66,17 @@
     },
     "sortie_douce": {
       "speaker": "carnet",
-      "text": "Xavier raccompagne l'enquêteur en posant sa grosse main sur son épaule — chez lui, ça vaut un long discours. Sur l'établi, le banc attend, patient comme le bois.",
+      "text": "Xavier raccompagne l'enquêteur en posant sa grosse main sur son épaule — chez lui, ça vaut un long discours. Derrière eux, les outils continuent leur lente ronde au plafond. « Au moins, ils ne rouillent pas », philosophe Xavier.",
       "next": "END"
     },
     "jeu_reussi": {
       "speaker": "xavier",
-      "text": "Toc, toc-TOC. Les mains de Xavier se sont mises à suivre toutes seules, clou après clou, et le banc s'est assemblé comme une chanson. Il caresse le dossier, souffle sur la sciure, et écrit : « Douze coups parfaits. Tu as l'oreille d'un charpentier. C'est le plus beau compliment que je connaisse, alors ne le répète pas trop. »",
-      "next": "indice"
+      "text": "Douze battements parfaits — et là-haut, l'éclat s'éteint doucement, apaisé. Tous les outils descendent en douceur, chacun À SA place sur le panneau, mieux rangés qu'ils ne l'ont jamais été. Xavier contemple son atelier, sincèrement ému : « Trente ans que je cherche ce rangement. » Il cueille l'éclat dans la poutre, le soupèse : « Chaud comme un clou qu'on vient de planter. Tiens. Il est à Étincelle. »",
+      "next": "fin_fragment"
     },
     "jeu_presque": {
       "speaker": "xavier",
-      "text": "Le banc est fini — deux clous ont un chapeau un peu penché, et Xavier les regarde avec l'œil de celui qui les redressera cette nuit en secret. « Ça tient. Ça tiendra cent ans. Les deux clous tordus, on dira que c'est la signature. »",
-      "next": "indice"
-    },
-    "indice": {
-      "speaker": "carnet",
-      "text": "En rangeant la pelle à poussière du voleur, Xavier s'aperçoit qu'elle est gravée au dos : une seule lettre, un V, à l'ancienne, avec des pleins et des déliés. Et coincé entre le manche et le fer : un fragment doré. « V comme voleur, ça serait trop facile », écrit Xavier. « V comme quelqu'un. Quelqu'un de vieux. Quelqu'un de soigneux. Cherche un vieux monsieur soigneux qui déteste le bruit… ou qui l'aime trop. »",
+      "text": "Deux petits contretemps — l'éclat a fait tomber une boîte de clous en représailles, par principe — mais le rythme l'a gagné : les outils redescendent un à un, et l'éclat se laisse cueillir dans la poutre, tiède et ronronnant presque. « Il a du caractère », approuve Xavier. « J'aime ça, chez un caillou. »",
       "next": "fin_fragment"
     },
     "fin_fragment": {
@@ -97,7 +87,7 @@
     },
     "epilogue": {
       "speaker": "carnet",
-      "text": "Et au moment où le banc reçut sa dernière touche, un son clair traversa l'atelier : toc, toc-TOC. Le marteau avait retrouvé sa voix. Xavier ferma les yeux pour l'écouter, longtemps. Puis il nota sur son ardoise, pour l'enquête : « 3 bruits récupérés. Le voleur signe V. Et il balaye derrière lui. Ce n'est pas un monstre. C'est quelqu'un de rangé. C'est presque pire. »",
+      "text": "Au cratère, le troisième éclat se souda dans un DING grave et solide — une note de charpentier. Étincelle brilla plus fort, et Xavier, resté en retrait, toucha le bord du cratère comme on tapote une bonne poutre. Sur le tableau de mission, il écrivit : « 3 sur 13. Le banc sera prêt dimanche. L'étoile aussi, si tout le monde s'y met. » C'était, de mémoire de village, sa plus longue phrase écrite.",
       "next": "END"
     }
   }

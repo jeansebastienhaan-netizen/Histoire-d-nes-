@@ -78,16 +78,49 @@ function drawIcon(size, { padding = 0 } = {}) {
   const scale = (size - padding * 2) / 512
   const cx = size / 2
   const cy = size / 2
-  const moonR = 150 * scale
-  const holeOff = 60 * scale
-  // croissant : cercle doré moins cercle décalé (couleur fond)
+  // étoile à cinq branches (test point-dans-polygone par lancer de rayon)
+  const R = 190 * scale
+  const r = 78 * scale
+  const pts = []
+  for (let i = 0; i < 10; i++) {
+    const ang = -Math.PI / 2 + (i * Math.PI) / 5
+    const rad = i % 2 === 0 ? R : r
+    pts.push([cx + rad * Math.cos(ang), cy + rad * Math.sin(ang)])
+  }
+  const inStar = (x, y) => {
+    let inside = false
+    for (let i = 0, j = pts.length - 1; i < pts.length; j = i++) {
+      const [xi, yi] = pts[i]
+      const [xj, yj] = pts[j]
+      if (yi > y !== yj > y && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi) inside = !inside
+    }
+    return inside
+  }
+  const inStarSmall = (x, y) => {
+    const sx = cx + (x - cx) / 0.82
+    const sy = cy + (y - cy) / 0.82
+    return inStar(sx, sy)
+  }
   for (let y = 0; y < size; y++) {
     for (let x = 0; x < size; x++) {
-      if (inCircle(x, y, cx + 10 * scale, cy - 10 * scale, moonR)) {
-        if (!inCircle(x, y, cx + 10 * scale + holeOff, cy - 10 * scale - holeOff * 0.6, moonR * 0.92)) {
-          put(x, y, 0xe8, 0xc5, 0x6a)
-        }
+      if (inStar(x, y)) {
+        put(x, y, 0xf0, 0xc0, 0x50)
+        if (inStarSmall(x, y)) put(x, y, 0xf8, 0xdc, 0x88)
       }
+    }
+  }
+  // visage de l'étoile
+  const eyeY = cy - 2 * scale
+  for (const ex of [cx - 26 * scale, cx + 26 * scale]) {
+    for (let y = 0; y < size; y++)
+      for (let x = 0; x < size; x++)
+        if (inCircle(x, y, ex, eyeY, 9 * scale)) put(x, y, 0x2b, 0x2b, 0x3d)
+  }
+  // sourire (arc de cercle épais)
+  for (let y = 0; y < size; y++) {
+    for (let x = 0; x < size; x++) {
+      const d = Math.hypot(x - cx, y - (eyeY - 8 * scale))
+      if (d > 40 * scale && d < 48 * scale && y > eyeY + 16 * scale) put(x, y, 0x2b, 0x2b, 0x3d)
     }
   }
   // étoiles

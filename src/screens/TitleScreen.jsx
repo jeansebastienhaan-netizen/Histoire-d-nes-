@@ -22,6 +22,9 @@ export default function TitleScreen() {
         {[[10, 8, 0.7], [24, 16, 0.5], [40, 6, 0.6], [56, 14, 0.45], [90, 26, 0.5], [6, 28, 0.45], [66, 24, 0.4]].map(([x, y, r], i) => (
           <circle key={i} cx={x} cy={y} r={r} fill="#f5efd8" className="twinkle" style={{ animationDelay: `${i * 0.5}s` }} />
         ))}
+        {/* la trace de la chute d'Étincelle — en zigzag, évidemment */}
+        <path d="M14 4 L34 14 L28 22 L46 30 L42 36" stroke="#f0c050" strokeWidth="1" fill="none" strokeLinecap="round" opacity="0.8" className="twinkle" />
+        <path d="M42 36 l2.2 4.4 4.8 .6 -3.5 3.2 .9 4.8 -4.4 -2.4 -4.4 2.4 .9 -4.8 -3.5 -3.2 4.8 -.6 Z" fill="#f0c050" className="floaty" />
         {/* silhouette du village endormi */}
         <path d="M0 52 L0 44 L8 44 L8 38 L12 34 L16 38 L16 46 L24 46 L24 36 L30 30 L36 36 L36 46 L44 46 L44 40 L48 40 L48 34 L52 30 L56 34 L56 46 L64 46 L64 38 L70 38 L70 42 L78 42 L78 36 L84 30 L90 36 L90 46 L100 46 L100 52 Z" fill="#1c1c34" />
         {/* trois fenêtres encore allumées */}
@@ -31,10 +34,13 @@ export default function TitleScreen() {
         <path d="M0 64 L0 54 Q30 48 60 53 T100 52 L100 64 Z" fill="#16162c" />
       </svg>
 
-      <h1 className="title-main">Le Grand Silence</h1>
-      <p className="title-tagline">Un village muet, une enquête, treize rencontres.</p>
+      <h1 className="title-main">L'Étoile Tombée</h1>
+      <p className="title-tagline">Une étoile s'est écrasée. Treize éclats. Une seule nuit pour la renvoyer chez elle.</p>
 
       <div className="title-cast">
+        <div className="title-cast-item floaty">
+          <Avatar id="etoile" size={52} />
+        </div>
         {['mamy', 'alois', 'marjo', 'mousquetaires'].map((id, i) => (
           <div key={id} className="title-cast-item floaty" style={{ animationDelay: `${i * 0.5}s` }}>
             <Avatar id={id} size={52} />

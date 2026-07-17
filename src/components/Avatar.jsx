@@ -516,6 +516,44 @@ PORTRAITS.veilleur = {
   ),
 }
 
+// Étincelle — la petite étoile tombée, dorée et ébréchée-réparée
+PORTRAITS.etoile = {
+  bg: '#28284e',
+  draw: () => (
+    <>
+      {/* rayons doux */}
+      {[0, 45, 90, 135].map((a) => (
+        <rect key={a} x="47" y="6" width="6" height="88" rx="3" fill="#f0c050" opacity="0.14"
+          transform={`rotate(${a} 50 50)`} />
+      ))}
+      {/* étoile à cinq branches */}
+      <path
+        d="M50 12 L60.5 37 L87 39.5 L67 57 L73.5 83 L50 69 L26.5 83 L33 57 L13 39.5 L39.5 37 Z"
+        fill="#f0c050"
+      />
+      <path
+        d="M50 20 L58 39.5 L79 41.5 L63.5 55 L68.5 75 L50 64 L31.5 75 L36.5 55 L21 41.5 L42 39.5 Z"
+        fill="#f8dc88"
+      />
+      {/* cicatrices de soudure (ses treize éclats recollés) */}
+      <path d="M42 32 L46 44 M62 46 L55 52 M44 62 L50 56" stroke="#e8a030" strokeWidth="1.4" fill="none" strokeLinecap="round" opacity="0.8" />
+      {/* visage */}
+      <circle cx="43" cy="48" r="2.2" fill={INK} />
+      <circle cx="57" cy="48" r="2.2" fill={INK} />
+      <circle cx="43.7" cy="47.3" r="0.7" fill="#fff" />
+      <circle cx="57.7" cy="47.3" r="0.7" fill="#fff" />
+      <path d="M44 55 Q50 60 56 55" stroke={INK} strokeWidth="1.8" fill="none" strokeLinecap="round" />
+      <circle cx="37" cy="53" r="2.6" fill="#e8927c" opacity="0.55" />
+      <circle cx="63" cy="53" r="2.6" fill="#e8927c" opacity="0.55" />
+      {/* petites étincelles autour */}
+      <path d="M20 22 l1 2 2 .3 -1.5 1.4 .4 2 -1.9 -1 -1.9 1 .4 -2 -1.5 -1.4 2 -.3 Z" fill="#f5efd8" />
+      <path d="M78 18 l.8 1.6 1.7 .2 -1.2 1.2 .3 1.7 -1.6 -.8 -1.6 .8 .3 -1.7 -1.2 -1.2 1.7 -.2 Z" fill="#f5efd8" />
+      <circle cx="83" cy="70" r="1.4" fill="#f5efd8" />
+      <circle cx="17" cy="66" r="1.1" fill="#f5efd8" />
+    </>
+  ),
+}
+
 // speaker "carnet" → on montre le carnet de Mamy lui-même
 PORTRAITS.carnet = {
   bg: '#46466e',

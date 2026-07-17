@@ -1,6 +1,6 @@
-# Le Grand Silence
+# L'Étoile Tombée
 
-Un village muet, une enquête, treize rencontres. Jeu narratif mobile (portrait, tactile), livré en PWA sur GitHub Pages puis empaqueté en APK via PWABuilder.
+Une étoile s'est écrasée près du village : treize éclats à retrouver avant la Nuit des Étoiles Filantes. Jeu narratif mobile (portrait, tactile), livré en PWA sur GitHub Pages puis empaqueté en APK via PWABuilder.
 
 ## Télécharger l'application Android
 
