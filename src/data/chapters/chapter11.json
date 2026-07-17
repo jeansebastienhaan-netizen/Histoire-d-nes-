@@ -1,0 +1,112 @@
+{
+  "id": "chapter11",
+  "character": "lana",
+  "chapter": 11,
+  "completeOnFragment": "fragment_11",
+  "start": "start",
+  "nodes": {
+    "start": {
+      "speaker": "carnet",
+      "text": "Tout en haut du village, là où les toits laissent enfin voir le ciel entier, Lana a installé son observatoire : une lunette astronomique, un fauteuil moelleux et des cartes du ciel annotées d'une écriture minuscule et précise. Lana connaît les étoiles comme d'autres connaissent leurs voisins.",
+      "next": "lana_probleme"
+    },
+    "lana_probleme": {
+      "speaker": "lana",
+      "text": "Lana lève à peine les yeux de sa lunette et écrit sans regarder son ardoise — un exploit : « Tu tombes bien. Il se passe quelque chose d'anormal. Depuis le Grand Silence, une étoile manque à l'appel au-dessus du village. Et j'ai la conviction que ce n'est PAS une coïncidence. »",
+      "next": "lana_choix"
+    },
+    "lana_choix": {
+      "speaker": "lana",
+      "text": "« J'ai réduit le mystère à trois constellations suspectes. Il me faut un second cerveau — les découvertes se font toujours à deux, c'est statistique. Tu m'aides ? »",
+      "choices": [
+        {
+          "label": "« Une étoile qui manque au village, ça ne se laisse pas passer. J'en suis. »",
+          "effects": { "coeur": 1 },
+          "next": "avant_jeu"
+        },
+        {
+          "label": "« Montre-moi tes cartes. Comparons hier et aujourd'hui. »",
+          "effects": { "ruse": 1 },
+          "next": "avant_jeu"
+        },
+        {
+          "label": "Approcher Mistiflouk de la lunette : il frémit toujours près des choses cachées.",
+          "condition": { "flag": "a_mistiflouk" },
+          "effects": { "ruse": 1, "coeur": 1 },
+          "next": "avant_jeu_mistiflouk"
+        },
+        {
+          "label": "« On y passera la nuit entière s'il le faut. »",
+          "effects": { "determination": 1 },
+          "next": "avant_jeu"
+        }
+      ]
+    },
+    "avant_jeu": {
+      "speaker": "carnet",
+      "text": "Lana étale ses cartes du ciel, couvertes de notes : « L'étoile manquante brillait doucement, elle se levait tôt, et les anciens du village lui parlaient, paraît-il. » Trois indices. Trois constellations. Une seule réponse.",
+      "next": "puzzle_etoile"
+    },
+    "avant_jeu_mistiflouk": {
+      "speaker": "carnet",
+      "text": "Posé sur la lunette, Mistiflouk frémit quand elle pointe vers l'est — là où le ciel touche le grand tilleul de la place. Lana note, fébrile : « Le serpent confirme mon hypothèse. J'adore la science. » Reste à identifier l'étoile.",
+      "next": "puzzle_etoile"
+    },
+    "puzzle_etoile": {
+      "type": "minigame",
+      "game": "LogicPuzzle",
+      "config": {
+        "intro": "Les indices de Lana : « Elle brillait doucement — pas une étoile de spectacle. Elle se levait tôt — une étoile du matin. Et les anciens lui confiaient leurs vœux. »",
+        "question": "Quelle est l'étoile qui manque au-dessus du village ?",
+        "options": [
+          { "label": "La Flamboyante, la plus brillante du ciel d'hiver", "correct": false },
+          { "label": "L'Étoile du Berger, discrète et matinale, l'étoile des vœux", "correct": true },
+          { "label": "La Voyageuse, qui file d'un bout à l'autre du ciel", "correct": false }
+        ],
+        "attempts": 2
+      },
+      "onSuccess": "reussite",
+      "onPartial": "presque",
+      "onFail": "pause"
+    },
+    "pause": {
+      "speaker": "lana",
+      "text": "« Hypothèse réfutée — c'est vexant, mais c'est comme ça qu'avance la science. » Lana verse deux chocolats chauds de son thermos d'astronome. « On reprend les indices depuis le début. Les étoiles, elles, ne sont pas pressées. »",
+      "choices": [
+        { "label": "Reprendre la déduction", "next": "puzzle_etoile" },
+        { "label": "Revenir une autre nuit", "next": "sortie_douce" }
+      ]
+    },
+    "sortie_douce": {
+      "speaker": "carnet",
+      "text": "Lana offre une petite carte du ciel dessinée à la main, « pour t'entraîner à regarder en haut ». Depuis son observatoire, elle fait de grands signes jusqu'à ce que son visiteur ait disparu au coin de la rue.",
+      "next": "END"
+    },
+    "reussite": {
+      "speaker": "lana",
+      "text": "« L'Étoile du Berger ! ÉVIDEMMENT ! » Lana tourne sur son fauteuil, victorieuse. « L'étoile des vœux ! Elle a disparu la nuit exacte du Grand Silence — j'ai la date dans mes carnets. Tu comprends ce que ça veut dire ? Le silence et le vœu sont liés. On tient le fil de toute l'affaire ! »",
+      "next": "fragment_trouve"
+    },
+    "presque": {
+      "speaker": "lana",
+      "text": "« Deuxième hypothèse, la bonne : l'Étoile du Berger — l'étoile des vœux ! » Lana compulse fébrilement ses carnets. « Disparue la nuit exacte du Grand Silence. Une déduction pareille, ça se fête au chocolat chaud. On tient le fil de toute l'affaire ! »",
+      "next": "fragment_trouve"
+    },
+    "fragment_trouve": {
+      "speaker": "carnet",
+      "text": "Lana braque sa lunette vers la place vide du ciel… et fronce les sourcils : « Il y a quelque chose de coincé dans le tube depuis toujours, ça gênait la mise au point. » Elle dévisse l'embout : un papier doré, roulé serré. Le onzième fragment du vœu regardait les étoiles avec elle.",
+      "next": "fin_fragment"
+    },
+    "fin_fragment": {
+      "type": "reward",
+      "fragment": "fragment_11",
+      "sound": "carillon_vent",
+      "next": "epilogue"
+    },
+    "epilogue": {
+      "speaker": "carnet",
+      "text": "Cette nuit-là, le vent se leva doucement sur l'observatoire, et le carillon de Lana tinta — trois notes de verre, fragiles et claires. Le onzième bruit était revenu. Et dans la lunette, tout au fond du ciel, Lana jura avoir vu quelque chose scintiller à nouveau.",
+      "next": "END"
+    }
+  }
+}

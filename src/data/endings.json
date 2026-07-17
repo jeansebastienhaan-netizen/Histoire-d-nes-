@@ -1,0 +1,48 @@
+{
+  "_note": "7 fins selon le profil de réputation (3 pures, 3 duos, 1 équilibre), + épilogues individuels.",
+  "endings": {
+    "coeur": {
+      "title": "La fin du Cœur — Le village aux portes ouvertes",
+      "text": "Quand la dernière syllabe du vœu s'envola, le son revint d'abord là où il y avait de la tendresse : dans les cuisines, sur les seuils, autour des tables. On dit que depuis ce jour, aucune porte du village ne ferme tout à fait — au cas où quelqu'un aurait besoin d'entrer se réchauffer. Et quand on demande aux habitants qui a sauvé le village, ils répondent tous la même chose : « Quelqu'un qui nous a écoutés, même quand nous n'avions plus de voix. »"
+    },
+    "ruse": {
+      "title": "La fin de la Ruse — Le village aux mille idées",
+      "text": "Quand la dernière syllabe du vœu s'envola, le son revint en riant — car il faut bien avouer que ce village l'avait bien eu, le Grand Silence : des codes tapés du pied, des serpents-sonar, des ardoises et des vibrations. On dit que depuis ce jour, chaque problème du village est accueilli par un sourire en coin et une phrase rituelle : « On a bien vaincu le silence — alors ça, franchement, c'est de la rigolade. »"
+    },
+    "determination": {
+      "title": "La fin de la Détermination — Le village qui ne renonce jamais",
+      "text": "Quand la dernière syllabe du vœu s'envola, le son revint comme reviennent les choses méritées : pas par magie, mais parce que quelqu'un avait refusé d'abandonner, rencontre après rencontre, fragment après fragment. On dit que depuis ce jour, quand un enfant du village dit « j'y arriverai pas », on l'emmène voir le grand tilleul, et on lui raconte l'histoire de celui qui a réessayé jusqu'à ce que le village chante."
+    },
+    "coeur_ruse": {
+      "title": "La fin de la Complicité — Le village des clins d'œil",
+      "text": "Quand la dernière syllabe du vœu s'envola, le son revint par deux chemins à la fois : celui du cœur et celui de l'esprit. Car ce village avait été sauvé à la manière des grandes amitiés — avec de la tendresse ET des idées, des câlins ET des stratagèmes. On dit que depuis ce jour, les habitants ont gardé l'habitude de se comprendre d'un seul regard. Le silence leur a appris ça, et personne ne veut le désapprendre."
+    },
+    "coeur_determination": {
+      "title": "La fin du Courage tendre — Le village qui veille",
+      "text": "Quand la dernière syllabe du vœu s'envola, le son revint comme une promesse tenue. Car ce village avait été sauvé par la plus rare des forces : celle qui protège sans jamais se lasser, qui recommence par amour autant que par fierté. On dit que depuis ce jour, il y a toujours une lumière allumée quelque part dans le village, la nuit — comme un phare. Personne ne sait qui l'allume. Tout le monde le sait, en fait."
+    },
+    "determination_ruse": {
+      "title": "La fin de l'Ingéniosité — Le village qui invente",
+      "text": "Quand la dernière syllabe du vœu s'envola, le son revint épaté. Car ce village avait été sauvé comme on résout une grande énigme : avec de l'obstination, des hypothèses, des plans B et des plans C. On dit que depuis ce jour, l'atelier, le garage et l'observatoire ne désemplissent plus — le village est devenu une fabrique à idées, et plus aucun problème n'ose s'y attarder bien longtemps."
+    },
+    "harmonie": {
+      "title": "La fin de l'Harmonie — La vraie voix du village",
+      "text": "Quand la dernière syllabe du vœu s'envola, il se passa quelque chose que même Lana ne sut expliquer : tous les bruits revinrent EN MÊME TEMPS, accordés comme un orchestre — l'horloge avec la guitare, la rivière avec les rires, le marteau avec la cloche. Car le village avait été sauvé avec du cœur, de la ruse et de la détermination, en parts égales, comme dans la recette d'un très vieux gâteau de famille. On dit que c'est la plus belle des fins. On dit surtout qu'elle ne finit pas."
+    }
+  },
+  "epilogues": [
+    { "from": "mamy", "text": "Mamy a remis l'horloge à l'heure exacte — et son carnet, désormais, elle l'écrit à voix haute." },
+    { "from": "alois", "text": "Aloïs a ouvert son grenier au village un dimanche par mois. Entrée : un trésor à raconter. Mistiflouk tamponne les billets." },
+    { "from": "xavier", "text": "Le banc de Xavier trône sur la place. Sur le dossier, gravé : « Assieds-toi, écoute. »" },
+    { "from": "papy", "text": "La citrouille de Papy a gagné le concours du canton. Il jure que c'est parce qu'elle a dormi au chaud." },
+    { "from": "jules", "text": "Jules a inventé un nouveau sport : le silence-ball. Personne n'a compris les règles, tout le monde y joue." },
+    { "from": "oxane", "text": "Oxane fait maintenant la lecture à voix haute — mais elle garde les gestes, parce que les histoires sont plus grandes avec les mains." },
+    { "from": "cyril", "text": "La chanson du village de Cyril s'apprend à l'école. Le deuxième couplet se tape du pied, en souvenir." },
+    { "from": "manu", "text": "La mobylette bleue relivre le pain chaque matin. Manu dit qu'elle ronronne mieux qu'avant — elle a eu peur, ça rapproche." },
+    { "from": "noelia", "text": "Noélia a fait rallonger la table du marché. Il paraît qu'on n'a jamais fini de rajouter des chaises." },
+    { "from": "lo", "text": "La danse de la rivière se danse chaque été, pieds nus. La figure de l'éclaboussure fait toujours un triomphe." },
+    { "from": "lana", "text": "L'Étoile du Berger est revenue. Lana l'a vérifiée cent fois. Elle brille un peu plus fort qu'avant — c'est dans ses carnets." },
+    { "from": "marjo", "text": "Coco le perroquet fut la première voix à revenir. Sa première phrase : le vœu, en entier, sans une faute. Marjo jure qu'elle ne lui a rien appris." },
+    { "from": "mousquetaires", "text": "Les Mousquetaires ont ajouté un quatrième cadenas à leur boîte. Dedans, une place vide : « Pour le prochain secret. »" }
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "id": "chapter6",
+  "character": "oxane",
+  "chapter": 6,
+  "completeOnFragment": "fragment_06",
+  "start": "start",
+  "nodes": {
+    "start": {
+      "speaker": "carnet",
+      "text": "La bibliothèque du village tient dans une seule pièce, mais Oxane dit qu'elle contient mille pays. Elle connaît chaque livre par son odeur, chaque étagère par cœur. Depuis le Grand Silence, c'est ici que le village vient chercher du réconfort.",
+      "next": "oxane_probleme"
+    },
+    "oxane_probleme": {
+      "speaker": "oxane",
+      "text": "Oxane lève le nez de son registre, une bougie à la main : « Tu arrives au bon moment. Ce soir, je fais la lecture aux petits — enfin, je leur montre les images et ils lisent sur mes lèvres. Mais le dernier feuillet de l'histoire s'est égaré. Et sans la fin… une histoire, ça ne borde personne. »",
+      "next": "oxane_choix"
+    },
+    "oxane_choix": {
+      "speaker": "oxane",
+      "text": "« Je me souviens de presque tout. Il me manque juste la dernière phrase. Tu veux bien m'aider à la retrouver avant que la bougie ne s'éteigne ? »",
+      "choices": [
+        {
+          "label": "« Une histoire sans fin, c'est comme un câlin interrompu. On la retrouve. »",
+          "effects": { "coeur": 1 },
+          "next": "avant_jeu"
+        },
+        {
+          "label": "« Récite-moi le début — la fin se cache toujours dans le début. »",
+          "effects": { "ruse": 1 },
+          "next": "avant_jeu"
+        },
+        {
+          "label": "« On relira tous les livres de la pièce s'il le faut. »",
+          "effects": { "determination": 1 },
+          "next": "avant_jeu"
+        }
+      ]
+    },
+    "avant_jeu": {
+      "speaker": "carnet",
+      "text": "Oxane raconte l'histoire à mi-voix silencieuse, mains dansantes : un phare, une tempête, un gardien qui refuse de dormir. La bougie faiblit. Trois fins possibles se bousculent — mais une seule est la vraie.",
+      "next": "jeu_fin"
+    },
+    "jeu_fin": {
+      "type": "minigame",
+      "game": "TimedDialogue",
+      "config": {
+        "prompt": "La bougie vacille ! Quelle est la vraie fin de l'histoire du gardien de phare ?",
+        "seconds": 10,
+        "options": [
+          { "label": "« Et la lumière du phare veilla sur eux, chaque nuit, pour toujours. »", "result": "success" },
+          { "label": "« Et le gardien partit vivre en ville, loin de la mer. »", "result": "fail" },
+          { "label": "« Et la tempête revint le lendemain. »", "result": "partial" }
+        ]
+      },
+      "onSuccess": "reussite",
+      "onPartial": "presque",
+      "onFail": "pause"
+    },
+    "pause": {
+      "speaker": "oxane",
+      "text": "Oxane souffle sur la bougie avant qu'elle ne meure toute seule — question de principe. « Non, le gardien n'abandonnerait jamais son phare. Rallumons, et cherchons encore. Les bonnes fins se méritent. »",
+      "choices": [
+        { "label": "Rallumer la bougie et réessayer", "next": "jeu_fin" },
+        { "label": "Revenir plus tard", "next": "sortie_douce" }
+      ]
+    },
+    "sortie_douce": {
+      "speaker": "carnet",
+      "text": "Oxane glisse un marque-page brodé dans la main de son visiteur. « Reviens. Je garde ta page. » C'est la plus belle promesse qu'on puisse faire dans une bibliothèque.",
+      "next": "END"
+    },
+    "reussite": {
+      "speaker": "oxane",
+      "text": "« Oui ! C'est ça, mot pour mot ! » Oxane serre le livre contre elle. « “Pour toujours.” Les petits vont adorer. Les histoires qui finissent par une lumière allumée sont celles qu'on n'oublie jamais. »",
+      "next": "fragment_trouve"
+    },
+    "presque": {
+      "speaker": "oxane",
+      "text": "« La tempête revint… presque ! C'est la fin du chapitre d'avant. » Oxane sourit et retrouve le fil toute seule : « …et la lumière du phare veilla sur eux, pour toujours. Voilà. À nous deux, on a recousu l'histoire. »",
+      "next": "fragment_trouve"
+    },
+    "fragment_trouve": {
+      "speaker": "carnet",
+      "text": "En remettant le livre à sa place, Oxane fronce les sourcils : une page dépasse, dorée, qui n'appartient à aucun livre. Elle la tend, solennelle : « Ça, c'est l'écriture du vieux carnet de ta Mamy. J'en suis sûre — je connais toutes les écritures du village. »",
+      "next": "fin_fragment"
+    },
+    "fin_fragment": {
+      "type": "reward",
+      "fragment": "fragment_06",
+      "sound": "pages",
+      "next": "epilogue"
+    },
+    "epilogue": {
+      "speaker": "carnet",
+      "text": "Ce soir-là, pendant la lecture, un frisson parcourut la bibliothèque : on entendait les pages tourner. Ce petit froissement de papier, doux comme une aile. Le sixième bruit était revenu, et les petits s'endormirent dedans.",
+      "next": "END"
+    }
+  }
+}

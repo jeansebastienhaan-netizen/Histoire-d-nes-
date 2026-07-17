@@ -1,0 +1,100 @@
+{
+  "id": "chapter5",
+  "character": "jules",
+  "chapter": 5,
+  "completeOnFragment": "fragment_05",
+  "start": "start",
+  "nodes": {
+    "start": {
+      "speaker": "carnet",
+      "text": "Sur le terrain de jeux, Jules a inventé un nouveau sport — comme tous les mardis. Celui-ci s'appelle « l'Éclair d'Ardoise » : on pose une question, et il faut brandir la bonne réponse avant que le sablier ne se vide. Jules est imbattable.",
+      "next": "jules_defi"
+    },
+    "jules_defi": {
+      "speaker": "jules",
+      "text": "Jules fait tournoyer son ardoise comme une raquette : « Enfin un adversaire ! Tout le monde dit que je gagne parce que je triche. FAUX. Je gagne parce que je suis rapide. Allez, trois manches. Si tu tiens la cadence, j'ai un truc à te montrer. »",
+      "next": "jules_choix"
+    },
+    "jules_choix": {
+      "speaker": "jules",
+      "text": "« Prêt ? Prête ? Le sablier n'attend personne ! »",
+      "choices": [
+        {
+          "label": "« Joue à fond, Jules. Gagner contre toi, ça se mérite. »",
+          "effects": { "coeur": 1 },
+          "next": "avant_jeu"
+        },
+        {
+          "label": "« D'accord… mais c'est moi qui retourne le sablier. »",
+          "effects": { "ruse": 1 },
+          "next": "avant_jeu"
+        },
+        {
+          "label": "« Trois manches ? Chiche. Et on remet ça jusqu'à ce que je gagne. »",
+          "effects": { "determination": 1 },
+          "next": "avant_jeu"
+        }
+      ]
+    },
+    "avant_jeu": {
+      "speaker": "carnet",
+      "text": "Jules retourne le sablier d'un geste de champion. Première question, écrite à toute vitesse : elle parle du village, évidemment. Avec Jules, tout finit toujours par parler du village.",
+      "next": "jeu_eclair"
+    },
+    "jeu_eclair": {
+      "type": "minigame",
+      "game": "TimedDialogue",
+      "config": {
+        "prompt": "« Question éclair : le Grand Silence a tout éteint… sauf UNE chose qui fait encore du bruit dans le village. Laquelle ? »",
+        "seconds": 8,
+        "options": [
+          { "label": "L'horloge de Mamy — elle refait tic-tac depuis peu !", "result": "success" },
+          { "label": "Le vent dans les arbres", "result": "partial" },
+          { "label": "Euh… les poules ?", "result": "fail" }
+        ]
+      },
+      "onSuccess": "reussite",
+      "onPartial": "presque",
+      "onFail": "pause"
+    },
+    "pause": {
+      "speaker": "jules",
+      "text": "Jules éclate d'un rire silencieux et s'écroule théâtralement dans l'herbe : « Les POULES ! Elles sont muettes comme tout le monde, les poules ! » Il se relève d'un bond. « Allez, revanche. Les champions accordent toujours une revanche. »",
+      "choices": [
+        { "label": "Revanche, tout de suite !", "next": "jeu_eclair" },
+        { "label": "Revenir s'entraîner plus tard", "next": "sortie_douce" }
+      ]
+    },
+    "sortie_douce": {
+      "speaker": "carnet",
+      "text": "Jules raccompagne son adversaire au bord du terrain en mimant un salut de judoka. Sur son ardoise : « Reviens vite. Les meilleurs adversaires sont ceux qui reviennent. »",
+      "next": "END"
+    },
+    "reussite": {
+      "speaker": "jules",
+      "text": "Jules en lâche son ardoise : « L'horloge ! Tu SAIS des choses, toi. » Il regarde autour de lui, l'air soudain sérieux — enfin, sérieux pour Jules. « Bon. Un deal est un deal. Viens voir mon coffre à trophées. »",
+      "next": "fragment_trouve"
+    },
+    "presque": {
+      "speaker": "jules",
+      "text": "« Le vent ! Pas mal, pas mal… mais la vraie réponse, c'était l'horloge de Mamy. Match nul, alors. » Jules tend la main, beau joueur. « Et un match nul contre moi, crois-moi, ça vaut un trophée. Viens voir mon coffre. »",
+      "next": "fragment_trouve"
+    },
+    "fragment_trouve": {
+      "speaker": "carnet",
+      "text": "Sous le toboggan, Jules déterre une boîte à biscuits cabossée : ses trésors de champion. Médailles en carton, sifflet d'arbitre… et un papier doré qu'il n'a jamais su lire. « Tiens. Je crois qu'il t'attendait, celui-là. »",
+      "next": "fin_fragment"
+    },
+    "fin_fragment": {
+      "type": "reward",
+      "fragment": "fragment_05",
+      "sound": "ballon",
+      "next": "epilogue"
+    },
+    "epilogue": {
+      "speaker": "carnet",
+      "text": "Et quand Jules shoota dans son ballon pour fêter ça, le rebond claqua dans l'air du soir — poum, poum, poum. Le cinquième bruit était revenu. Jules jura qu'il ne s'arrêterait plus jamais de jouer.",
+      "next": "END"
+    }
+  }
+}

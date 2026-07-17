@@ -1,0 +1,100 @@
+{
+  "id": "chapter9",
+  "character": "noelia",
+  "chapter": 9,
+  "completeOnFragment": "fragment_09",
+  "start": "start",
+  "nodes": {
+    "start": {
+      "speaker": "carnet",
+      "text": "Le samedi, la place du marché appartient à Noélia. Son étal déborde de confitures, de bouquets et de gâteaux — mais surtout, chez Noélia, personne ne repart les mains vides ni le cœur lourd. C'est sa spécialité, bien plus que les confitures.",
+      "next": "noelia_probleme"
+    },
+    "noelia_probleme": {
+      "speaker": "noelia",
+      "text": "Noélia jongle entre trois clients, un carnet de commandes et un nourrisson qui dort dans son écharpe. Elle écrit en vitesse : « Sans la cloche du marché, personne ne sait quand on ferme ! Tout le monde arrive en même temps… Aide-moi à servir avant que les tartes ne refroidissent ! »",
+      "next": "noelia_choix"
+    },
+    "noelia_choix": {
+      "speaker": "noelia",
+      "text": "« Madame Berthe attend sa commande, le facteur veut son bouquet, et je n'ai que deux mains ! »",
+      "choices": [
+        {
+          "label": "« Occupe-toi du petit, je prends les commandes. »",
+          "effects": { "coeur": 1 },
+          "next": "avant_jeu"
+        },
+        {
+          "label": "« Organisons la file : les pressés à gauche, les bavards à droite. »",
+          "effects": { "ruse": 1 },
+          "next": "avant_jeu"
+        },
+        {
+          "label": "« On sert tout le monde avant que ça refroidisse. Top chrono ! »",
+          "effects": { "determination": 1 },
+          "next": "avant_jeu"
+        }
+      ]
+    },
+    "avant_jeu": {
+      "speaker": "carnet",
+      "text": "Noélia tend le carnet de commandes. Madame Berthe s'avance, son ardoise à la main — mais la moitié des mots sont effacés par la pluie. Il va falloir deviner vite, et deviner juste.",
+      "next": "jeu_commande"
+    },
+    "jeu_commande": {
+      "type": "minigame",
+      "game": "TimedDialogue",
+      "config": {
+        "prompt": "Sur l'ardoise de Mme Berthe, il reste : « …comme tous les samedis, ma petite Noélia. » Vite, sa commande ?",
+        "seconds": 8,
+        "options": [
+          { "label": "La tarte aux pommes et un bouquet de dahlias — comme tous les samedis !", "result": "success" },
+          { "label": "Des confitures, plein de confitures", "result": "partial" },
+          { "label": "Euh… un poulet ?", "result": "fail" }
+        ]
+      },
+      "onSuccess": "reussite",
+      "onPartial": "presque",
+      "onFail": "pause"
+    },
+    "pause": {
+      "speaker": "noelia",
+      "text": "Madame Berthe rit tellement qu'elle doit s'asseoir sur une cagette. Noélia essuie une larme de rire : « Un POULET ! Elle est végétarienne depuis quarante ans ! Allez, on respire, on regarde bien madame Berthe, et on devine encore. »",
+      "choices": [
+        { "label": "Redeviner tout de suite", "next": "jeu_commande" },
+        { "label": "Revenir aider plus tard", "next": "sortie_douce" }
+      ]
+    },
+    "sortie_douce": {
+      "speaker": "carnet",
+      "text": "Noélia glisse un pot de confiture « pour la route » — impossible de refuser, elle a un don pour ça. Sur l'étiquette : « Reviens vite. Il y aura toujours une place pour toi à ma table. »",
+      "next": "END"
+    },
+    "reussite": {
+      "speaker": "noelia",
+      "text": "Madame Berthe applaudit sans bruit, ravie. Noélia souffle enfin : « Tarte, dahlias, comme tous les samedis. Tu lis dans les gens, toi — c'est le plus beau des talents de marché. » L'étal se vide, les paniers se remplissent, tout le monde sourit.",
+      "next": "fragment_trouve"
+    },
+    "presque": {
+      "speaker": "noelia",
+      "text": "« Des confitures ! Presque — elle en prend AUSSI, mais le samedi c'est tarte et dahlias. » Noélia complète le panier en un tournemain. « À nous deux, on a quand même servi tout le marché avant que ça refroidisse. Championne équipe ! »",
+      "next": "fragment_trouve"
+    },
+    "fragment_trouve": {
+      "speaker": "carnet",
+      "text": "En rangeant l'étal, Noélia soulève la vieille toile cirée de la table commune — celle où le village entier a déjeuné pendant des générations. Épinglé dessous, protégé du temps : un papier doré. Le neuvième fragment du vœu.",
+      "next": "fin_fragment"
+    },
+    "fin_fragment": {
+      "type": "reward",
+      "fragment": "fragment_09",
+      "sound": "cloche_marche",
+      "next": "epilogue"
+    },
+    "epilogue": {
+      "speaker": "carnet",
+      "text": "Et à six heures tapantes, la cloche du marché sonna la fermeture — ding, ding — pour personne et pour tout le monde. Le neuvième bruit était revenu. Noélia la fit sonner trois fois de plus, pour le plaisir.",
+      "next": "END"
+    }
+  }
+}

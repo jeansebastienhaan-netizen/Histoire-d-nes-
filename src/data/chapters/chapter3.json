@@ -1,0 +1,109 @@
+{
+  "id": "chapter3",
+  "character": "xavier",
+  "chapter": 3,
+  "completeOnFragment": "fragment_03",
+  "start": "start",
+  "nodes": {
+    "start": {
+      "speaker": "carnet",
+      "text": "L'atelier de Xavier sent le bois frais et la sciure. D'habitude, on l'entend de loin : le chant du marteau, régulier comme un cœur qui bat. Aujourd'hui, l'atelier est muet — et l'établi est couvert de clous tordus.",
+      "next": "xavier_probleme"
+    },
+    "xavier_probleme": {
+      "speaker": "xavier",
+      "text": "Xavier montre son ardoise, un peu penaud : « Je fabrique un banc pour la place du village. Mais sans le son… je n'entends plus mon marteau. C'est lui qui me donne la mesure, tu comprends ? Un coup juste, ça CHANTE. Là, je tape à l'aveugle. »",
+      "next": "xavier_choix"
+    },
+    "xavier_choix": {
+      "speaker": "xavier",
+      "text": "« Le banc doit être prêt pour la fête. Il me faudrait juste… retrouver le rythme. »",
+      "choices": [
+        {
+          "label": "« Ton banc sera magnifique. Allez, on le retrouve ensemble, ce rythme. »",
+          "effects": { "coeur": 1 },
+          "next": "avant_jeu"
+        },
+        {
+          "label": "« Et si je battais la mesure pour toi, comme un chef d'orchestre ? »",
+          "effects": { "ruse": 1 },
+          "next": "avant_jeu"
+        },
+        {
+          "label": "Demander à Mistiflouk de vibrer en cadence sur l'établi.",
+          "condition": { "flag": "a_mistiflouk" },
+          "effects": { "ruse": 1, "coeur": 1 },
+          "setFlags": ["mistiflouk_metronome"],
+          "next": "avant_jeu_mistiflouk"
+        },
+        {
+          "label": "« On tapera cent clous s'il le faut. Le banc sera prêt. »",
+          "effects": { "determination": 1 },
+          "next": "avant_jeu"
+        }
+      ]
+    },
+    "avant_jeu": {
+      "speaker": "carnet",
+      "text": "Xavier cale une planche, choisit un clou neuf et tend un maillet à son assistant du jour. À nous de battre la mesure : c'est la main qui va rendre au marteau sa chanson.",
+      "next": "jeu_marteau"
+    },
+    "avant_jeu_mistiflouk": {
+      "speaker": "carnet",
+      "text": "Mistiflouk s'allonge sur l'établi et se met à vibrer, régulier comme un métronome. Xavier écarquille les yeux : « Un serpent-diapason ! Il me faut le même. » Il ne reste qu'à suivre la cadence.",
+      "next": "jeu_marteau"
+    },
+    "jeu_marteau": {
+      "type": "minigame",
+      "game": "RhythmTap",
+      "config": {
+        "prompt": "Bats la mesure du marteau : tape quand le cercle est au plus grand !",
+        "bpm": 80,
+        "taps": 8,
+        "tolerance": 0.4
+      },
+      "onSuccess": "reussite",
+      "onPartial": "presque",
+      "onFail": "pause"
+    },
+    "pause": {
+      "speaker": "xavier",
+      "text": "« Pas grave ! Même les meilleurs charpentiers ratent des clous — c'est pour ça qu'on en vend par boîtes de mille. » Xavier souffle sur la sciure. « On reprend ? »",
+      "choices": [
+        { "label": "Réessayer maintenant", "next": "jeu_marteau" },
+        { "label": "Revenir plus tard", "next": "sortie_douce" }
+      ]
+    },
+    "sortie_douce": {
+      "speaker": "carnet",
+      "text": "Xavier serre la main de son apprenti d'un jour — une vraie poignée de main de charpentier, franche et chaude. Le banc attendra demain. Les bons bancs savent attendre.",
+      "next": "END"
+    },
+    "reussite": {
+      "speaker": "xavier",
+      "text": "Toc. Toc. Toc. Les clous s'enfoncent droits, l'un après l'autre, parfaits. Xavier caresse le bois du plat de la main : « Tu entends ça ?… Non, bien sûr. Mais moi je le SENS. Le marteau chante à nouveau. Merci. »",
+      "next": "fragment_trouve"
+    },
+    "presque": {
+      "speaker": "xavier",
+      "text": "« Pas mal du tout ! Deux clous de travers sur huit, c'est un score de charpentier un jour de mistral. » Xavier redresse les récalcitrants d'un coup de pince, l'air ravi. « Le banc tiendra cent ans. »",
+      "next": "fragment_trouve"
+    },
+    "fragment_trouve": {
+      "speaker": "carnet",
+      "text": "Sous le banc tout neuf, gravée au dos d'une chute de bois, une écriture ancienne apparaît dans la sciure — un fragment du vœu, caché là depuis toujours.",
+      "next": "fin_fragment"
+    },
+    "fin_fragment": {
+      "type": "reward",
+      "fragment": "fragment_03",
+      "sound": "marteau",
+      "next": "epilogue"
+    },
+    "epilogue": {
+      "speaker": "carnet",
+      "text": "Et quand Xavier planta le dernier clou, tout le village l'entendit : TOC. Un vrai coup de marteau, sonore et fier. Le troisième bruit était revenu, et il chantait juste.",
+      "next": "END"
+    }
+  }
+}

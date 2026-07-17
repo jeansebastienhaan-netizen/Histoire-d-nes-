@@ -1,0 +1,95 @@
+{
+  "id": "chapter4",
+  "character": "papy",
+  "chapter": 4,
+  "completeOnFragment": "fragment_04",
+  "start": "start",
+  "nodes": {
+    "start": {
+      "speaker": "carnet",
+      "text": "Le potager de Papy est un petit royaume : rangées impeccables, tuteurs alignés, et la plus grosse citrouille jamais vue de mémoire de village. Papy jardine à l'oreille — le crissement du gravier, le glouglou de l'arrosoir. Enfin… jardinait.",
+      "next": "papy_probleme"
+    },
+    "papy_probleme": {
+      "speaker": "papy",
+      "text": "Papy pose sa bêche et écrit lentement, en belles lettres appliquées : « Le gel arrive cette nuit. Ma citrouille doit dormir sous l'appentis. Mais elle a trop bien poussé, la coquine — je n'arrive plus à la déplacer tout seul. »",
+      "next": "papy_choix"
+    },
+    "papy_choix": {
+      "speaker": "papy",
+      "text": "« Alors, on s'y met à deux ? »",
+      "choices": [
+        {
+          "label": "« Bien sûr, Papy. Ta citrouille dormira au chaud, promis. »",
+          "effects": { "coeur": 1 },
+          "next": "avant_jeu"
+        },
+        {
+          "label": "« Attends — si on la fait rouler sur des planches, ça glissera tout seul. »",
+          "effects": { "ruse": 1 },
+          "next": "avant_jeu_planches"
+        },
+        {
+          "label": "« On poussera centimètre par centimètre s'il le faut ! »",
+          "effects": { "determination": 1 },
+          "next": "avant_jeu"
+        }
+      ]
+    },
+    "avant_jeu": {
+      "speaker": "carnet",
+      "text": "Papy crache dans ses mains — c'est sa façon de dire « au travail ». La citrouille attend, énorme et orange comme un petit soleil couché dans les feuilles.",
+      "next": "jeu_citrouille"
+    },
+    "avant_jeu_planches": {
+      "speaker": "carnet",
+      "text": "Papy hoche la tête, épaté, et va chercher deux vieilles planches bien lisses. « Tu as ça de ta grand-mère », écrit-il. « Elle aussi trouvait toujours le chemin le plus malin. »",
+      "next": "jeu_citrouille"
+    },
+    "jeu_citrouille": {
+      "type": "minigame",
+      "game": "DragPhysics",
+      "config": {
+        "prompt": "Fais glisser la citrouille jusqu'à l'appentis, doucement — c'est fragile, une championne.",
+        "item": "🎃",
+        "target": "L'appentis"
+      },
+      "onSuccess": "reussite",
+      "onFail": "pause"
+    },
+    "pause": {
+      "speaker": "papy",
+      "text": "« On ne déplace pas une citrouille pareille sans reprendre son souffle. » Papy sort deux pommes de sa poche et en tend une. « Elle ne gèlera pas dans l'heure. On y retourne quand tu veux. »",
+      "choices": [
+        { "label": "Réessayer maintenant", "next": "jeu_citrouille" },
+        { "label": "Revenir plus tard", "next": "sortie_douce" }
+      ]
+    },
+    "sortie_douce": {
+      "speaker": "carnet",
+      "text": "Papy couvre la citrouille d'une vieille couverture « en attendant ». Puis il raccompagne son visiteur jusqu'au portail, une main sur l'épaule. Chez Papy, même les au revoir poussent tranquillement.",
+      "next": "END"
+    },
+    "reussite": {
+      "speaker": "papy",
+      "text": "La citrouille roule ses dernières longueurs et s'installe sous l'appentis, majestueuse. Papy la tapote comme on flatte un bon cheval. « Elle te doit une fière chandelle. Et moi aussi », écrit-il avec un clin d'œil.",
+      "next": "fragment_trouve"
+    },
+    "fragment_trouve": {
+      "speaker": "carnet",
+      "text": "Là où trônait la citrouille, la terre garde son empreinte ronde. Et au creux de l'empreinte, enveloppé dans un morceau de toile cirée, un papier doré attend depuis des années : le quatrième fragment du vœu.",
+      "next": "fin_fragment"
+    },
+    "fin_fragment": {
+      "type": "reward",
+      "fragment": "fragment_04",
+      "sound": "arrosoir",
+      "next": "epilogue"
+    },
+    "epilogue": {
+      "speaker": "carnet",
+      "text": "Ce soir-là, en arrosant ses semis d'hiver, Papy entendit le glouglou de son arrosoir — le vrai, le bon glouglou d'avant. Il resta un long moment à arroser pour rien, juste pour l'entendre encore.",
+      "next": "END"
+    }
+  }
+}

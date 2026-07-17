@@ -1,0 +1,97 @@
+{
+  "id": "chapter7",
+  "character": "cyril",
+  "chapter": 7,
+  "completeOnFragment": "fragment_07",
+  "start": "start",
+  "nodes": {
+    "start": {
+      "speaker": "carnet",
+      "text": "Dans la salle de musique, les instruments dorment sous leurs housses comme des animaux en hiver. Cyril est le seul à venir encore chaque jour. Il pose les mains sur sa guitare et joue quand même — des chansons que personne n'entend, mais qu'il sent au bout des doigts.",
+      "next": "cyril_idee"
+    },
+    "cyril_idee": {
+      "speaker": "cyril",
+      "text": "Cyril retourne son ardoise, couverte de portées : « J'ai compris un truc énorme. Le silence a volé le SON, mais pas le RYTHME. Le rythme, on le sent — dans le plancher, dans la poitrine. Alors j'écris une chanson que tout le village pourra sentir. Il me manque juste un batteur. »",
+      "next": "cyril_choix"
+    },
+    "cyril_choix": {
+      "speaker": "cyril",
+      "text": "« Ce sera la chanson du village. Celle qu'on jouera quand tout ça sera fini. Tu marques le tempo avec moi ? »",
+      "choices": [
+        {
+          "label": "« Une chanson pour tout le monde… Compte sur moi, Cyril. »",
+          "effects": { "coeur": 1 },
+          "next": "avant_jeu"
+        },
+        {
+          "label": "« Et si on faisait vibrer le plancher pour que les voisins la sentent aussi ? »",
+          "effects": { "ruse": 1 },
+          "next": "avant_jeu"
+        },
+        {
+          "label": "« On répétera jusqu'à ce qu'elle soit parfaite. »",
+          "effects": { "determination": 1 },
+          "next": "avant_jeu"
+        }
+      ]
+    },
+    "avant_jeu": {
+      "speaker": "carnet",
+      "text": "Cyril compte silencieusement — un, deux, trois, quatre — en hochant la tête. Ses doigts se posent sur les cordes. À nous la batterie : le plat de la main sur la grande caisse en bois.",
+      "next": "jeu_tempo"
+    },
+    "jeu_tempo": {
+      "type": "minigame",
+      "game": "RhythmTap",
+      "config": {
+        "prompt": "La chanson du village : tape la mesure, bien régulière, avec Cyril !",
+        "bpm": 96,
+        "taps": 10,
+        "tolerance": 0.4
+      },
+      "onSuccess": "reussite",
+      "onPartial": "presque",
+      "onFail": "pause"
+    },
+    "pause": {
+      "speaker": "cyril",
+      "text": "Cyril lève le pouce quand même : « Hé, même les grands groupes accordent leurs instruments pendant des heures. C'est ça, la musique : on recommence, et chaque fois c'est un peu plus beau. »",
+      "choices": [
+        { "label": "Reprendre au début du morceau", "next": "jeu_tempo" },
+        { "label": "Revenir répéter plus tard", "next": "sortie_douce" }
+      ]
+    },
+    "sortie_douce": {
+      "speaker": "carnet",
+      "text": "Cyril griffonne trois notes sur un coin d'ardoise et le tend : « Ton morceau t'attend. » Dans la salle de musique, même les au revoir ont une mélodie.",
+      "next": "END"
+    },
+    "reussite": {
+      "speaker": "cyril",
+      "text": "La dernière mesure s'éteint dans le bois du plancher. Cyril reste immobile, les yeux fermés, puis écrit très vite : « Tu l'as sentie ? Elle est FINIE. La chanson du village existe. Grâce à ton tempo. »",
+      "next": "fragment_trouve"
+    },
+    "presque": {
+      "speaker": "cyril",
+      "text": "« Deux temps de retard au milieu — mais tu sais quoi ? Ça lui donne du style. Un peu de swing. » Cyril note la variation, très sérieux. « Version définitive. La chanson du village a du groove maintenant. »",
+      "next": "fragment_trouve"
+    },
+    "fragment_trouve": {
+      "speaker": "carnet",
+      "text": "En rangeant sa guitare, Cyril trouve, glissé dans la rosace, un papier doré roulé comme une partition minuscule. « Il a toujours été là ? Ma guitare gardait un secret… » Le septième fragment du vœu.",
+      "next": "fin_fragment"
+    },
+    "fin_fragment": {
+      "type": "reward",
+      "fragment": "fragment_07",
+      "sound": "guitare",
+      "next": "epilogue"
+    },
+    "epilogue": {
+      "speaker": "carnet",
+      "text": "Et cette nuit-là, une corde de guitare résonna toute seule dans la salle vide — un long la, chaud et rond. Le septième bruit était revenu. Cyril dormit avec le sourire de ceux qui ont fini leur chef-d'œuvre.",
+      "next": "END"
+    }
+  }
+}

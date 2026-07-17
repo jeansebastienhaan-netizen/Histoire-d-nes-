@@ -1,0 +1,100 @@
+{
+  "id": "chapter13",
+  "character": "mousquetaires",
+  "chapter": 13,
+  "completeOnFragment": "fragment_13",
+  "start": "start",
+  "nodes": {
+    "start": {
+      "speaker": "carnet",
+      "text": "Tout au bout du village, perchée dans le grand chêne, se trouve la cabane des Mousquetaires — trois inséparables qui ont fait le serment de tout faire ensemble, toujours. Sur la porte, une pancarte : « Entrée réservée aux porteurs de douze fragments. » Ils savent tout, ces trois-là.",
+      "next": "mousquetaires_accueil"
+    },
+    "mousquetaires_accueil": {
+      "speaker": "mousquetaires",
+      "text": "Trois ardoises se lèvent en même temps, parfaitement synchronisées : « On t'observe depuis le début. » — « L'horloge, le phonographe, la cloche, le sifflet de Marjo… » — « C'est toi qui ramènes les bruits. Alors on a voté : tu mérites de connaître LE secret. Mais d'abord, l'épreuve. Tradition oblige. »",
+      "next": "mousquetaires_choix"
+    },
+    "mousquetaires_choix": {
+      "speaker": "mousquetaires",
+      "text": "« L'épreuve des Mousquetaires : une seule question, un temps limité, et tout ce que tu as appris dans le village. Prêt ? Prête ? »",
+      "choices": [
+        {
+          "label": "« Je suis venu jusqu'ici grâce à tout le village. Posez votre question. »",
+          "effects": { "coeur": 1 },
+          "next": "avant_jeu"
+        },
+        {
+          "label": "« Une question de Mousquetaires… donc une question piège. Je me méfie. »",
+          "effects": { "ruse": 1 },
+          "next": "avant_jeu"
+        },
+        {
+          "label": "« Posez-la. Je ne redescendrai pas de cet arbre sans le secret. »",
+          "effects": { "determination": 1 },
+          "next": "avant_jeu"
+        }
+      ]
+    },
+    "avant_jeu": {
+      "speaker": "carnet",
+      "text": "Les trois Mousquetaires se concertent en langage des signes inventé, hochent la tête, et retournent lentement une grande ardoise commune. Le sablier de la cabane est déjà retourné.",
+      "next": "jeu_epreuve"
+    },
+    "jeu_epreuve": {
+      "type": "minigame",
+      "game": "TimedDialogue",
+      "config": {
+        "prompt": "« Le Grand Silence a volé les sons du village. Mais il y a UNE chose qu'il n'a jamais réussi à faire taire. Laquelle ? »",
+        "seconds": 12,
+        "options": [
+          { "label": "Les liens entre les gens — on n'a jamais cessé de se parler, autrement.", "result": "success" },
+          { "label": "Les ardoises — tout le monde écrit sans arrêt.", "result": "partial" },
+          { "label": "Rien. Le silence a tout pris.", "result": "fail" }
+        ]
+      },
+      "onSuccess": "reussite",
+      "onPartial": "presque",
+      "onFail": "pause"
+    },
+    "pause": {
+      "speaker": "mousquetaires",
+      "text": "Les trois secouent la tête en chœur, mais gentiment : « Faux ! Regarde-toi : tu as aidé Mamy, dansé avec Lo, rattrapé la chèvre de Marjo… » — « Le silence n'a PAS tout pris, la preuve est devant nous. » — « Allez, on te la repose. Les Mousquetaires donnent toujours une seconde chance. »",
+      "choices": [
+        { "label": "Répondre à nouveau", "next": "jeu_epreuve" },
+        { "label": "Redescendre réfléchir et revenir", "next": "sortie_douce" }
+      ]
+    },
+    "sortie_douce": {
+      "speaker": "carnet",
+      "text": "Les Mousquetaires font descendre leur visiteur avec le panier-ascenseur, l'honneur suprême de la cabane. Trois ardoises s'agitent en haut : « Reviens ! Le secret ne s'évaporera pas ! »",
+      "next": "END"
+    },
+    "reussite": {
+      "speaker": "mousquetaires",
+      "text": "Les trois ardoises se lèvent d'un coup : « EXACT ! » — « Les liens ! Le silence n'a jamais pu couper les liens ! » — « Épreuve réussie à l'unanimité. Un pour tous… » Et tous les trois ensemble, solennels : « …et tous pour le village. Voici le secret. »",
+      "next": "secret"
+    },
+    "presque": {
+      "speaker": "mousquetaires",
+      "text": "« Les ardoises… presque ! » — « Les ardoises, c'est l'outil. Mais l'important, c'est ce qui passe PAR les ardoises : les liens entre les gens. » — « Réponse acceptée au deuxième degré. Épreuve validée, deux voix contre une — la démocratie des Mousquetaires. Voici le secret. »",
+      "next": "secret"
+    },
+    "secret": {
+      "speaker": "mousquetaires",
+      "text": "Le plus petit des trois soulève une latte du plancher de la cabane. Dessous, dans une boîte fermée par trois cadenas — un par Mousquetaire — repose le dernier papier doré. « On l'a trouvé il y a longtemps. On a juré de le garder jusqu'à ce que quelqu'un mérite les douze autres. C'est toi. »",
+      "next": "fin_fragment"
+    },
+    "fin_fragment": {
+      "type": "reward",
+      "fragment": "fragment_13",
+      "sound": "rires",
+      "next": "epilogue"
+    },
+    "epilogue": {
+      "speaker": "carnet",
+      "text": "Et là-haut, dans la cabane du grand chêne, il se passa quelque chose d'immense : un rire. Puis deux. Puis trois. Les rires des Mousquetaires dégringolèrent de l'arbre comme des noisettes, et roulèrent dans tout le village. Le treizième bruit était revenu. Le vœu était complet. Il ne restait plus qu'à le lire — sous le grand tilleul de la place.",
+      "next": "END"
+    }
+  }
+}
