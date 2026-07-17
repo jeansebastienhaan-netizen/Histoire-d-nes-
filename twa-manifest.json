@@ -1,0 +1,42 @@
+{
+  "packageId": "com.famille.grandsilence",
+  "host": "jeansebastienhaan-netizen.github.io",
+  "name": "Le Grand Silence",
+  "launcherName": "Grand Silence",
+  "display": "standalone",
+  "themeColor": "#1a1a2e",
+  "themeColorDark": "#1a1a2e",
+  "navigationColor": "#1a1a2e",
+  "navigationColorDark": "#1a1a2e",
+  "navigationDividerColor": "#1a1a2e",
+  "navigationDividerColorDark": "#1a1a2e",
+  "backgroundColor": "#1a1a2e",
+  "enableNotifications": false,
+  "startUrl": "/Histoire-d-nes-/",
+  "iconUrl": "https://jeansebastienhaan-netizen.github.io/Histoire-d-nes-/icons/icon-512.png",
+  "maskableIconUrl": "https://jeansebastienhaan-netizen.github.io/Histoire-d-nes-/icons/icon-512-maskable.png",
+  "splashScreenFadeOutDuration": 300,
+  "signingKey": {
+    "path": "./android.keystore",
+    "alias": "android"
+  },
+  "appVersionName": "1.0.0",
+  "appVersionCode": 1,
+  "shortcuts": [],
+  "generatorApp": "bubblewrap-cli",
+  "webManifestUrl": "https://jeansebastienhaan-netizen.github.io/Histoire-d-nes-/manifest.webmanifest",
+  "fallbackType": "customtabs",
+  "features": {},
+  "alphaDependencies": {
+    "enabled": false
+  },
+  "enableSiteSettingsShortcut": true,
+  "isChromeOSOnly": false,
+  "isMetaQuest": false,
+  "fullScopeUrl": "https://jeansebastienhaan-netizen.github.io/Histoire-d-nes-/",
+  "minSdkVersion": 21,
+  "orientation": "portrait",
+  "fingerprints": [],
+  "additionalTrustedOrigins": [],
+  "retainedBundles": []
+}

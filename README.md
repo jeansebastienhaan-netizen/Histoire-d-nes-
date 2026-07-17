@@ -2,6 +2,15 @@
 
 Un village muet, une enquête, treize rencontres. Jeu narratif mobile (portrait, tactile), livré en PWA sur GitHub Pages puis empaqueté en APK via PWABuilder.
 
+## Télécharger l'application Android
+
+L'APK est publié dans les [**Releases**](https://github.com/jeansebastienhaan-netizen/Histoire-d-nes-/releases) :
+télécharger `app-release-signed.apk` sur le téléphone, l'ouvrir, autoriser les
+« sources inconnues » (première fois seulement). L'appli affiche le jeu en ligne :
+chaque mise à jour de `main` arrive automatiquement, sans réinstaller.
+
+Pour regénérer l'APK : onglet **Actions → Build APK → Run workflow**.
+
 ## Jouer
 
 - **En ligne** (après activation de GitHub Pages) : `https://jeansebastienhaan-netizen.github.io/Histoire-d-nes-/`
