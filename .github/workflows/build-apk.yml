@@ -54,13 +54,18 @@ jobs:
           fi
 
       - name: Générer le projet Android (installe JDK + SDK au passage)
-        run: yes | bubblewrap update --skipVersionUpgrade
+        run: |
+          unset ANDROID_HOME ANDROID_SDK_ROOT
+          yes | bubblewrap update --skipVersionUpgrade
 
       - name: Construire l'APK signé
         env:
           BUBBLEWRAP_KEYSTORE_PASSWORD: ${{ env.KS_PASS }}
           BUBBLEWRAP_KEY_PASSWORD: ${{ env.KS_PASS }}
-        run: yes | bubblewrap build --skipPwaValidation
+        run: |
+          # Gradle refuse deux chemins de SDK différents : on ne garde que celui de Bubblewrap
+          unset ANDROID_HOME ANDROID_SDK_ROOT
+          yes | bubblewrap build --skipPwaValidation
 
       - name: Publier la release
         uses: softprops/action-gh-release@v2
