@@ -24,7 +24,8 @@
 html,
 body,
 #root {
-  height: 100%;
+  height: 100vh;
+  height: 100dvh; /* couvre tout l'écran même quand une barre système apparaît/disparaît */
   overflow: hidden;
   background: var(--nuit);
   color: var(--texte);
@@ -55,7 +56,8 @@ button {
 
 .screen {
   position: relative;
-  height: 100%;
+  height: 100vh;
+  height: 100dvh;
   max-width: 540px;
   margin: 0 auto;
   display: flex;

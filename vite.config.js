@@ -19,7 +19,10 @@ export default defineConfig({
           "Mistiflouk, le serpent d'Aloïs, a disparu dans des galeries sous le village. Toute la famille descend le chercher.",
         start_url: BASE,
         scope: BASE,
-        display: 'standalone',
+        // Plein écran immersif (masque aussi la barre d'état) ; repli propre
+        // vers standalone puis navigateur si le mode n'est pas supporté.
+        display: 'fullscreen',
+        display_override: ['fullscreen', 'standalone', 'minimal-ui'],
         orientation: 'portrait',
         background_color: '#141126',
         theme_color: '#141126',
