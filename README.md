@@ -1,6 +1,23 @@
-# L'Étoile Tombée
+# Mistiflouk
 
-Une étoile s'est écrasée près du village : treize éclats à retrouver avant la Nuit des Étoiles Filantes. Jeu narratif mobile (portrait, tactile), livré en PWA sur GitHub Pages puis empaqueté en APK via PWABuilder.
+Mistiflouk, le serpent de compagnie d'Aloïs, disparaît dans des galeries inconnues sous le
+village. Pour le retrouver, Aloïs doit convaincre chaque membre de sa famille de descendre —
+chacun débloque un passage grâce à ce qu'il est. Un jeu narratif mobile chaleureux, en pixel
+art, où les choix de dialogue colorent chaque scène et reviennent tous au final.
+
+**Document de référence** : [`docs/MISTIFLOUK_DOSSIER_COMPLET.md`](docs/MISTIFLOUK_DOSSIER_COMPLET.md)
+(design > scripts > UX > technique). Les scripts y sont implémentés **tels quels** ; tout texte
+ajouté est listé dans [`TEXTES_AJOUTES.md`](TEXTES_AJOUTES.md) pour validation par l'auteur.
+
+## Jouer
+
+- **En ligne** : `https://jeansebastienhaan-netizen.github.io/Histoire-d-nes-/`
+- **En local** :
+
+```bash
+npm install
+npm run dev
+```
 
 ## Télécharger l'application Android
 
@@ -11,54 +28,50 @@ chaque mise à jour de `main` arrive automatiquement, sans réinstaller.
 
 Pour regénérer l'APK : onglet **Actions → Build APK → Run workflow**.
 
-## Jouer
+## Ce qui est implémenté
 
-- **En ligne** (après activation de GitHub Pages) : `https://jeansebastienhaan-netizen.github.io/Histoire-d-nes-/`
-- **En local** :
+- Les **17 scènes** (ouverture → Papy → JS → Mamy → Lo → Cyril → Xavier → Manu → Oxane →
+  Lana → Noélia → Mousquetaires → Jules → finale), scripts verbatim, progression linéaire
+- Les **12 mini-jeux** classiques adaptés, chacun avec ses **3 variantes** (Cœur / Ruse /
+  Détermination) et son **issue d'échec narrative jamais bloquante** ; l'épreuve de Jules
+  ne peut pas échouer (règle de design)
+- Le **registre de variables** : réputation invisible (`coeur`, `ruse`, `determination`) et
+  tous les flags d'histoire ; le final joue toutes les répliques conditionnelles posées
+- **Mode raconté** (résolution narrative automatique des mini-jeux), réglages dès l'écran
+  titre (taille/vitesse du texte, vibrations, son, mode daltonien, police confort)
+- **Mode 4 joueurs** pour la scène des Mousquetaires (écran posé à plat, un coin par joueur)
+- La **coupe du village** comme carte de progression (la profondeur EST la progression),
+  silhouettes des convaincus, mode souvenir sans conséquence
+- Sauvegarde invisible et permanente (localStorage `mistiflouk-save-v1`, JSON versionné),
+  journal des répliques, essai gratuit et indices progressifs dans les mini-jeux
+- Les **3 fins** + dernière image commune + générique
 
-```bash
-npm install
-npm run dev
-```
+Art : portraits pixel procéduraux et décors CSS provisoires, dans la palette du dossier
+(surface verte et dorée, galeries bleu nuit, orange/or de la lampe) — à remplacer par les
+spritesheets définitives.
 
 ## Stack
 
-- Vite + React 18, Zustand, vite-plugin-pwa
-- Sauvegarde localStorage (clé `grand-silence-save-v1`, JSON versionné avec migrations)
-- 100 % statique, aucun backend — fonctionne hors ligne après la première visite
+- Vite + React 18, Zustand, vite-plugin-pwa — 100 % statique, aucun backend,
+  fonctionne hors ligne après la première visite
+- Sons de synthèse WebAudio (les trois notes de Mistiflouk), vibrations `navigator.vibrate`
 
 ## Structure
 
 ```
 src/
-  store/       Zustand (réputation, flags, fragments) + sauvegarde versionnée
-  engine/      moteur de dialogue (graphe JSON) + évaluation des conditions
-  data/        personnages, fragments, chapitres (un JSON par chapitre)
-  screens/     titre / carte du village / rencontre / carnet / fin
-  minigames/   RhythmTap, DragPhysics, TimedDialogue, LogicPuzzle
-  components/  DialogueBox, ChoiceButtons, Mistiflouk
+  store/       Zustand (réputation, flags, progression) + sauvegarde versionnée
+  engine/      conditions, sons ; le moteur de scène vit dans screens/SceneScreen.jsx
+  data/        personnages + les 17 scènes (un fichier par scène, scripts verbatim)
+  screens/     titre / coupe du village / scène / réglages / fin
+  minigames/   les 12 mini-jeux + hôte commun (pause, indices, démo)
+  components/  DialogueBox, ChoiceButtons, Portrait, HoldStill, SceneBackdrop
 ```
+
+Valider les graphes de scènes : `npm run validate`
 
 ## Déploiement
 
 Chaque push sur `main` déclenche `.github/workflows/deploy.yml` (build + GitHub Pages).
-**À faire une fois dans les réglages du repo** : Settings → Pages → Source : « GitHub Actions ».
-
-## État d'avancement
-
-- [x] Sprint 1 — squelette PWA, écran titre, carte du village, moteur de dialogue, sauvegarde, déploiement
-- [x] Sprint 2 — chapitre 1 (Mamy)
-- [x] Sprint 3 — chapitre d'Aloïs + Mistiflouk (piste sonore, 3 branches, compagnon d'interface)
-- [x] Les 13 rencontres jouables (dont Marjo la dresseuse d'animaux), 13 fragments, 13 bruits restaurés
-- [x] Les 7 fins (3 pures, 3 duos, 1 harmonie) + 13 épilogues individuels
-- [x] Graphismes : portraits SVG typés des 13 personnages, décor différent par lieu, carte vivante
-- [x] Déplacement : le héros marche sur la carte jusqu'aux maisons ; 5 mini-jeux tactiles
-- [ ] Passage PWABuilder (manuel : voir `GUIDE_CLAUDE_CODE.md` §8)
-
-Valider les graphes de dialogue : `node scripts/validate-chapters.mjs`
-
-> **Note** : `GAME_DESIGN.md` (document narratif de référence) n'a pas été fourni ;
-> les dialogues ont été écrits directement selon les contraintes de ton du guide
-> technique (carnet bienveillant, personnages montrés sous leur meilleur jour,
-> humour de situation). Chaque chapitre est un JSON autonome dans
-> `src/data/chapters/` — facile à remplacer si le document de référence arrive.
+Réglage à faire une fois : Settings → Pages → Source : « GitHub Actions ».
+Passage APK : PWABuilder / workflow « Build APK » (voir le dossier, Partie II §8).

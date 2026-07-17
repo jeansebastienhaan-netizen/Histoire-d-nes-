@@ -1,4 +1,5 @@
 // Génère les icônes PWA (192, 512, 512 maskable) en PNG pur, sans dépendance.
+// Icône : Mistiflouk lové autour de la lampe (Partie III §9).
 // Usage : node scripts/generate-icons.mjs
 import { deflateSync } from 'node:zlib'
 import { writeFileSync, mkdirSync } from 'node:fs'
@@ -53,89 +54,73 @@ function encodePNG(width, height, rgba) {
   ])
 }
 
-// Dessin : fond nuit #1a1a2e, croissant de lune doré, étoiles.
+// Dessin pixel : fond nuit, halo doré, lampe de cuivre, Mistiflouk lové autour.
 function drawIcon(size, { padding = 0 } = {}) {
   const px = Buffer.alloc(size * size * 4)
   const put = (x, y, r, g, b, a = 255) => {
+    x = Math.round(x)
+    y = Math.round(y)
     if (x < 0 || y < 0 || x >= size || y >= size) return
     const i = (y * size + x) * 4
-    // alpha blend simple
     const na = a / 255
     px[i] = px[i] * (1 - na) + r * na
     px[i + 1] = px[i + 1] * (1 - na) + g * na
     px[i + 2] = px[i + 2] * (1 - na) + b * na
     px[i + 3] = Math.min(255, px[i + 3] + a)
   }
-  // fond
-  for (let y = 0; y < size; y++)
-    for (let x = 0; x < size; x++) put(x, y, 0x1a, 0x1a, 0x2e)
-
-  const inCircle = (x, y, cx, cy, rr) => {
-    const dx = x - cx, dy = y - cy
-    return dx * dx + dy * dy <= rr * rr
+  const disc = (cx, cy, rr, r, g, b, a = 255) => {
+    for (let y = Math.floor(cy - rr); y <= cy + rr; y++)
+      for (let x = Math.floor(cx - rr); x <= cx + rr; x++) {
+        const dx = x - cx
+        const dy = y - cy
+        if (dx * dx + dy * dy <= rr * rr) put(x, y, r, g, b, a)
+      }
+  }
+  const rect = (x0, y0, x1, y1, r, g, b) => {
+    for (let y = Math.floor(y0); y <= y1; y++) for (let x = Math.floor(x0); x <= x1; x++) put(x, y, r, g, b)
   }
 
-  const scale = (size - padding * 2) / 512
+  // Fond nuit
+  for (let y = 0; y < size; y++) for (let x = 0; x < size; x++) put(x, y, 0x14, 0x11, 0x26)
+
+  const s = (size - padding * 2) / 512
   const cx = size / 2
   const cy = size / 2
-  // étoile à cinq branches (test point-dans-polygone par lancer de rayon)
-  const R = 190 * scale
-  const r = 78 * scale
-  const pts = []
-  for (let i = 0; i < 10; i++) {
-    const ang = -Math.PI / 2 + (i * Math.PI) / 5
-    const rad = i % 2 === 0 ? R : r
-    pts.push([cx + rad * Math.cos(ang), cy + rad * Math.sin(ang)])
+
+  // Halo doré
+  for (let ring = 200; ring > 0; ring -= 4)
+    disc(cx, cy - 10 * s, ring * s, 0xf0, 0xa8, 0x44, ring > 150 ? 2 : ring > 90 ? 4 : 6)
+
+  // Corps de la lampe (cuivre)
+  rect(cx - 60 * s, cy + 20 * s, cx + 60 * s, cy + 80 * s, 0xa8, 0x6a, 0x3a) // cuve
+  rect(cx - 74 * s, cy + 74 * s, cx + 74 * s, cy + 90 * s, 0x8a, 0x54, 0x2e) // pied
+  rect(cx - 16 * s, cy - 24 * s, cx + 16 * s, cy + 24 * s, 0xc8, 0x86, 0x4a) // col
+  rect(cx - 34 * s, cy - 34 * s, cx + 34 * s, cy - 22 * s, 0xa8, 0x6a, 0x3a) // collerette
+  // Reflet
+  rect(cx - 48 * s, cy + 28 * s, cx - 36 * s, cy + 70 * s, 0xd8, 0x9a, 0x5c)
+
+  // Flamme
+  disc(cx, cy - 66 * s, 30 * s, 0xf0, 0xa8, 0x44)
+  disc(cx, cy - 72 * s, 20 * s, 0xff, 0xd2, 0x7a)
+  disc(cx, cy - 78 * s, 10 * s, 0xff, 0xf0, 0xc0)
+
+  // Mistiflouk lové autour (arc de cercle vert, tête à droite)
+  const R = 150 * s
+  const thick = 26 * s
+  for (let a = -0.2; a < Math.PI * 1.45; a += 0.008) {
+    const wob = Math.sin(a * 3) * 8 * s
+    const x = cx + Math.cos(a) * (R + wob)
+    const y = cy + 30 * s + Math.sin(a) * (R * 0.72 + wob)
+    disc(x, y, thick / 2, 0x4f, 0x9f, 0x68)
+    disc(x, y - thick * 0.18, thick / 5, 0x7a, 0xc8, 0x8f, 160) // reflet d'écailles
   }
-  const inStar = (x, y) => {
-    let inside = false
-    for (let i = 0, j = pts.length - 1; i < pts.length; j = i++) {
-      const [xi, yi] = pts[i]
-      const [xj, yj] = pts[j]
-      if (yi > y !== yj > y && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi) inside = !inside
-    }
-    return inside
-  }
-  const inStarSmall = (x, y) => {
-    const sx = cx + (x - cx) / 0.82
-    const sy = cy + (y - cy) / 0.82
-    return inStar(sx, sy)
-  }
-  for (let y = 0; y < size; y++) {
-    for (let x = 0; x < size; x++) {
-      if (inStar(x, y)) {
-        put(x, y, 0xf0, 0xc0, 0x50)
-        if (inStarSmall(x, y)) put(x, y, 0xf8, 0xdc, 0x88)
-      }
-    }
-  }
-  // visage de l'étoile
-  const eyeY = cy - 2 * scale
-  for (const ex of [cx - 26 * scale, cx + 26 * scale]) {
-    for (let y = 0; y < size; y++)
-      for (let x = 0; x < size; x++)
-        if (inCircle(x, y, ex, eyeY, 9 * scale)) put(x, y, 0x2b, 0x2b, 0x3d)
-  }
-  // sourire (arc de cercle épais)
-  for (let y = 0; y < size; y++) {
-    for (let x = 0; x < size; x++) {
-      const d = Math.hypot(x - cx, y - (eyeY - 8 * scale))
-      if (d > 40 * scale && d < 48 * scale && y > eyeY + 16 * scale) put(x, y, 0x2b, 0x2b, 0x3d)
-    }
-  }
-  // étoiles
-  const stars = [
-    [0.22, 0.2, 6], [0.75, 0.72, 5], [0.2, 0.68, 4],
-    [0.68, 0.18, 4], [0.32, 0.82, 3], [0.85, 0.4, 3],
-  ]
-  for (const [sx, sy, sr] of stars) {
-    const scx = padding + sx * (size - padding * 2)
-    const scy = padding + sy * (size - padding * 2)
-    const r = Math.max(1, sr * scale)
-    for (let y = Math.floor(scy - r); y <= scy + r; y++)
-      for (let x = Math.floor(scx - r); x <= scx + r; x++)
-        if (inCircle(x, y, scx, scy, r)) put(x, y, 0xf5, 0xef, 0xd8)
-  }
+  // Tête
+  const hx = cx + Math.cos(-0.2) * R
+  const hy = cy + 30 * s + Math.sin(-0.2) * (R * 0.72)
+  disc(hx, hy, 22 * s, 0x4f, 0x9f, 0x68)
+  disc(hx + 8 * s, hy - 6 * s, 5 * s, 0x14, 0x11, 0x26) // œil
+  rect(hx + 18 * s, hy + 2 * s, hx + 30 * s, hy + 5 * s, 0xe0, 0x5a, 0x5a) // langue
+
   return encodePNG(size, size, px)
 }
 
